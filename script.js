@@ -5296,3 +5296,637 @@ document.addEventListener(
       padding: 40px;
 
       max-width: 
+/* =========================================================
+   YUSUF ANIME
+   ADMIN LOGIN + ADMIN PANEL
+   ADD THIS CODE AT THE VERY END OF script.js
+========================================================= */
+
+(function () {
+
+  "use strict";
+
+  /* =======================================================
+     ADMIN SETTINGS
+  ======================================================= */
+
+  const ADMIN_USERNAME = "admin";
+  const ADMIN_PASSWORD = "123456";
+
+  const STORAGE_KEY = "yusufAnimeAdminData";
+  const LOGIN_KEY = "yusufAnimeAdminLoggedIn";
+
+
+  /* =======================================================
+     DEFAULT ANIME DATA
+  ======================================================= */
+
+  const defaultAnime = [
+    {
+      id: 1,
+      title: "One Piece",
+      type: "TV",
+      year: "1999",
+      episodes: 1170,
+      genre: "Action",
+      rating: "9.8",
+      description: "Follow Monkey D. Luffy and his crew on their incredible journey to find the One Piece.",
+      poster: "",
+      status: "Ongoing"
+    },
+
+    {
+      id: 2,
+      title: "Naruto Shippuden",
+      type: "TV",
+      year: "2007",
+      episodes: 500,
+      genre: "Action",
+      rating: "9.2",
+      description: "Naruto returns stronger than ever and continues his journey to become Hokage.",
+      poster: "",
+      status: "Completed"
+    },
+
+    {
+      id: 3,
+      title: "Attack on Titan",
+      type: "TV",
+      year: "2013",
+      episodes: 89,
+      genre: "Action",
+      rating: "9.7",
+      description: "Humanity fights for survival against mysterious giant Titans.",
+      poster: "",
+      status: "Completed"
+    },
+
+    {
+      id: 4,
+      title: "Demon Slayer",
+      type: "TV",
+      year: "2019",
+      episodes: 63,
+      genre: "Action",
+      rating: "9.4",
+      description: "Tanjiro joins the Demon Slayer Corps after tragedy strikes his family.",
+      poster: "",
+      status: "Ongoing"
+    },
+
+    {
+      id: 5,
+      title: "Jujutsu Kaisen",
+      type: "TV",
+      year: "2020",
+      episodes: 47,
+      genre: "Action",
+      rating: "9.3",
+      description: "Yuji Itadori enters the dangerous world of cursed spirits and sorcery.",
+      poster: "",
+      status: "Ongoing"
+    }
+  ];
+
+
+  /* =======================================================
+     LOAD DATA
+  ======================================================= */
+
+  let adminData;
+
+  try {
+
+    adminData =
+      JSON.parse(
+        localStorage.getItem(STORAGE_KEY)
+      ) || {
+        anime: defaultAnime,
+        users: 1
+      };
+
+  } catch (error) {
+
+    adminData = {
+      anime: defaultAnime,
+      users: 1
+    };
+
+  }
+
+
+  if (!Array.isArray(adminData.anime)) {
+    adminData.anime = defaultAnime;
+  }
+
+
+  function saveData() {
+
+    localStorage.setItem(
+      STORAGE_KEY,
+      JSON.stringify(adminData)
+    );
+
+  }
+
+
+  /* =======================================================
+     CREATE LOGIN
+  ======================================================= */
+
+  function createLogin() {
+
+    if (document.getElementById("yusufAdminLogin")) {
+      return;
+    }
+
+
+    const login = document.createElement("div");
+
+    login.id = "yusufAdminLogin";
+
+    login.innerHTML = `
+
+      <div class="ya-login-background">
+
+        <div class="ya-login-box">
+
+          <div class="ya-login-logo">
+            YUSUF<span>ANIME</span>
+          </div>
+
+          <div class="ya-login-badge">
+            ADMIN PANEL
+          </div>
+
+          <h1>Welcome Back</h1>
+
+          <p class="ya-login-description">
+            Login to manage your anime website.
+          </p>
+
+
+          <label>
+            Username
+          </label>
+
+          <input
+            id="yaAdminUsername"
+            type="text"
+            placeholder="Enter username"
+            autocomplete="username"
+          >
+
+
+          <label>
+            Password
+          </label>
+
+          <input
+            id="yaAdminPassword"
+            type="password"
+            placeholder="Enter password"
+            autocomplete="current-password"
+          >
+
+
+          <button
+            id="yaLoginButton"
+            type="button"
+          >
+            🔐 Login
+          </button>
+
+
+          <div
+            id="yaLoginError"
+            class="ya-login-error"
+          ></div>
+
+
+          <div class="ya-login-hint">
+            Admin access
+          </div>
+
+        </div>
+
+      </div>
+
+    `;
+
+
+    document.body.appendChild(login);
+
+
+    document
+      .getElementById("yaLoginButton")
+      .addEventListener(
+        "click",
+        loginAdmin
+      );
+
+
+    document
+      .getElementById("yaAdminPassword")
+      .addEventListener(
+        "keydown",
+        function (event) {
+
+          if (event.key === "Enter") {
+            loginAdmin();
+          }
+
+        }
+      );
+
+  }
+
+
+  /* =======================================================
+     LOGIN FUNCTION
+  ======================================================= */
+
+  function loginAdmin() {
+
+    const username =
+      document
+        .getElementById("yaAdminUsername")
+        .value
+        .trim();
+
+
+    const password =
+      document
+        .getElementById("yaAdminPassword")
+        .value;
+
+
+    const error =
+      document.getElementById("yaLoginError");
+
+
+    if (
+      username === ADMIN_USERNAME &&
+      password === ADMIN_PASSWORD
+    ) {
+
+      sessionStorage.setItem(
+        LOGIN_KEY,
+        "true"
+      );
+
+
+      document
+        .getElementById("yusufAdminLogin")
+        .classList.add("hidden");
+
+
+      createAdminButton();
+
+      createAdminPanel();
+
+      renderAdmin();
+
+    } else {
+
+      error.textContent =
+        "❌ Username or password is incorrect.";
+
+    }
+
+  }
+
+
+  /* =======================================================
+     CREATE ADMIN BUTTON
+  ======================================================= */
+
+  function createAdminButton() {
+
+    if (
+      document.getElementById(
+        "yusufAdminOpen"
+      )
+    ) {
+      return;
+    }
+
+
+    const button =
+      document.createElement("button");
+
+
+    button.id =
+      "yusufAdminOpen";
+
+
+    button.innerHTML =
+      "⚙️ Admin";
+
+
+    document.body.appendChild(button);
+
+
+    button.addEventListener(
+      "click",
+      function () {
+
+        document
+          .getElementById("yusufAdminPanel")
+          .classList.add("show");
+
+        renderAdmin();
+
+      }
+    );
+
+  }
+
+
+  /* =======================================================
+     CREATE ADMIN PANEL
+  ======================================================= */
+
+  function createAdminPanel() {
+
+    if (
+      document.getElementById(
+        "yusufAdminPanel"
+      )
+    ) {
+      return;
+    }
+
+
+    const panel =
+      document.createElement("div");
+
+
+    panel.id =
+      "yusufAdminPanel";
+
+
+    panel.innerHTML = `
+
+      <div class="ya-admin-container">
+
+        <div class="ya-admin-header">
+
+          <div>
+
+            <div class="ya-admin-logo">
+              YUSUF<span>ANIME</span>
+            </div>
+
+            <small>
+              Administration Dashboard
+            </small>
+
+          </div>
+
+
+          <div class="ya-admin-header-actions">
+
+            <button
+              id="yaAdminClose"
+              type="button"
+            >
+              ✕
+            </button>
+
+          </div>
+
+        </div>
+
+
+        <div class="ya-admin-layout">
+
+
+          <aside class="ya-admin-sidebar">
+
+            <button
+              class="ya-admin-nav active"
+              data-page="dashboard"
+            >
+              📊 Dashboard
+            </button>
+
+            <button
+              class="ya-admin-nav"
+              data-page="anime"
+            >
+              🎬 Anime
+            </button>
+
+            <button
+              class="ya-admin-nav"
+              data-page="add"
+            >
+              ➕ Add Anime
+            </button>
+
+            <button
+              class="ya-admin-nav"
+              data-page="users"
+            >
+              👥 Users
+            </button>
+
+            <button
+              class="ya-admin-nav"
+              data-page="settings"
+            >
+              ⚙️ Settings
+            </button>
+
+            <button
+              class="ya-admin-nav logout"
+              id="yaAdminLogout"
+              type="button"
+            >
+              🚪 Logout
+            </button>
+
+          </aside>
+
+
+          <main class="ya-admin-content">
+
+            <div
+              id="yaAdminDashboard"
+              class="ya-admin-page active"
+            ></div>
+
+
+            <div
+              id="yaAdminAnime"
+              class="ya-admin-page"
+            ></div>
+
+
+            <div
+              id="yaAdminAdd"
+              class="ya-admin-page"
+            ></div>
+
+
+            <div
+              id="yaAdminUsers"
+              class="ya-admin-page"
+            ></div>
+
+
+            <div
+              id="yaAdminSettings"
+              class="ya-admin-page"
+            ></div>
+
+          </main>
+
+
+        </div>
+
+      </div>
+
+    `;
+
+
+    document.body.appendChild(panel);
+
+
+    document
+      .getElementById("yaAdminClose")
+      .addEventListener(
+        "click",
+        closeAdmin
+      );
+
+
+    document
+      .getElementById("yaAdminLogout")
+      .addEventListener(
+        "click",
+        logoutAdmin
+      );
+
+
+    document
+      .querySelectorAll(".ya-admin-nav[data-page]")
+      .forEach(
+        function (button) {
+
+          button.addEventListener(
+            "click",
+            function () {
+
+              openAdminPage(
+                button.dataset.page
+              );
+
+            }
+          );
+
+        }
+      );
+
+  }
+
+
+  /* =======================================================
+     OPEN ADMIN PAGE
+  ======================================================= */
+
+  function openAdminPage(page) {
+
+    document
+      .querySelectorAll(".ya-admin-nav")
+      .forEach(
+        function (button) {
+
+          button.classList.toggle(
+            "active",
+            button.dataset.page === page
+          );
+
+        }
+      );
+
+
+    document
+      .querySelectorAll(".ya-admin-page")
+      .forEach(
+        function (section) {
+
+          section.classList.remove(
+            "active"
+          );
+
+        }
+      );
+
+
+    const target =
+      document.getElementById(
+        "yaAdmin" +
+        page.charAt(0).toUpperCase() +
+        page.slice(1)
+      );
+
+
+    if (target) {
+
+      target.classList.add(
+        "active"
+      );
+
+    }
+
+
+    renderAdmin();
+
+  }
+
+
+  /* =======================================================
+     RENDER ADMIN
+  ======================================================= */
+
+  function renderAdmin() {
+
+    renderDashboard();
+
+    renderAnimeList();
+
+    renderAddPage();
+
+    renderUsers();
+
+    renderSettings();
+
+  }
+
+
+  /* =======================================================
+     DASHBOARD
+  ======================================================= */
+
+  function renderDashboard() {
+
+    const element =
+      document.getElementById(
+        "yaAdminDashboard"
+      );
+
+
+    if (!element) return;
+
+
+    const totalAnime =
+      adminData.anime.length;
+
+
+    const totalEpisodes =
+      adminData.anime.reduce(
+        function (sum, anime) {
+
+          return
