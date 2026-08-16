@@ -1195,3 +1195,120 @@ document.addEventListener(
 /* ================= START ================= */
 
 renderHome();
+/* ================= SEARCH FIX ================= */
+
+document.addEventListener("DOMContentLoaded", function () {
+
+  const searchButton = document.getElementById("searchButton");
+  const searchModal = document.getElementById("searchModal");
+  const closeSearch = document.getElementById("closeSearch");
+  const doSearch = document.getElementById("doSearch");
+  const searchInput = document.getElementById("searchInput");
+  const searchResults = document.getElementById("searchResults");
+
+  if (!searchButton) return;
+
+  searchButton.onclick = function () {
+    searchModal.classList.add("show");
+
+    setTimeout(function () {
+      searchInput.focus();
+    }, 100);
+  };
+
+  closeSearch.onclick = function () {
+    searchModal.classList.remove("show");
+    searchInput.value = "";
+    searchResults.innerHTML = "";
+  };
+
+  function runSearch() {
+
+    const text =
+      searchInput.value
+        .trim()
+        .toLowerCase();
+
+    if (!text) {
+      searchResults.innerHTML =
+        `<div class="search-result">
+          ✍️ تکایە ناوی Anime بنووسە.
+        </div>`;
+      return;
+    }
+
+    const results = animeData.filter(function (anime) {
+
+      const title =
+        anime.title.toLowerCase();
+
+      const genres =
+        anime.genres.join(" ").toLowerCase();
+
+      return (
+        title.includes(text) ||
+        genres.includes(text)
+      );
+
+    });
+
+    searchResults.innerHTML = "";
+
+    if (results.length === 0) {
+
+      searchResults.innerHTML =
+        `<div class="search-result">
+          😔 هیچ Anime ـێک نەدۆزرایەوە.
+        </div>`;
+
+      return;
+    }
+
+    results.forEach(function (anime) {
+
+      const item =
+        document.createElement("div");
+
+      item.className =
+        "search-result";
+
+      item.innerHTML = `
+        <strong>${anime.title}</strong>
+        <br>
+        <small>
+          ⭐ ${anime.rating}
+          • ${anime.year}
+          • ${anime.type}
+        </small>
+      `;
+
+      item.onclick = function () {
+
+        searchModal.classList.remove("show");
+
+        if (typeof openDetails === "function") {
+          openDetails(anime.id);
+        }
+
+      };
+
+      searchResults.appendChild(item);
+
+    });
+
+  }
+
+  doSearch.onclick = runSearch;
+
+  searchInput.addEventListener(
+    "keydown",
+    function (event) {
+
+      if (event.key === "Enter") {
+        runSearch();
+      }
+
+    }
+  );
+
+});
