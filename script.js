@@ -1312,3 +1312,738 @@ document.addEventListener("DOMContentLoaded", function () {
   );
 
 });
+/* ================= LANGUAGE SYSTEM ================= */
+
+const translations = {
+
+  en: {
+    home: "Home",
+    trending: "Trending",
+    latest: "Latest",
+    genres: "Genres",
+    favorites: "Favorites",
+    trendingTitle: "Popular Anime",
+    latestTitle: "Latest Anime",
+    topTitle: "Best Anime",
+    genresTitle: "Browse Genres",
+    favoritesTitle: "My Favorites",
+    search: "Search Anime",
+    searchPlaceholder: "Search anime...",
+    searchButton: "Search",
+    watchNow: "Watch Now",
+    addFavorite: "Add to Favorites",
+    episodes: "Episodes",
+    back: "Back",
+    previous: "Previous",
+    next: "Next",
+    continueWatching: "Continue Watching",
+    noFavorites: "No Favorites Yet",
+    noFavoritesText:
+      "Add anime to your favorites and they will appear here.",
+    explore: "Explore Anime",
+    findAnime: "Find Anime",
+    welcome: "WELCOME TO YUSUF ANIME",
+    discover: "Discover",
+    animeWorld: "Anime World.",
+    heroText:
+      "Discover your favorite anime, explore new stories and enjoy an amazing anime experience.",
+    browse: "Browse Genres",
+    loading: "Loading..."
+  },
+
+
+  ku: {
+    home: "سەرەتا",
+    trending: "بەناوبانگەکان",
+    latest: "نوێترینەکان",
+    genres: "جۆرەکان",
+    favorites: "دڵخوازەکان",
+    trendingTitle: "ئەنیمییە بەناوبانگەکان",
+    latestTitle: "نوێترین ئەنیمییەکان",
+    topTitle: "باشترین ئەنیمییەکان",
+    genresTitle: "گەڕان بە جۆر",
+    favoritesTitle: "دڵخوازەکانم",
+    search: "گەڕان",
+    searchPlaceholder: "ناوی ئەنیمی بنووسە...",
+    searchButton: "گەڕان",
+    watchNow: "ئێستا بیبینە",
+    addFavorite: "زیادکردن بۆ دڵخوازەکان",
+    episodes: "ئەڵقەکان",
+    back: "گەڕانەوە",
+    previous: "ئەڵقەی پێشوو",
+    next: "ئەڵقەی دواتر",
+    continueWatching: "بەردەوام بە لە بینین",
+    noFavorites: "هێشتا هیچ دڵخوازێکت نییە",
+    noFavoritesText:
+      "ئەنیمی زیاد بکە بۆ دڵخوازەکانت تا لێرە نیشان بدرێت.",
+    explore: "گەڕان بە ئەنیمی",
+    findAnime: "دۆزینەوەی ئەنیمی",
+    welcome: "بەخێربێیت بۆ YUSUF ANIME",
+    discover: "بدۆزەرەوە",
+    animeWorld: "جیهانی ئەنیمی.",
+    heroText:
+      "ئەنیمییە دڵخوازەکانت بدۆزەرەوە، چیرۆکی نوێ بناسە و ئەزموونێکی جوانی ئەنیمی هەبێت.",
+    browse: "گەڕان بە جۆر",
+    loading: "چاوەڕێ بکە..."
+  },
+
+
+  ar: {
+    home: "الرئيسية",
+    trending: "الأكثر شهرة",
+    latest: "الأحدث",
+    genres: "التصنيفات",
+    favorites: "المفضلة",
+    trendingTitle: "الأنمي الشهير",
+    latestTitle: "أحدث الأنمي",
+    topTitle: "أفضل الأنمي",
+    genresTitle: "تصفح التصنيفات",
+    favoritesTitle: "المفضلة لدي",
+    search: "بحث",
+    searchPlaceholder: "ابحث عن أنمي...",
+    searchButton: "بحث",
+    watchNow: "شاهد الآن",
+    addFavorite: "إضافة إلى المفضلة",
+    episodes: "الحلقات",
+    back: "رجوع",
+    previous: "الحلقة السابقة",
+    next: "الحلقة التالية",
+    continueWatching: "متابعة المشاهدة",
+    explore: "استكشف الأنمي",
+    findAnime: "ابحث عن أنمي",
+    welcome: "مرحباً بك في YUSUF ANIME",
+    discover: "اكتشف",
+    animeWorld: "عالم الأنمي.",
+    heroText:
+      "اكتشف الأنمي المفضل لديك واستمتع بعالم مليء بالقصص الرائعة.",
+    browse: "تصفح التصنيفات",
+    loading: "جاري التحميل..."
+  },
+
+
+  tr: {
+    home: "Ana Sayfa",
+    trending: "Popüler",
+    latest: "En Yeni",
+    genres: "Türler",
+    favorites: "Favoriler",
+    trendingTitle: "Popüler Animeler",
+    latestTitle: "En Yeni Animeler",
+    topTitle: "En İyi Animeler",
+    genresTitle: "Türlere Göz At",
+    favoritesTitle: "Favorilerim",
+    search: "Ara",
+    searchPlaceholder: "Anime ara...",
+    searchButton: "Ara",
+    watchNow: "Şimdi İzle",
+    addFavorite: "Favorilere Ekle",
+    episodes: "Bölümler",
+    back: "Geri",
+    previous: "Önceki Bölüm",
+    next: "Sonraki Bölüm",
+    continueWatching: "İzlemeye Devam Et",
+    noFavorites: "Henüz Favori Yok",
+    explore: "Anime Keşfet",
+    findAnime: "Anime Bul",
+    welcome: "YUSUF ANIME'YE HOŞ GELDİN",
+    discover: "Keşfet",
+    animeWorld: "Anime Dünyası.",
+    heroText:
+      "Favori animelerini keşfet ve yeni hikayelerin tadını çıkar.",
+    browse: "Türlere Göz At",
+    loading: "Yükleniyor..."
+  },
+
+
+  ja: {
+    home: "ホーム",
+    trending: "人気",
+    latest: "最新",
+    genres: "ジャンル",
+    favorites: "お気に入り",
+    trendingTitle: "人気アニメ",
+    latestTitle: "最新アニメ",
+    topTitle: "おすすめアニメ",
+    genresTitle: "ジャンルを探す",
+    favoritesTitle: "お気に入り",
+    search: "検索",
+    searchPlaceholder: "アニメを検索...",
+    searchButton: "検索",
+    watchNow: "今すぐ見る",
+    addFavorite: "お気に入りに追加",
+    episodes: "エピソード",
+    back: "戻る",
+    previous: "前のエピソード",
+    next: "次のエピソード",
+    continueWatching: "続きを見る",
+    explore: "アニメを探す",
+    findAnime: "アニメを検索",
+    welcome: "YUSUF ANIMEへようこそ",
+    discover: "見つける",
+    animeWorld: "アニメの世界。",
+    heroText:
+      "お気に入りのアニメを見つけ、新しい物語を楽しもう。",
+    browse: "ジャンルを見る",
+    loading: "読み込み中..."
+  },
+
+
+  es: {
+    home: "Inicio",
+    trending: "Tendencias",
+    latest: "Últimos",
+    genres: "Géneros",
+    favorites: "Favoritos",
+    trendingTitle: "Anime Popular",
+    latestTitle: "Últimos Animes",
+    topTitle: "Mejores Animes",
+    genresTitle: "Explorar Géneros",
+    favoritesTitle: "Mis Favoritos",
+    search: "Buscar",
+    searchPlaceholder: "Buscar anime...",
+    searchButton: "Buscar",
+    watchNow: "Ver Ahora",
+    addFavorite: "Añadir a Favoritos",
+    episodes: "Episodios",
+    back: "Volver",
+    previous: "Anterior",
+    next: "Siguiente",
+    continueWatching: "Continuar viendo",
+    noFavorites: "Aún no hay favoritos",
+    explore: "Explorar Anime",
+    findAnime: "Buscar Anime",
+    welcome: "BIENVENIDO A YUSUF ANIME",
+    discover: "Descubre",
+    animeWorld: "El mundo del anime.",
+    heroText:
+      "Descubre tus animes favoritos y disfruta de nuevas historias.",
+    browse: "Explorar Géneros",
+    loading: "Cargando..."
+  },
+
+
+  fr: {
+    home: "Accueil",
+    trending: "Tendances",
+    latest: "Nouveautés",
+    genres: "Genres",
+    favorites: "Favoris",
+    trendingTitle: "Anime Populaire",
+    latestTitle: "Derniers Animes",
+    topTitle: "Meilleurs Animes",
+    genresTitle: "Explorer les Genres",
+    favoritesTitle: "Mes Favoris",
+    search: "Rechercher",
+    searchPlaceholder: "Rechercher un anime...",
+    searchButton: "Rechercher",
+    watchNow: "Regarder",
+    addFavorite: "Ajouter aux favoris",
+    episodes: "Épisodes",
+    back: "Retour",
+    previous: "Précédent",
+    next: "Suivant",
+    continueWatching: "Continuer à regarder",
+    noFavorites: "Aucun favori",
+    explore: "Explorer les Animes",
+    findAnime: "Trouver un Anime",
+    welcome: "BIENVENUE SUR YUSUF ANIME",
+    discover: "Découvrez",
+    animeWorld: "Le monde de l'anime.",
+    heroText:
+      "Découvrez vos animes préférés et de nouvelles histoires.",
+    browse: "Explorer les Genres",
+    loading: "Chargement..."
+  },
+
+
+  de: {
+    home: "Startseite",
+    trending: "Beliebt",
+    latest: "Neueste",
+    genres: "Genres",
+    favorites: "Favoriten",
+    trendingTitle: "Beliebte Animes",
+    latestTitle: "Neueste Animes",
+    topTitle: "Beste Animes",
+    genresTitle: "Genres durchsuchen",
+    favoritesTitle: "Meine Favoriten",
+    search: "Suche",
+    searchPlaceholder: "Anime suchen...",
+    searchButton: "Suchen",
+    watchNow: "Jetzt ansehen",
+    addFavorite: "Zu Favoriten hinzufügen",
+    episodes: "Episoden",
+    back: "Zurück",
+    previous: "Vorherige",
+    next: "Nächste",
+    continueWatching: "Weiter ansehen",
+    noFavorites: "Noch keine Favoriten",
+    explore: "Anime entdecken",
+    findAnime: "Anime finden",
+    welcome: "WILLKOMMEN BEI YUSUF ANIME",
+    discover: "Entdecke",
+    animeWorld: "Die Anime-Welt.",
+    heroText:
+      "Entdecke deine Lieblingsanimes und neue spannende Geschichten.",
+    browse: "Genres durchsuchen",
+    loading: "Wird geladen..."
+  }
+
+};
+
+
+/* ================= CURRENT LANGUAGE ================= */
+
+let currentLanguage =
+  localStorage.getItem("yusufAnimeLanguage") || "en";
+
+
+/* ================= LANGUAGE ELEMENTS ================= */
+
+const languageButton =
+  document.getElementById("languageButton");
+
+const languageMenu =
+  document.getElementById("languageMenu");
+
+const currentLanguageText =
+  document.getElementById("currentLanguage");
+
+
+/* ================= OPEN / CLOSE ================= */
+
+if (languageButton) {
+
+  languageButton.addEventListener("click", function(event) {
+
+    event.stopPropagation();
+
+    languageMenu.classList.toggle("show");
+
+  });
+
+}
+
+
+document.addEventListener("click", function(event) {
+
+  if (
+    languageMenu &&
+    !languageMenu.contains(event.target) &&
+    event.target !== languageButton
+  ) {
+
+    languageMenu.classList.remove("show");
+
+  }
+
+});
+
+
+/* ================= CHANGE LANGUAGE ================= */
+
+document.querySelectorAll(
+  "[data-language]"
+).forEach(function(button) {
+
+  button.addEventListener(
+    "click",
+    function() {
+
+      const language =
+        button.dataset.language;
+
+      changeLanguage(language);
+
+    }
+  );
+
+});
+
+
+/* ================= CHANGE LANGUAGE ================= */
+
+function changeLanguage(language) {
+
+  if (!translations[language]) {
+    return;
+  }
+
+  currentLanguage = language;
+
+  localStorage.setItem(
+    "yusufAnimeLanguage",
+    language
+  );
+
+
+  updateLanguage();
+
+
+  if (languageMenu) {
+    languageMenu.classList.remove("show");
+  }
+
+}
+
+
+/* ================= UPDATE WEBSITE ================= */
+
+function updateLanguage() {
+
+  const t =
+    translations[currentLanguage];
+
+
+  /* LANGUAGE NAME */
+
+  const names = {
+
+    en: "English",
+    ku: "کوردی",
+    ar: "العربية",
+    tr: "Türkçe",
+    ja: "日本語",
+    es: "Español",
+    fr: "Français",
+    de: "Deutsch"
+
+  };
+
+
+  if (currentLanguageText) {
+
+    currentLanguageText.textContent =
+      names[currentLanguage];
+
+  }
+
+
+  /* NAV */
+
+  const nav =
+    document.querySelectorAll(
+      ".desktop-nav a"
+    );
+
+
+  if (nav.length >= 5) {
+
+    nav[0].textContent = t.home;
+    nav[1].textContent = t.trending;
+    nav[2].textContent = t.latest;
+    nav[3].textContent = t.genres;
+    nav[4].textContent = t.favorites;
+
+  }
+
+
+  /* HERO */
+
+  const heroLabel =
+    document.querySelector(".hero-label");
+
+  if (heroLabel) {
+    heroLabel.textContent =
+      "✨ " + t.welcome;
+  }
+
+
+  const heroH1 =
+    document.querySelector(".hero h1");
+
+  if (heroH1) {
+
+    heroH1.innerHTML =
+      `${t.discover}<br><span>${t.animeWorld}</span>`;
+
+  }
+
+
+  const heroText =
+    document.querySelector(".hero-content p");
+
+  if (heroText) {
+    heroText.textContent =
+      t.heroText;
+  }
+
+
+  const exploreButton =
+    document.querySelector(
+      ".hero .btn-primary"
+    );
+
+  if (exploreButton) {
+    exploreButton.textContent =
+      "🔥 " + t.explore;
+  }
+
+
+  const heroSearch =
+    document.getElementById("heroSearch");
+
+  if (heroSearch) {
+    heroSearch.textContent =
+      "🔍 " + t.search;
+  }
+
+
+  /* SECTION TITLES */
+
+  const sectionTitles =
+    document.querySelectorAll(
+      ".section-title h2"
+    );
+
+
+  if (sectionTitles.length >= 4) {
+
+    sectionTitles[0].textContent =
+      t.trendingTitle;
+
+    sectionTitles[1].textContent =
+      t.continueWatching;
+
+    sectionTitles[2].textContent =
+      t.latestTitle;
+
+    sectionTitles[3].textContent =
+      t.topTitle;
+
+  }
+
+
+  /* GENRES */
+
+  const genreTitle =
+    document.querySelector(
+      "#genres .section-title h2"
+    );
+
+  if (genreTitle) {
+    genreTitle.textContent =
+      t.genresTitle;
+  }
+
+
+  /* FAVORITES */
+
+  const favoriteTitle =
+    document.querySelector(
+      "#favorites .section-title h2"
+    );
+
+  if (favoriteTitle) {
+    favoriteTitle.textContent =
+      t.favoritesTitle;
+  }
+
+
+  /* SEARCH */
+
+  const searchTitle =
+    document.querySelector(
+      "#searchModal h2"
+    );
+
+  if (searchTitle) {
+    searchTitle.textContent =
+      "🔍 " + t.search;
+  }
+
+
+  if (searchInput) {
+
+    searchInput.placeholder =
+      t.searchPlaceholder;
+
+  }
+
+
+  if (doSearch) {
+
+    doSearch.textContent =
+      "🔍 " + t.searchButton;
+
+  }
+
+
+  /* DETAILS */
+
+  const detailsPlay =
+    document.getElementById(
+      "detailsPlay"
+    );
+
+  if (detailsPlay) {
+
+    detailsPlay.textContent =
+      "▶️ " + t.watchNow;
+
+  }
+
+
+  /* FAVORITE */
+
+  updateFavoriteButton();
+
+
+  /* EMPTY FAVORITES */
+
+  const emptyTitle =
+    document.querySelector(
+      "#emptyFavorites h3"
+    );
+
+  if (emptyTitle) {
+
+    emptyTitle.textContent =
+      t.noFavorites;
+
+  }
+
+
+  const emptyText =
+    document.querySelector(
+      "#emptyFavorites p"
+    );
+
+  if (emptyText) {
+
+    emptyText.textContent =
+      t.noFavoritesText;
+
+  }
+
+
+  /* MOBILE NAV */
+
+  const mobileLinks =
+    document.querySelectorAll(
+      "#mobileMenu > a"
+    );
+
+  if (mobileLinks.length >= 5) {
+
+    mobileLinks[0].textContent =
+      "🏠 " + t.home;
+
+    mobileLinks[1].textContent =
+      "🔥 " + t.trending;
+
+    mobileLinks[2].textContent =
+      "🆕 " + t.latest;
+
+    mobileLinks[3].textContent =
+      "🎭 " + t.genres;
+
+    mobileLinks[4].textContent =
+      "❤️ " + t.favorites;
+
+  }
+
+
+  /* RTL */
+
+  if (
+    currentLanguage === "ku" ||
+    currentLanguage === "ar"
+  ) {
+
+    document.documentElement.dir =
+      "rtl";
+
+    document.documentElement.lang =
+      currentLanguage;
+
+  } else {
+
+    document.documentElement.dir =
+      "ltr";
+
+    document.documentElement.lang =
+      currentLanguage;
+
+  }
+
+
+  /* ACTIVE LANGUAGE */
+
+  document.querySelectorAll(
+    "[data-language]"
+  ).forEach(function(button) {
+
+    button.classList.toggle(
+      "active",
+      button.dataset.language ===
+        currentLanguage
+    );
+
+  });
+
+}
+
+
+/* ================= HERO SEARCH ================= */
+
+if (heroSearch) {
+
+  heroSearch.addEventListener(
+    "click",
+    function() {
+
+      if (typeof openSearch === "function") {
+
+        openSearch();
+
+      } else if (searchModal) {
+
+        searchModal.classList.add("show");
+
+        if (searchInput) {
+          searchInput.focus();
+        }
+
+      }
+
+    }
+  );
+
+}
+
+
+/* ================= CTA SEARCH ================= */
+
+const ctaSearch =
+  document.getElementById("ctaSearch");
+
+if (ctaSearch) {
+
+  ctaSearch.addEventListener(
+    "click",
+    function() {
+
+      if (typeof openSearch === "function") {
+
+        openSearch();
+
+      } else if (searchModal) {
+
+        searchModal.classList.add("show");
+
+        if (searchInput) {
+          searchInput.focus();
+        }
+
+      }
+
+    }
+  );
+
+}
+
+
+/* ================= START LANGUAGE ================= */
+
+updateLanguage();
