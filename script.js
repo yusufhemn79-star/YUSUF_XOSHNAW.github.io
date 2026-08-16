@@ -2374,3 +2374,138 @@ async function showAnimeFromAPI(id) {
   }
 
 }
+/* =====================================================
+   YUSUF ANIME - REAL ANIME SECTIONS
+===================================================== */
+
+async function loadAnimeSection(endpoint, elementId) {
+
+  const container = document.getElementById(elementId);
+
+  if (!container) return;
+
+  container.innerHTML = `
+    <div class="anime-loading">
+      🔄 Loading anime...
+    </div>
+  `;
+
+  try {
+
+    const response = await fetch(
+      `${JIKAN_API}${endpoint}`
+    );
+
+    if (!response.ok) {
+      throw new Error("API error");
+    }
+
+    const result = await response.json();
+
+    const animeList = result.data || [];
+
+    container.innerHTML = "";
+
+    animeList.slice(0, 12).forEach(anime => {
+
+      const card = document.createElement("article");
+
+      card.className = "anime-card";
+
+      const image =
+        anime.images?.jpg?.large_image_url ||
+        anime.images?.jpg?.image_url ||
+        "";
+
+      card.innerHTML = `
+
+        <div class="anime-poster">
+
+          <img
+            src="${image}"
+            alt="${anime.title || "Anime"}"
+            loading="lazy"
+          >
+
+          <div class="anime-rating">
+            ⭐ ${anime.score || "N/A"}
+          </div>
+
+        </div>
+
+        <div class="anime-card-info">
+
+          <h3>
+            ${anime.title || "Unknown Anime"}
+          </h3>
+
+          <p>
+            ${anime.type || "TV"}
+            •
+            ${anime.episodes || "?"} Episodes
+          </p>
+
+        </div>
+
+      `;
+
+
+      card.addEventListener(
+        "click",
+        function() {
+
+          showAnimeFromAPI(
+            anime.mal_id
+          );
+
+        }
+      );
+
+
+      container.appendChild(card);
+
+    });
+
+  } catch (error) {
+
+    console.error(error);
+
+    container.innerHTML = `
+      <div class="anime-error">
+        ⚠️ Could not load anime.
+      </div>
+    `;
+
+  }
+
+}
+
+
+/* =====================================================
+   TRENDING
+===================================================== */
+
+loadAnimeSection(
+  "/top/anime?filter=bypopularity&sfw=true",
+  "trendingGrid"
+);
+
+
+/* =====================================================
+   LATEST
+===================================================== */
+
+loadAnimeSection(
+  "/anime?status=airing&order_by=popularity&sort=desc&sfw=true",
+  "latestGrid"
+);
+
+
+/* =====================================================
+   TOP RATED
+===================================================== */
+
+loadAnimeSection(
+  "/top/anime?filter=favorite&sfw=true",
+  "topGrid"
+);
