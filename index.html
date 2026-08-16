@@ -872,3 +872,291 @@
 </body>
 
 </html>
+<!-- ================= ADMIN PANEL ================= -->
+
+<div id="adminPanel" class="admin-panel">
+
+  <div class="admin-sidebar">
+
+    <div class="admin-logo">
+      YUSUF<span>ADMIN</span>
+    </div>
+
+    <button class="admin-nav active" data-admin-page="dashboard">
+      📊 Dashboard
+    </button>
+
+    <button class="admin-nav" data-admin-page="anime">
+      🎬 Anime
+    </button>
+
+    <button class="admin-nav" data-admin-page="episodes">
+      📺 Episodes
+    </button>
+
+    <button class="admin-nav" data-admin-page="users">
+      👥 Users
+    </button>
+
+    <button class="admin-nav" data-admin-page="settings">
+      ⚙️ Settings
+    </button>
+
+    <button id="adminLogout" class="admin-logout">
+      🚪 Logout
+    </button>
+
+  </div>
+
+
+  <div class="admin-main">
+
+    <div class="admin-topbar">
+
+      <div>
+        <h1 id="adminPageTitle">Dashboard</h1>
+        <p>Welcome to YUSUF ANIME Admin Panel</p>
+      </div>
+
+      <button id="closeAdminPanel" class="admin-close">
+        ✕
+      </button>
+
+    </div>
+
+
+    <!-- DASHBOARD -->
+
+    <section
+      id="adminDashboard"
+      class="admin-page active"
+    >
+
+      <div class="admin-stats">
+
+        <div class="admin-stat">
+          <span>🎬</span>
+          <strong id="adminAnimeCount">0</strong>
+          <small>Total Anime</small>
+        </div>
+
+        <div class="admin-stat">
+          <span>📺</span>
+          <strong id="adminEpisodeCount">0</strong>
+          <small>Total Episodes</small>
+        </div>
+
+        <div class="admin-stat">
+          <span>❤️</span>
+          <strong id="adminFavoriteCount">0</strong>
+          <small>Favorites</small>
+        </div>
+
+        <div class="admin-stat">
+          <span>👥</span>
+          <strong id="adminUserCount">0</strong>
+          <small>Users</small>
+        </div>
+
+      </div>
+
+
+      <div class="admin-card">
+
+        <div class="admin-card-header">
+
+          <h2>Quick Actions</h2>
+
+        </div>
+
+        <div class="admin-actions">
+
+          <button id="adminAddAnime">
+            ➕ Add Anime
+          </button>
+
+          <button id="adminManageAnime">
+            🎬 Manage Anime
+          </button>
+
+          <button id="adminManageEpisodes">
+            📺 Manage Episodes
+          </button>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- ANIME -->
+
+    <section
+      id="adminAnime"
+      class="admin-page"
+    >
+
+      <div class="admin-card">
+
+        <div class="admin-card-header">
+
+          <h2>Manage Anime</h2>
+
+          <button
+            id="addAnimeButton"
+            class="admin-primary"
+          >
+            ➕ Add Anime
+          </button>
+
+        </div>
+
+        <div id="adminAnimeList"></div>
+
+      </div>
+
+    </section>
+
+
+    <!-- EPISODES -->
+
+    <section
+      id="adminEpisodes"
+      class="admin-page"
+    >
+
+      <div class="admin-card">
+
+        <div class="admin-card-header">
+
+          <h2>Manage Episodes</h2>
+
+          <button
+            id="addEpisodeButton"
+            class="admin-primary"
+          >
+            ➕ Add Episode
+          </button>
+
+        </div>
+
+        <div id="adminEpisodeList"></div>
+
+      </div>
+
+    </section>
+
+
+    <!-- USERS -->
+
+    <section
+      id="adminUsers"
+      class="admin-page"
+    >
+
+      <div class="admin-card">
+
+        <div class="admin-card-header">
+          <h2>Users</h2>
+        </div>
+
+        <div id="adminUsersList">
+
+          <div class="admin-empty">
+            👥 No users available
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- SETTINGS -->
+
+    <section
+      id="adminSettings"
+      class="admin-page"
+    >
+
+      <div class="admin-card">
+
+        <div class="admin-card-header">
+          <h2>Site Settings</h2>
+        </div>
+
+        <label>
+          Site Name
+          <input
+            id="adminSiteName"
+            type="text"
+            value="YUSUF ANIME"
+          >
+        </label>
+
+        <label>
+          Site Description
+          <textarea id="adminSiteDescription">Your personal anime world ❤️</textarea>
+        </label>
+
+        <button
+          id="saveAdminSettings"
+          class="admin-primary"
+        >
+          💾 Save Settings
+        </button>
+
+      </div>
+
+    </section>
+
+  </div>
+
+</div>
+
+
+<!-- ADMIN LOGIN -->
+
+<div
+  id="adminLogin"
+  class="admin-login"
+>
+
+  <div class="admin-login-box">
+
+    <div class="admin-login-logo">
+      YUSUF<span>ADMIN</span>
+    </div>
+
+    <h2>Admin Login</h2>
+
+    <p>Login to your dashboard</p>
+
+    <input
+      id="adminUsername"
+      type="text"
+      placeholder="Username"
+      autocomplete="username"
+    >
+
+    <input
+      id="adminPassword"
+      type="password"
+      placeholder="Password"
+      autocomplete="current-password"
+    >
+
+    <button id="adminLoginButton">
+      🔐 Login
+    </button>
+
+    <div
+      id="adminLoginError"
+      class="admin-login-error"
+    ></div>
+
+  </div>
+
+</div>
