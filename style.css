@@ -6,16 +6,26 @@
 }
 
 :root {
-  --bg: #08080c;
-  --bg2: #101017;
-  --card: #14141c;
-  --card2: #1b1b25;
-  --text: #ffffff;
-  --muted: #9999a8;
+  --bg: #07070b;
+  --bg2: #0d0d13;
+  --card: #12121a;
+  --card2: #191923;
+  --text: #fff;
+  --muted: #9b9ba8;
   --red: #e50914;
-  --red-light: #ff3340;
+  --red2: #ff2633;
   --border: rgba(255,255,255,.08);
-  --shadow: 0 20px 60px rgba(0,0,0,.35);
+  --shadow: 0 20px 60px rgba(0,0,0,.45);
+}
+
+body.light {
+  --bg: #f4f4f7;
+  --bg2: #fff;
+  --card: #fff;
+  --card2: #ededf1;
+  --text: #111;
+  --muted: #686875;
+  --border: rgba(0,0,0,.1);
 }
 
 body {
@@ -23,21 +33,12 @@ body {
   color: var(--text);
   font-family: Arial, Helvetica, sans-serif;
   overflow-x: hidden;
-  min-height: 100vh;
-}
-
-body.light {
-  --bg: #f3f3f5;
-  --bg2: #ffffff;
-  --card: #ffffff;
-  --card2: #eeeeF2;
-  --text: #111111;
-  --muted: #666670;
-  --border: rgba(0,0,0,.1);
+  transition: background .3s, color .3s;
 }
 
 button,
-input {
+input,
+select {
   font: inherit;
 }
 
@@ -49,8 +50,8 @@ a {
   color: inherit;
 }
 
-.hidden-page {
-  display: none;
+.hidden {
+  display: none !important;
 }
 
 
@@ -60,12 +61,15 @@ a {
   position: fixed;
   inset: 0;
   z-index: 99999;
-  background: #08080c;
+
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
-  flex-direction: column;
-  transition: opacity .6s ease, visibility .6s ease;
+
+  background: #07070b;
+
+  transition: .6s;
 }
 
 #loader.hide {
@@ -83,13 +87,17 @@ a {
   color: var(--red);
 }
 
-.loader-spinner {
-  width: 42px;
-  height: 42px;
+.loader-ring {
+  width: 45px;
+  height: 45px;
+
+  margin: 25px 0 15px;
+
   border: 3px solid #292933;
   border-top-color: var(--red);
+
   border-radius: 50%;
-  margin: 25px 0 15px;
+
   animation: spin .8s linear infinite;
 }
 
@@ -112,10 +120,13 @@ a {
   top: 0;
   right: 0;
   left: 0;
-  height: 76px;
+
+  height: 75px;
+
   z-index: 5000;
 
-  background: rgba(8,8,12,.82);
+  background: rgba(7,7,11,.82);
+
   backdrop-filter: blur(18px);
   -webkit-backdrop-filter: blur(18px);
 
@@ -123,9 +134,10 @@ a {
 }
 
 .header-inner {
-  width: 88%;
+  width: 90%;
   max-width: 1400px;
   height: 100%;
+
   margin: auto;
 
   display: flex;
@@ -134,47 +146,51 @@ a {
 }
 
 .logo {
-  color: white;
   text-decoration: none;
+
   font-size: 23px;
   font-weight: 900;
   letter-spacing: 1px;
-  white-space: nowrap;
 }
 
 .logo span {
   color: var(--red);
-  margin-right: 4px;
 }
 
-.header nav {
+.desktop-nav {
   display: flex;
   align-items: center;
   gap: 28px;
 }
 
-.nav-link {
+.desktop-nav a {
   position: relative;
-  color: #aaa;
+
+  color: #999;
   text-decoration: none;
+
   font-size: 14px;
+
   transition: .25s;
 }
 
-.nav-link:hover,
-.nav-link.active {
+.desktop-nav a:hover,
+.desktop-nav a.active {
   color: white;
 }
 
-.nav-link.active::after {
+.desktop-nav a.active::after {
   content: "";
+
   position: absolute;
+
   right: 0;
-  bottom: -9px;
+  bottom: -10px;
+
   width: 100%;
   height: 2px;
+
   background: var(--red);
-  border-radius: 5px;
 }
 
 .header-actions {
@@ -182,54 +198,127 @@ a {
   gap: 8px;
 }
 
-.icon-button {
+.header-actions button {
   width: 39px;
   height: 39px;
+
   border: 1px solid var(--border);
   border-radius: 10px;
-  background: rgba(255,255,255,.05);
+
+  background: rgba(255,255,255,.04);
   color: white;
+
   transition: .25s;
 }
 
-.icon-button:hover {
+.header-actions button:hover {
   border-color: var(--red);
   transform: translateY(-2px);
 }
 
-.mobile-menu {
+.mobile-only {
   display: none;
+}
+
+
+/* ================= MOBILE MENU ================= */
+
+#mobileMenu {
+  position: fixed;
+
+  top: 85px;
+  right: 15px;
+
+  width: 280px;
+
+  padding: 20px;
+
+  background: #13131b;
+
+  border: 1px solid var(--border);
+  border-radius: 15px;
+
+  z-index: 6000;
+
+  box-shadow: var(--shadow);
+
+  display: none;
+}
+
+#mobileMenu.open {
+  display: block;
+}
+
+.mobile-menu-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  padding-bottom: 15px;
+  margin-bottom: 10px;
+
+  border-bottom: 1px solid var(--border);
+}
+
+.mobile-menu-top span {
+  color: var(--red);
+}
+
+.mobile-menu-top button {
+  border: 0;
+  background: transparent;
+  color: white;
+  font-size: 20px;
+}
+
+#mobileMenu a {
+  display: block;
+
+  padding: 14px 5px;
+
+  color: #aaa;
+  text-decoration: none;
+
+  border-bottom: 1px solid rgba(255,255,255,.04);
+}
+
+#mobileMenu a:hover {
+  color: var(--red);
 }
 
 
 /* ================= SEARCH ================= */
 
-.search-overlay {
+#searchModal {
   position: fixed;
   inset: 0;
-  z-index: 6000;
 
-  background: rgba(0,0,0,.88);
-  backdrop-filter: blur(15px);
+  z-index: 9000;
 
   display: none;
   align-items: flex-start;
   justify-content: center;
 
-  padding-top: 140px;
+  padding-top: 130px;
+
+  background: rgba(0,0,0,.88);
+
+  backdrop-filter: blur(18px);
 }
 
-.search-overlay.show {
+#searchModal.show {
   display: flex;
 }
 
-.search-container {
+.search-box {
   width: min(700px, 90%);
+
   position: relative;
 }
 
-.search-close {
+#closeSearch {
   position: absolute;
+
   left: 0;
   top: -55px;
 
@@ -243,49 +332,56 @@ a {
   color: white;
 }
 
-.search-label {
-  color: var(--red);
-  margin-bottom: 15px;
-  font-weight: bold;
+.search-box h2 {
+  margin-bottom: 20px;
 }
 
-.search-input-wrapper {
+.search-input {
   display: flex;
   gap: 8px;
 }
 
-.search-input-wrapper input {
+.search-input input {
   flex: 1;
+
   height: 58px;
+
   border: 1px solid var(--border);
   border-radius: 12px;
 
   outline: none;
+
   padding: 0 20px;
 
-  background: #16161e;
+  background: #15151d;
   color: white;
 }
 
-.search-input-wrapper button {
+.search-input button {
   width: 58px;
+
   border: 0;
   border-radius: 12px;
+
   background: var(--red);
   color: white;
 }
 
-.search-results {
-  margin-top: 15px;
+#searchResults {
   display: grid;
   gap: 8px;
+
+  margin-top: 15px;
 }
 
 .search-result {
   padding: 15px;
-  border-radius: 10px;
+
   background: #15151d;
+
   border: 1px solid var(--border);
+  border-radius: 10px;
+
   cursor: pointer;
 }
 
@@ -294,93 +390,37 @@ a {
 }
 
 
-/* ================= MOBILE MENU ================= */
-
-.mobile-menu-panel {
-  position: fixed;
-  top: 76px;
-  right: 15px;
-
-  width: 270px;
-  padding: 20px;
-
-  background: #12121a;
-  border: 1px solid var(--border);
-  border-radius: 15px;
-
-  z-index: 5500;
-
-  display: none;
-  box-shadow: var(--shadow);
-}
-
-.mobile-menu-panel.open {
-  display: block;
-}
-
-.mobile-menu-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-
-  padding-bottom: 15px;
-  margin-bottom: 10px;
-
-  border-bottom: 1px solid var(--border);
-}
-
-.mobile-menu-header strong span {
-  color: var(--red);
-}
-
-.mobile-menu-header button {
-  border: 0;
-  background: transparent;
-  color: white;
-  font-size: 20px;
-}
-
-.mobile-menu-panel > a {
-  display: block;
-  padding: 13px 5px;
-  color: #aaa;
-  text-decoration: none;
-  border-bottom: 1px solid rgba(255,255,255,.04);
-}
-
-.mobile-menu-panel > a:hover {
-  color: var(--red);
-}
-
-
 /* ================= HERO ================= */
 
 .hero {
   position: relative;
+
   min-height: 100vh;
+
+  padding: 130px 7% 80px;
 
   display: flex;
   align-items: center;
-
-  padding: 130px 7% 90px;
 
   overflow: hidden;
 
   background:
     radial-gradient(
       circle at 72% 45%,
-      rgba(229,9,20,.24),
+      rgba(229,9,20,.22),
       transparent 35%
     ),
     radial-gradient(
-      circle at 20% 80%,
-      rgba(100,0,255,.08),
+      circle at 15% 85%,
+      rgba(80,0,150,.1),
       transparent 30%
     ),
     var(--bg);
 }
 
-.hero-background {
+.hero::before {
+  content: "";
+
   position: absolute;
   inset: 0;
 
@@ -388,30 +428,9 @@ a {
     linear-gradient(
       90deg,
       var(--bg) 0%,
-      rgba(8,8,12,.95) 35%,
-      rgba(8,8,12,.5) 70%,
-      var(--bg) 100%
+      rgba(7,7,11,.9) 40%,
+      rgba(7,7,11,.35) 100%
     );
-
-  z-index: 0;
-}
-
-.hero-overlay {
-  position: absolute;
-  width: 550px;
-  height: 550px;
-
-  border-radius: 50%;
-  right: 5%;
-  top: 20%;
-
-  background: radial-gradient(
-    circle,
-    rgba(229,9,20,.22),
-    transparent 65%
-  );
-
-  filter: blur(20px);
 }
 
 .hero-content {
@@ -421,51 +440,52 @@ a {
   max-width: 760px;
 }
 
-.hero-badge {
+.hero-label {
   display: inline-block;
 
-  padding: 8px 14px;
-  margin-bottom: 22px;
+  margin-bottom: 25px;
+
+  padding: 8px 15px;
 
   border-radius: 30px;
 
-  color: #ff6170;
+  color: #ff6570;
+
   background: rgba(229,9,20,.1);
+
   border: 1px solid rgba(229,9,20,.25);
 
   font-size: 12px;
   font-weight: bold;
 }
 
-.hero-small-title {
-  display: block;
-
-  color: var(--muted);
-  font-size: 15px;
-  margin-bottom: 8px;
-}
-
 .hero h1 {
   font-size: clamp(55px, 10vw, 115px);
-  line-height: .9;
-  letter-spacing: -5px;
+
+  line-height: .95;
+
+  letter-spacing: -6px;
+
   font-weight: 900;
 }
 
 .hero h1 span {
-  display: block;
   color: var(--red);
-  text-shadow: 0 0 40px rgba(229,9,20,.25);
+
+  text-shadow:
+    0 0 40px rgba(229,9,20,.3);
 }
 
-.hero-description {
+.hero p {
   max-width: 650px;
 
-  color: var(--muted);
-  font-size: 18px;
-  line-height: 1.9;
-
   margin: 30px 0;
+
+  color: var(--muted);
+
+  font-size: 18px;
+
+  line-height: 1.9;
 }
 
 .hero-buttons {
@@ -474,132 +494,171 @@ a {
   gap: 12px;
 }
 
-.primary-button,
-.secondary-button {
+.btn-primary,
+.btn-secondary {
   display: inline-flex;
+
   align-items: center;
   justify-content: center;
 
-  padding: 14px 25px;
+  padding: 14px 24px;
+
   border-radius: 10px;
 
   text-decoration: none;
+
   font-weight: bold;
 
   transition: .3s;
 }
 
-.primary-button {
+.btn-primary {
   color: white;
+
   background: var(--red);
-  box-shadow: 0 10px 30px rgba(229,9,20,.2);
+
+  box-shadow:
+    0 12px 35px rgba(229,9,20,.25);
+
+  border: 0;
 }
 
-.primary-button:hover {
+.btn-primary:hover {
   transform: translateY(-4px);
-  box-shadow: 0 15px 35px rgba(229,9,20,.35);
+
+  box-shadow:
+    0 18px 40px rgba(229,9,20,.4);
 }
 
-.secondary-button {
+.btn-secondary {
   color: white;
-  border: 1px solid var(--border);
+
   background: rgba(255,255,255,.04);
+
+  border: 1px solid var(--border);
 }
 
-.secondary-button:hover {
+.btn-secondary:hover {
   border-color: var(--red);
   color: var(--red);
 }
 
-.hero-scroll {
+.hero-decoration {
   position: absolute;
-  bottom: 25px;
-  left: 7%;
 
-  color: #777;
-  font-size: 12px;
+  right: 3%;
+  top: 20%;
 
-  display: flex;
-  gap: 10px;
-  align-items: center;
+  width: 550px;
+  height: 550px;
+
+  border-radius: 50%;
+
+  background:
+    radial-gradient(
+      circle,
+      rgba(229,9,20,.2),
+      transparent 65%
+    );
+
+  filter: blur(20px);
 }
 
 
 /* ================= SECTIONS ================= */
 
-.content-section {
-  width: 88%;
+.section {
+  width: 90%;
   max-width: 1400px;
+
   margin: auto;
+
   padding: 100px 0;
 }
 
-.section-heading {
+.section-title {
   display: flex;
+
   align-items: flex-end;
   justify-content: space-between;
 
   margin-bottom: 35px;
 }
 
-.section-heading span {
+.section-title small {
   display: block;
+
   color: var(--red);
+
   font-size: 11px;
+
   letter-spacing: 2px;
+
   margin-bottom: 8px;
 }
 
-.section-heading h2 {
-  font-size: clamp(28px, 4vw, 42px);
+.section-title h2 {
+  font-size: clamp(28px,4vw,42px);
 }
 
-.view-all {
+.see-all {
   border: 0;
+
   background: transparent;
-  color: #aaa;
-  font-size: 13px;
+
+  color: #999;
 }
 
-.view-all:hover {
+.see-all:hover {
   color: var(--red);
 }
 
 
-/* ================= ANIME CARDS ================= */
+/* ================= ANIME GRID ================= */
 
 .anime-grid {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 22px;
+
+  grid-template-columns:
+    repeat(5, minmax(0,1fr));
+
+  gap: 20px;
 }
 
 .anime-card {
   min-width: 0;
+
+  cursor: pointer;
+
   transition: .3s;
 }
 
 .anime-card:hover {
-  transform: translateY(-7px);
+  transform: translateY(-8px);
 }
 
-.anime-poster,
-.episode-poster {
+.poster {
   position: relative;
 
-  height: 370px;
+  height: 360px;
 
-  border-radius: 13px;
   overflow: hidden;
 
-  background-size: cover;
-  background-position: center;
+  border-radius: 13px;
 
-  box-shadow: 0 15px 35px rgba(0,0,0,.3);
+  background:
+    linear-gradient(
+      145deg,
+      #401016,
+      #15151b 50%,
+      #9a7800
+    );
+
+  box-shadow:
+    0 15px 35px rgba(0,0,0,.3);
 }
 
-.anime-poster::after,
-.episode-poster::after {
+.poster::after {
   content: "";
 
   position: absolute;
@@ -608,24 +667,30 @@ a {
   background:
     linear-gradient(
       to bottom,
-      transparent 40%,
-      rgba(0,0,0,.85)
+      transparent 35%,
+      rgba(0,0,0,.9)
     );
 }
 
-.anime-poster:hover::before,
-.episode-poster:hover::before {
-  content: "";
+.poster::before {
+  content: attr(data-letter);
 
   position: absolute;
+
   inset: 0;
 
-  background: rgba(0,0,0,.35);
+  display: flex;
+  align-items: center;
+  justify-content: center;
 
-  z-index: 1;
+  font-size: 70px;
+
+  font-weight: 900;
+
+  color: rgba(255,255,255,.1);
 }
 
-.anime-rank {
+.card-top {
   position: absolute;
 
   top: 12px;
@@ -633,16 +698,17 @@ a {
 
   z-index: 3;
 
-  padding: 6px 9px;
+  padding: 5px 8px;
+
+  border-radius: 5px;
 
   background: var(--red);
-  border-radius: 6px;
 
-  font-size: 12px;
+  font-size: 10px;
   font-weight: bold;
 }
 
-.quality {
+.card-bottom {
   position: absolute;
 
   bottom: 12px;
@@ -652,25 +718,29 @@ a {
 
   padding: 5px 7px;
 
-  background: rgba(0,0,0,.7);
   border-radius: 5px;
 
+  background: rgba(0,0,0,.7);
+
   font-size: 10px;
-  font-weight: bold;
 }
 
-.play-button {
+.card-play {
   position: absolute;
 
   top: 50%;
   left: 50%;
 
-  transform: translate(-50%,-50%) scale(.7);
+  width: 58px;
+  height: 58px;
 
-  z-index: 5;
+  z-index: 4;
 
-  width: 62px;
-  height: 62px;
+  transform:
+    translate(-50%,-50%)
+    scale(.7);
+
+  opacity: 0;
 
   border: 0;
   border-radius: 50%;
@@ -678,142 +748,92 @@ a {
   background: var(--red);
   color: white;
 
-  font-size: 22px;
-
-  opacity: 0;
+  font-size: 20px;
 
   transition: .3s;
 }
 
-.anime-poster:hover .play-button,
-.episode-poster:hover .play-button {
+.poster:hover .card-play {
   opacity: 1;
-  transform: translate(-50%,-50%) scale(1);
+
+  transform:
+    translate(-50%,-50%)
+    scale(1);
 }
 
-.anime-info {
-  padding-top: 14px;
+.card-info {
+  padding-top: 13px;
 }
 
-.anime-info h3 {
-  font-size: 17px;
+.card-info h3 {
+  font-size: 16px;
+
   white-space: nowrap;
+
   overflow: hidden;
+
   text-overflow: ellipsis;
 }
 
-.anime-meta {
-  display: flex;
-  gap: 12px;
-
+.card-info p {
   margin-top: 7px;
 
   color: var(--muted);
-  font-size: 12px;
-}
-
-
-/* ================= POSTERS ================= */
-
-.poster-one {
-  background:
-    linear-gradient(145deg,#75111a,#111 50%,#e9a800);
-}
-
-.poster-two {
-  background:
-    linear-gradient(145deg,#080808,#4b1975 55%,#c7153a);
-}
-
-.poster-three {
-  background:
-    linear-gradient(145deg,#111,#552070 50%,#ed315b);
-}
-
-.poster-four {
-  background:
-    linear-gradient(145deg,#172331,#a32222 55%,#e0a100);
-}
-
-.poster-five {
-  background:
-    linear-gradient(145deg,#171717,#8e211e 50%,#c9a500);
-}
-
-.poster-six {
-  background:
-    linear-gradient(145deg,#ff8a00,#1d3d8f 55%,#111);
-}
-
-.poster-seven {
-  background:
-    linear-gradient(145deg,#111,#087451 55%,#d3a900);
-}
-
-.poster-eight {
-  background:
-    linear-gradient(145deg,#050505,#363636 55%,#95172a);
-}
-
-
-/* ================= LATEST ================= */
-
-.episode-grid {
-  display: grid;
-  grid-template-columns: repeat(4,1fr);
-  gap: 22px;
-}
-
-.episode-poster {
-  height: 270px;
-}
-
-.episode-number {
-  position: absolute;
-
-  bottom: 12px;
-  right: 12px;
-
-  z-index: 3;
-
-  padding: 6px 9px;
-
-  background: var(--red);
-
-  border-radius: 5px;
 
   font-size: 11px;
-  font-weight: bold;
 }
 
-.episode-one {
-  background: linear-gradient(145deg,#63131b,#101010,#d7a500);
+
+/* ================= POSTER COLORS ================= */
+
+.poster-1 {
+  background:
+    linear-gradient(145deg,#72131c,#101014 50%,#e0ad00);
 }
 
-.episode-two {
-  background: linear-gradient(145deg,#111,#5d2083,#9e193d);
+.poster-2 {
+  background:
+    linear-gradient(145deg,#08080b,#54207d 50%,#bc193e);
 }
 
-.episode-three {
-  background: linear-gradient(145deg,#111,#51216c,#e72d57);
+.poster-3 {
+  background:
+    linear-gradient(145deg,#111,#4e1c68 50%,#e93459);
 }
 
-.episode-four {
-  background: linear-gradient(145deg,#192632,#9b2525,#d7a000);
+.poster-4 {
+  background:
+    linear-gradient(145deg,#16232e,#a32425 55%,#dba700);
 }
 
-.episode-info {
-  padding-top: 12px;
+.poster-5 {
+  background:
+    linear-gradient(145deg,#171717,#82231f 50%,#c9a400);
 }
 
-.episode-info h3 {
-  font-size: 16px;
+.poster-6 {
+  background:
+    linear-gradient(145deg,#ff8b00,#244a9d 55%,#111);
 }
 
-.episode-info p {
-  margin-top: 5px;
-  color: var(--muted);
-  font-size: 12px;
+.poster-7 {
+  background:
+    linear-gradient(145deg,#111,#08704d 55%,#cda800);
+}
+
+.poster-8 {
+  background:
+    linear-gradient(145deg,#050505,#36363b 55%,#941728);
+}
+
+.poster-9 {
+  background:
+    linear-gradient(145deg,#101010,#285e8e,#bd3434);
+}
+
+.poster-10 {
+  background:
+    linear-gradient(145deg,#222,#705222,#171717);
 }
 
 
@@ -821,7 +841,10 @@ a {
 
 .genre-grid {
   display: grid;
-  grid-template-columns: repeat(4,1fr);
+
+  grid-template-columns:
+    repeat(4,1fr);
+
   gap: 15px;
 }
 
@@ -829,29 +852,32 @@ a {
   min-height: 130px;
 
   display: flex;
+
   flex-direction: column;
+
   align-items: center;
   justify-content: center;
 
   gap: 7px;
 
   border: 1px solid var(--border);
+
   border-radius: 14px;
 
   background: var(--card);
-  color: white;
+
+  color: var(--text);
 
   transition: .3s;
 }
 
-.genre-grid button:first-letter {
-  font-size: 30px;
-}
-
 .genre-grid button:hover {
+  transform: translateY(-6px);
+
   border-color: var(--red);
-  transform: translateY(-5px);
-  box-shadow: 0 15px 30px rgba(0,0,0,.2);
+
+  box-shadow:
+    0 15px 35px rgba(0,0,0,.25);
 }
 
 .genre-grid strong {
@@ -865,73 +891,93 @@ a {
 
 /* ================= CTA ================= */
 
-.cta-section {
-  width: 88%;
+.cta {
+  width: 90%;
   max-width: 1100px;
 
-  margin: 50px auto 100px;
+  margin: 40px auto 100px;
 
   padding: 90px 25px;
 
   text-align: center;
 
   border: 1px solid var(--border);
+
   border-radius: 25px;
 
   background:
     radial-gradient(
       circle at center,
-      rgba(229,9,20,.15),
+      rgba(229,9,20,.14),
       transparent 65%
     ),
     var(--card);
 }
 
-.cta-section > span {
+.cta > span {
   color: var(--red);
+
   letter-spacing: 3px;
+
   font-size: 11px;
 }
 
-.cta-section h2 {
+.cta h2 {
   margin-top: 15px;
+
   font-size: clamp(35px,6vw,65px);
 }
 
-.cta-section h2 strong {
+.cta h2 strong {
   color: var(--red);
 }
 
-.cta-section p {
-  max-width: 600px;
+.cta p {
   margin: 20px auto 30px;
+
   color: var(--muted);
+
   line-height: 1.8;
 }
 
 
-/* ================= DETAILS PAGE ================= */
+/* ================= DETAILS ================= */
 
-#animePage,
-#watchPage {
-  min-height: 100vh;
+.page-overlay {
+  position: fixed;
+
+  inset: 0;
+
+  z-index: 8000;
+
+  overflow-y: auto;
+
+  display: none;
+
   padding: 120px 7% 80px;
 
   background:
     radial-gradient(
-      circle at 70% 30%,
+      circle at 75% 25%,
       rgba(229,9,20,.15),
       transparent 35%
     ),
     var(--bg);
 }
 
+.page-overlay.show {
+  display: block;
+}
+
 .back-button {
   border: 1px solid var(--border);
+
   background: var(--card);
-  color: white;
+
+  color: var(--text);
 
   padding: 11px 17px;
+
   border-radius: 9px;
 
   margin-bottom: 40px;
@@ -942,54 +988,65 @@ a {
   color: var(--red);
 }
 
-.details-container {
+.details {
   max-width: 1200px;
+
   margin: auto;
 
   display: grid;
-  grid-template-columns: 320px 1fr;
+
+  grid-template-columns:
+    320px 1fr;
+
   gap: 45px;
 
   align-items: center;
 }
 
 .details-poster {
-  height: 450px;
+  height: 460px;
 
   border-radius: 16px;
 
   background:
     linear-gradient(
       145deg,
-      #65121b,
-      #15151c 50%,
-      #b58b00
+      #68131b,
+      #111 50%,
+      #c59b00
     );
 
   box-shadow: var(--shadow);
 }
 
-.details-content > span {
+.details-info > span {
   color: var(--red);
+
   font-size: 12px;
+
   font-weight: bold;
 }
 
-.details-content h1 {
+.details-info h1 {
   margin: 15px 0;
 
-  font-size: clamp(40px,6vw,70px);
+  font-size: clamp(40px,6vw,75px);
 }
 
-.details-meta {
+#detailsMeta {
   display: flex;
+
+  flex-wrap: wrap;
+
   gap: 15px;
+
   color: var(--muted);
+
   margin-bottom: 25px;
 }
 
-.details-content > p {
-  max-width: 650px;
+#detailsDescription {
+  max-width: 700px;
 
   color: var(--muted);
 
@@ -998,98 +1055,212 @@ a {
   margin-bottom: 30px;
 }
 
-.episodes-container {
-  max-width: 1200px;
-  margin: 80px auto 0;
-}
-
-.episodes-container h2 {
-  margin-bottom: 25px;
-}
-
-.episode-list {
+.details-actions {
   display: flex;
+
   flex-wrap: wrap;
+
   gap: 10px;
 }
 
-.episode-list button {
-  min-width: 75px;
+.episodes-area {
+  max-width: 1200px;
 
-  padding: 12px;
+  margin: 80px auto 0;
+}
+
+.episode-heading {
+  display: flex;
+
+  justify-content: space-between;
+
+  align-items: center;
+
+  margin-bottom: 25px;
+}
+
+#seasonSelect {
+  padding: 10px 15px;
 
   border: 1px solid var(--border);
+
   border-radius: 8px;
 
   background: var(--card);
-  color: white;
+
+  color: var(--text);
+
+  outline: none;
 }
 
-.episode-list button:hover {
+.episode-grid {
+  display: grid;
+
+  grid-template-columns:
+    repeat(8,1fr);
+
+  gap: 9px;
+}
+
+.episode-button {
+  padding: 12px 5px;
+
+  border: 1px solid var(--border);
+
+  border-radius: 8px;
+
+  background: var(--card);
+
+  color: var(--text);
+
+  transition: .2s;
+}
+
+.episode-button:hover,
+.episode-button.watched {
   background: var(--red);
+
   border-color: var(--red);
+
+  color: white;
 }
 
 
 /* ================= WATCH ================= */
 
-.player-container {
+.watch-container {
   max-width: 1200px;
+
   margin: auto;
 }
 
-.video-placeholder {
-  aspect-ratio: 16 / 9;
+.video-player {
+  width: 100%;
 
-  border-radius: 15px;
+  aspect-ratio: 16/9;
 
-  background:
-    radial-gradient(
-      circle,
-      rgba(229,9,20,.12),
-      transparent 55%
-    ),
-    #111118;
+  padding: 5px;
 
-  border: 1px solid var(--border);
+  border-radius: 16px;
+
+  background: #020204;
+
+  box-shadow: var(--shadow);
+}
+
+.video-screen {
+  width: 100%;
+  height: 100%;
 
   display: flex;
+
+  flex-direction: column;
+
   align-items: center;
   justify-content: center;
 
   text-align: center;
+
+  border-radius: 12px;
+
+  background:
+    radial-gradient(
+      circle,
+      rgba(229,9,20,.13),
+      transparent 55%
+    ),
+    #101016;
 }
 
-.big-play {
+.player-play {
   width: 75px;
   height: 75px;
 
-  margin: 0 auto 20px;
-
   display: flex;
+
   align-items: center;
   justify-content: center;
+
+  margin-bottom: 20px;
 
   border-radius: 50%;
 
   background: var(--red);
 
-  font-size: 28px;
+  font-size: 27px;
 }
 
-.video-placeholder h2 {
-  margin-bottom: 8px;
-}
+.video-screen p {
+  margin-top: 8px;
 
-.video-placeholder p {
   color: var(--muted);
+}
+
+.watch-controls {
+  display: flex;
+
+  justify-content: space-between;
+
+  margin-top: 15px;
+}
+
+.watch-controls button {
+  padding: 12px 18px;
+
+  border: 1px solid var(--border);
+
+  border-radius: 9px;
+
+  background: var(--card);
+
+  color: var(--text);
+}
+
+.watch-controls button:hover {
+  border-color: var(--red);
+}
+
+.watch-info {
+  margin-top: 25px;
+}
+
+.watch-info p {
+  color: var(--muted);
+
+  margin-top: 8px;
+}
+
+
+/* ================= EMPTY ================= */
+
+.empty-state {
+  padding: 70px 20px;
+
+  text-align: center;
+
+  color: var(--muted);
+
+  border: 1px dashed var(--border);
+
+  border-radius: 15px;
+}
+
+.empty-state > :first-child {
+  font-size: 45px;
+  margin-bottom: 15px;
+}
+
+.empty-state h3 {
+  color: var(--text);
+
+  margin-bottom: 10px;
 }
 
 
 /* ================= FOOTER ================= */
 
 footer {
-  padding: 55px 20px;
+  padding: 60px 20px;
 
   text-align: center;
 
@@ -1099,8 +1270,10 @@ footer {
 }
 
 .footer-logo {
-  color: white;
+  color: var(--text);
+
   font-size: 25px;
+
   font-weight: 900;
 }
 
@@ -1114,15 +1287,21 @@ footer p {
 
 .footer-links {
   display: flex;
+
   justify-content: center;
+
   flex-wrap: wrap;
+
   gap: 22px;
+
   margin-bottom: 20px;
 }
 
 .footer-links a {
   color: var(--muted);
+
   text-decoration: none;
+
   font-size: 13px;
 }
 
@@ -1130,14 +1309,10 @@ footer p {
   color: var(--red);
 }
 
-footer small {
-  color: #555;
-}
-
 
 /* ================= TOP BUTTON ================= */
 
-.top-button {
+#topButton {
   position: fixed;
 
   left: 25px;
@@ -1146,21 +1321,23 @@ footer small {
   width: 45px;
   height: 45px;
 
-  border: 1px solid var(--border);
-  border-radius: 50%;
-
-  background: #17171f;
-  color: var(--red);
-
   z-index: 3000;
 
   opacity: 0;
   visibility: hidden;
 
+  border: 1px solid var(--border);
+
+  border-radius: 50%;
+
+  background: #17171f;
+
+  color: var(--red);
+
   transition: .3s;
 }
 
-.top-button.show {
+#topButton.show {
   opacity: 1;
   visibility: visible;
 }
@@ -1168,64 +1345,64 @@ footer small {
 
 /* ================= RESPONSIVE ================= */
 
-@media (max-width: 1050px) {
+@media (max-width: 1150px) {
 
-  .header nav {
-    gap: 16px;
+  .anime-grid {
+    grid-template-columns:
+      repeat(4,1fr);
   }
 
-  .anime-grid,
-  .episode-grid {
-    grid-template-columns: repeat(3,1fr);
+  .poster {
+    height: 320px;
+  }
+
+  .desktop-nav {
+    gap: 17px;
   }
 
   .genre-grid {
-    grid-template-columns: repeat(3,1fr);
-  }
-
-  .anime-poster {
-    height: 340px;
+    grid-template-columns:
+      repeat(3,1fr);
   }
 
 }
 
 
-@media (max-width: 800px) {
+@media (max-width: 850px) {
 
-  .header-inner {
-    width: 92%;
-  }
-
-  .header nav {
+  .desktop-nav {
     display: none;
   }
 
-  .mobile-menu {
+  .mobile-only {
     display: block;
   }
 
-  .anime-grid,
-  .episode-grid {
-    grid-template-columns: repeat(2,1fr);
+  .anime-grid {
+    grid-template-columns:
+      repeat(3,1fr);
   }
 
-  .genre-grid {
-    grid-template-columns: repeat(2,1fr);
-  }
+  .details {
+    grid-template-columns:
+      240px 1fr;
 
-  .details-container {
-    grid-template-columns: 220px 1fr;
     gap: 25px;
   }
 
   .details-poster {
-    height: 330px;
+    height: 350px;
+  }
+
+  .episode-grid {
+    grid-template-columns:
+      repeat(6,1fr);
   }
 
 }
 
 
-@media (max-width: 560px) {
+@media (max-width: 650px) {
 
   .header {
     height: 68px;
@@ -1239,133 +1416,119 @@ footer small {
     font-size: 18px;
   }
 
-  .icon-button {
+  .header-actions button {
     width: 35px;
     height: 35px;
   }
 
-  .mobile-menu-panel {
-    top: 75px;
-  }
-
   .hero {
-    min-height: 92vh;
-    padding: 120px 5% 70px;
+    min-height: 90vh;
+
+    padding:
+      110px 5%
+      70px;
   }
 
   .hero h1 {
-    font-size: 52px;
+    font-size: 55px;
+
     letter-spacing: -3px;
   }
 
-  .hero-description {
+  .hero p {
     font-size: 15px;
   }
 
-  .hero-scroll {
-    display: none;
+  .hero-decoration {
+    right: -180px;
+    top: 25%;
   }
 
-  .content-section {
-    width: 90%;
+  .section {
+    width: 92%;
     padding: 70px 0;
   }
 
-  .section-heading {
+  .section-title {
     align-items: flex-start;
   }
 
-  .view-all {
-    display: none;
+  .anime-grid {
+    grid-template-columns:
+      repeat(2,1fr);
+
+    gap: 13px;
   }
 
-  .anime-grid,
-  .episode-grid {
-    grid-template-columns: repeat(2,1fr);
-    gap: 12px;
-  }
-
-  .anime-poster {
-    height: 250px;
-  }
-
-  .episode-poster {
-    height: 190px;
-  }
-
-  .anime-info h3 {
-    font-size: 14px;
-  }
-
-  .anime-meta {
-    font-size: 10px;
-    gap: 7px;
+  .poster {
+    height: 270px;
   }
 
   .genre-grid {
-    grid-template-columns: repeat(2,1fr);
+    grid-template-columns:
+      repeat(2,1fr);
   }
 
-  .genre-grid button {
-    min-height: 110px;
+  .episode-grid {
+    grid-template-columns:
+      repeat(4,1fr);
   }
 
-  .cta-section {
-    width: 90%;
-    padding: 65px 20px;
-    margin-bottom: 70px;
+  .page-overlay {
+    padding:
+      95px 5%
+      60px;
   }
 
-  #animePage,
-  #watchPage {
-    padding: 100px 5% 60px;
-  }
-
-  .details-container {
+  .details {
     grid-template-columns: 1fr;
+
+    text-align: center;
   }
 
   .details-poster {
     width: 230px;
-    height: 320px;
+    height: 330px;
+
     margin: auto;
   }
 
-  .details-content {
-    text-align: center;
-  }
-
-  .details-meta {
+  #detailsMeta {
     justify-content: center;
   }
 
-  .episodes-container {
-    margin-top: 50px;
-  }
-
-  .search-overlay {
-    padding-top: 120px;
+  .details-actions {
+    justify-content: center;
   }
 
 }
 
 
-@media (max-width: 380px) {
+@media (max-width: 400px) {
 
   .hero h1 {
-    font-size: 44px;
+    font-size: 45px;
   }
 
-  .anime-poster {
-    height: 220px;
+  .anime-grid {
+    gap: 9px;
   }
 
-  .episode-poster {
-    height: 170px;
+  .poster {
+    height: 230px;
+  }
+
+  .card-info h3 {
+    font-size: 13px;
+  }
+
+  .episode-grid {
+    grid-template-columns:
+      repeat(3,1fr);
   }
 
   .header-actions {
-    gap: 4px;
+    gap: 3px;
   }
 
 }
