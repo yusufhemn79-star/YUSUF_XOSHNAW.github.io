@@ -1160,3 +1160,471 @@
   </div>
 
 </div>
+<!-- ================= ADMIN LOGIN ================= -->
+
+<div id="adminLoginPage" class="admin-overlay">
+
+  <div class="admin-login-box">
+
+```
+<div class="admin-brand">
+  YUSUF<span>ANIME</span>
+</div>
+
+<p class="admin-subtitle">Administrator Login</p>
+
+<form id="adminLoginForm">
+
+  <div class="admin-input-group">
+    <label for="adminUsername">Username</label>
+    <input
+      id="adminUsername"
+      type="text"
+      placeholder="Enter username"
+      autocomplete="username"
+      required
+    >
+  </div>
+
+  <div class="admin-input-group">
+    <label for="adminPassword">Password</label>
+    <input
+      id="adminPassword"
+      type="password"
+      placeholder="Enter password"
+      autocomplete="current-password"
+      required
+    >
+  </div>
+
+  <p id="adminLoginError" class="admin-error"></p>
+
+  <button type="submit" class="admin-login-btn">
+    🔐 Login
+  </button>
+
+</form>
+
+<button id="closeAdminLogin" class="admin-close-btn">
+  ← Back to Website
+</button>
+```
+
+  </div>
+
+</div>
+
+<!-- ================= ADMIN PANEL ================= -->
+
+<div id="adminPanel" class="admin-overlay">
+
+  <div class="admin-panel">
+
+```
+<!-- ADMIN HEADER -->
+
+<div class="admin-panel-header">
+
+  <div>
+    <div class="admin-brand">
+      YUSUF<span>ANIME</span>
+    </div>
+
+    <small>Administrator Dashboard</small>
+  </div>
+
+  <div class="admin-header-actions">
+
+    <button id="adminWebsiteButton">
+      🌐 Website
+    </button>
+
+    <button id="adminLogoutButton">
+      🚪 Logout
+    </button>
+
+  </div>
+
+</div>
+
+
+<!-- ADMIN NAVIGATION -->
+
+<div class="admin-tabs">
+
+  <button class="admin-tab active" data-admin-tab="dashboard">
+    📊 Dashboard
+  </button>
+
+  <button class="admin-tab" data-admin-tab="anime">
+    🎬 Anime
+  </button>
+
+  <button class="admin-tab" data-admin-tab="episodes">
+    📺 Episodes
+  </button>
+
+  <button class="admin-tab" data-admin-tab="settings">
+    ⚙️ Settings
+  </button>
+
+</div>
+
+
+<!-- DASHBOARD -->
+
+<section
+  id="adminDashboard"
+  class="admin-section active"
+>
+
+  <div class="admin-section-title">
+
+    <div>
+      <small>ADMIN PANEL</small>
+      <h2>Dashboard</h2>
+    </div>
+
+  </div>
+
+
+  <div class="admin-stats">
+
+    <div class="admin-stat-card">
+      <span>🎬</span>
+      <strong id="adminAnimeCount">0</strong>
+      <small>Total Anime</small>
+    </div>
+
+    <div class="admin-stat-card">
+      <span>📺</span>
+      <strong id="adminEpisodeCount">0</strong>
+      <small>Total Episodes</small>
+    </div>
+
+    <div class="admin-stat-card">
+      <span>❤️</span>
+      <strong id="adminFavoriteCount">0</strong>
+      <small>Favorites</small>
+    </div>
+
+    <div class="admin-stat-card">
+      <span>👁️</span>
+      <strong id="adminWatchCount">0</strong>
+      <small>Watched Episodes</small>
+    </div>
+
+  </div>
+
+
+  <div class="admin-dashboard-box">
+
+    <h3>Quick Actions</h3>
+
+    <div class="admin-quick-actions">
+
+      <button id="quickAddAnime">
+        ➕ Add Anime
+      </button>
+
+      <button id="quickManageAnime">
+        🎬 Manage Anime
+      </button>
+
+      <button id="quickManageEpisodes">
+        📺 Manage Episodes
+      </button>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- ANIME MANAGEMENT -->
+
+<section
+  id="adminAnime"
+  class="admin-section"
+>
+
+  <div class="admin-section-title">
+
+    <div>
+      <small>CONTENT</small>
+      <h2>Manage Anime</h2>
+    </div>
+
+    <button id="addAnimeButton" class="admin-primary">
+      ➕ Add Anime
+    </button>
+
+  </div>
+
+
+  <div class="admin-search">
+
+    <input
+      id="adminAnimeSearch"
+      type="search"
+      placeholder="Search anime..."
+    >
+
+  </div>
+
+
+  <div
+    id="adminAnimeList"
+    class="admin-anime-list"
+  ></div>
+
+</section>
+
+
+<!-- EPISODE MANAGEMENT -->
+
+<section
+  id="adminEpisodes"
+  class="admin-section"
+>
+
+  <div class="admin-section-title">
+
+    <div>
+      <small>CONTENT</small>
+      <h2>Manage Episodes</h2>
+    </div>
+
+  </div>
+
+
+  <div class="admin-episode-form">
+
+    <select id="episodeAnimeSelect">
+      <option value="">Select Anime</option>
+    </select>
+
+    <input
+      id="episodeSeasonInput"
+      type="number"
+      min="1"
+      value="1"
+      placeholder="Season"
+    >
+
+    <input
+      id="episodeNumberInput"
+      type="number"
+      min="1"
+      value="1"
+      placeholder="Episode"
+    >
+
+    <input
+      id="episodeTitleInput"
+      type="text"
+      placeholder="Episode title"
+    >
+
+    <button id="addEpisodeButton" class="admin-primary">
+      ➕ Add Episode
+    </button>
+
+  </div>
+
+
+  <div
+    id="adminEpisodeList"
+    class="admin-anime-list"
+  ></div>
+
+</section>
+
+
+<!-- SETTINGS -->
+
+<section
+  id="adminSettings"
+  class="admin-section"
+>
+
+  <div class="admin-section-title">
+
+    <div>
+      <small>SYSTEM</small>
+      <h2>Settings</h2>
+    </div>
+
+  </div>
+
+
+  <div class="admin-settings-box">
+
+    <div>
+      <strong>Website Name</strong>
+      <p>Change the website title.</p>
+    </div>
+
+    <input
+      id="adminSiteName"
+      type="text"
+      value="YUSUF ANIME"
+    >
+
+  </div>
+
+
+  <div class="admin-settings-box">
+
+    <div>
+      <strong>Dark Mode</strong>
+      <p>Use dark theme for the website.</p>
+    </div>
+
+    <button id="adminThemeToggle">
+      🌙 Toggle Theme
+    </button>
+
+  </div>
+
+
+  <div class="admin-settings-danger">
+
+    <strong>Danger Zone</strong>
+
+    <p>
+      This removes all anime data created through the admin panel.
+    </p>
+
+    <button id="clearAnimeData">
+      🗑️ Clear Anime Data
+    </button>
+
+  </div>
+
+</section>
+```
+
+  </div>
+
+</div>
+
+<!-- ================= ADD / EDIT ANIME MODAL ================= -->
+
+<div id="animeEditorModal" class="admin-modal">
+
+  <div class="admin-editor">
+
+```
+<button
+  id="closeAnimeEditor"
+  class="admin-editor-close"
+>
+  ✕
+</button>
+
+<h2 id="animeEditorTitle">
+  Add Anime
+</h2>
+
+<form id="animeEditorForm">
+
+  <input type="hidden" id="editAnimeId">
+
+  <label>
+    Anime Title
+    <input
+      id="animeTitleInput"
+      type="text"
+      placeholder="Anime name"
+      required
+    >
+  </label>
+
+  <label>
+    Description
+    <textarea
+      id="animeDescriptionInput"
+      placeholder="Anime description"
+      rows="4"
+    ></textarea>
+  </label>
+
+  <label>
+    Genre
+    <input
+      id="animeGenreInput"
+      type="text"
+      placeholder="Action, Romance, Comedy"
+    >
+  </label>
+
+  <label>
+    Type
+    <select id="animeTypeInput">
+
+      <option value="TV">TV</option>
+      <option value="Movie">Movie</option>
+      <option value="OVA">OVA</option>
+
+    </select>
+  </label>
+
+  <label>
+    Year
+    <input
+      id="animeYearInput"
+      type="number"
+      min="1900"
+      max="2100"
+      value="2026"
+    >
+  </label>
+
+  <label>
+    Rating
+    <input
+      id="animeRatingInput"
+      type="number"
+      min="0"
+      max="10"
+      step="0.1"
+      value="8"
+    >
+  </label>
+
+  <label>
+    Poster URL
+    <input
+      id="animePosterInput"
+      type="url"
+      placeholder="https://..."
+    >
+  </label>
+
+  <div class="admin-editor-actions">
+
+    <button
+      type="button"
+      id="cancelAnimeEditor"
+      class="admin-secondary"
+    >
+      Cancel
+    </button>
+
+    <button
+      type="submit"
+      class="admin-primary"
+    >
+      💾 Save Anime
+    </button>
+
+  </div>
+
+</form>
+```
+
+  </div>
+
+</div>
