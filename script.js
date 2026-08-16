@@ -4212,3 +4212,1087 @@ document.addEventListener(
 
   }
 );
+/* =====================================================
+   YUSUF ANIME - ADMIN LOGIN + ADMIN PANEL
+   Add this code at the END of script.js
+===================================================== */
+
+(function () {
+
+  "use strict";
+
+  /* ================= ADMIN SETTINGS ================= */
+
+  const ADMIN_USERNAME = "admin";
+  const ADMIN_PASSWORD = "YUSUF2026";
+
+  let isAdminLoggedIn =
+    localStorage.getItem("yusuf_admin_logged_in") === "true";
+
+
+  /* ================= ADMIN HTML ================= */
+
+  const adminHTML = `
+
+    <!-- ADMIN LOGIN -->
+
+    <div id="adminLoginPage" class="admin-overlay">
+
+      <div class="admin-login-box">
+
+        <button id="closeAdminLogin" class="admin-close">
+          ✕
+        </button>
+
+        <div class="admin-logo">
+          YUSUF<span>ANIME</span>
+        </div>
+
+        <p class="admin-subtitle">
+          Administrator Login
+        </p>
+
+        <div class="admin-input-group">
+
+          <label>
+            Username
+          </label>
+
+          <input
+            id="adminUsername"
+            type="text"
+            placeholder="Enter username"
+            autocomplete="username"
+          >
+
+        </div>
+
+        <div class="admin-input-group">
+
+          <label>
+            Password
+          </label>
+
+          <input
+            id="adminPassword"
+            type="password"
+            placeholder="Enter password"
+            autocomplete="current-password"
+          >
+
+        </div>
+
+        <button
+          id="adminLoginButton"
+          class="admin-login-button"
+        >
+          🔐 Login
+        </button>
+
+        <p id="adminLoginError" class="admin-error"></p>
+
+      </div>
+
+    </div>
+
+
+    <!-- ADMIN PANEL -->
+
+    <div id="adminPanel" class="admin-panel">
+
+      <div class="admin-panel-header">
+
+        <div>
+
+          <div class="admin-brand">
+            YUSUF<span>ANIME</span>
+          </div>
+
+          <small>
+            Administrator Dashboard
+          </small>
+
+        </div>
+
+        <div class="admin-header-actions">
+
+          <button id="adminHomeButton">
+            🏠 Website
+          </button>
+
+          <button id="adminLogoutButton">
+            🚪 Logout
+          </button>
+
+        </div>
+
+      </div>
+
+
+      <div class="admin-content">
+
+
+        <!-- SIDEBAR -->
+
+        <aside class="admin-sidebar">
+
+          <button
+            class="admin-tab active"
+            data-admin-tab="dashboard"
+          >
+            📊 Dashboard
+          </button>
+
+          <button
+            class="admin-tab"
+            data-admin-tab="anime"
+          >
+            🎬 Anime
+          </button>
+
+          <button
+            class="admin-tab"
+            data-admin-tab="episodes"
+          >
+            ▶️ Episodes
+          </button>
+
+          <button
+            class="admin-tab"
+            data-admin-tab="users"
+          >
+            👥 Users
+          </button>
+
+          <button
+            class="admin-tab"
+            data-admin-tab="settings"
+          >
+            ⚙️ Settings
+          </button>
+
+        </aside>
+
+
+        <!-- MAIN -->
+
+        <main class="admin-main">
+
+
+          <!-- DASHBOARD -->
+
+          <section
+            class="admin-section active"
+            id="admin-dashboard"
+          >
+
+            <div class="admin-section-title">
+
+              <div>
+
+                <small>
+                  OVERVIEW
+                </small>
+
+                <h1>
+                  Dashboard
+                </h1>
+
+              </div>
+
+            </div>
+
+
+            <div class="admin-stats">
+
+              <div class="admin-stat-card">
+
+                <span>
+                  🎬
+                </span>
+
+                <div>
+
+                  <strong id="adminAnimeCount">
+                    0
+                  </strong>
+
+                  <p>
+                    Anime
+                  </p>
+
+                </div>
+
+              </div>
+
+
+              <div class="admin-stat-card">
+
+                <span>
+                  ▶️
+                </span>
+
+                <div>
+
+                  <strong id="adminEpisodeCount">
+                    0
+                  </strong>
+
+                  <p>
+                    Episodes
+                  </p>
+
+                </div>
+
+              </div>
+
+
+              <div class="admin-stat-card">
+
+                <span>
+                  ❤️
+                </span>
+
+                <div>
+
+                  <strong id="adminFavoriteCount">
+                    0
+                  </strong>
+
+                  <p>
+                    Favorites
+                  </p>
+
+                </div>
+
+              </div>
+
+
+              <div class="admin-stat-card">
+
+                <span>
+                  👥
+                </span>
+
+                <div>
+
+                  <strong>
+                    1
+                  </strong>
+
+                  <p>
+                    Admin
+                  </p>
+
+                </div>
+
+              </div>
+
+            </div>
+
+
+            <div class="admin-card">
+
+              <h2>
+                Quick Actions
+              </h2>
+
+              <div class="admin-quick-actions">
+
+                <button
+                  data-admin-tab="anime"
+                >
+                  ➕ Add Anime
+                </button>
+
+                <button
+                  data-admin-tab="episodes"
+                >
+                  ➕ Add Episode
+                </button>
+
+                <button
+                  id="adminClearFavorites"
+                >
+                  🗑 Clear Favorites
+                </button>
+
+              </div>
+
+            </div>
+
+          </section>
+
+
+          <!-- ANIME -->
+
+          <section
+            class="admin-section"
+            id="admin-anime"
+          >
+
+            <div class="admin-section-title">
+
+              <div>
+
+                <small>
+                  CONTENT
+                </small>
+
+                <h1>
+                  Manage Anime
+                </h1>
+
+              </div>
+
+            </div>
+
+
+            <div class="admin-card">
+
+              <h2>
+                Add Anime
+              </h2>
+
+              <div class="admin-form-grid">
+
+                <div>
+
+                  <label>
+                    Anime Name
+                  </label>
+
+                  <input
+                    id="adminAnimeName"
+                    placeholder="Example: One Piece"
+                  >
+
+                </div>
+
+
+                <div>
+
+                  <label>
+                    Type
+                  </label>
+
+                  <select id="adminAnimeType">
+
+                    <option>
+                      TV
+                    </option>
+
+                    <option>
+                      Movie
+                    </option>
+
+                    <option>
+                      OVA
+                    </option>
+
+                  </select>
+
+                </div>
+
+
+                <div>
+
+                  <label>
+                    Genre
+                  </label>
+
+                  <input
+                    id="adminAnimeGenre"
+                    placeholder="Action, Romance"
+                  >
+
+                </div>
+
+
+                <div>
+
+                  <label>
+                    Episodes
+                  </label>
+
+                  <input
+                    id="adminAnimeEpisodes"
+                    type="number"
+                    min="1"
+                    value="12"
+                  >
+
+                </div>
+
+              </div>
+
+
+              <div>
+
+                <label>
+                  Description
+                </label>
+
+                <textarea
+                  id="adminAnimeDescription"
+                  placeholder="Anime description..."
+                ></textarea>
+
+              </div>
+
+
+              <button
+                id="adminAddAnime"
+                class="admin-primary"
+              >
+                ➕ Add Anime
+              </button>
+
+            </div>
+
+
+            <div class="admin-card">
+
+              <h2>
+                Anime List
+              </h2>
+
+              <div id="adminAnimeList"></div>
+
+            </div>
+
+          </section>
+
+
+          <!-- EPISODES -->
+
+          <section
+            class="admin-section"
+            id="admin-episodes"
+          >
+
+            <div class="admin-section-title">
+
+              <div>
+
+                <small>
+                  CONTENT
+                </small>
+
+                <h1>
+                  Manage Episodes
+                </h1>
+
+              </div>
+
+            </div>
+
+
+            <div class="admin-card">
+
+              <h2>
+                Add Episode
+              </h2>
+
+
+              <div class="admin-form-grid">
+
+                <div>
+
+                  <label>
+                    Anime
+                  </label>
+
+                  <input
+                    id="adminEpisodeAnime"
+                    placeholder="Anime name"
+                  >
+
+                </div>
+
+
+                <div>
+
+                  <label>
+                    Season
+                  </label>
+
+                  <input
+                    id="adminEpisodeSeason"
+                    type="number"
+                    min="1"
+                    value="1"
+                  >
+
+                </div>
+
+
+                <div>
+
+                  <label>
+                    Episode
+                  </label>
+
+                  <input
+                    id="adminEpisodeNumber"
+                    type="number"
+                    min="1"
+                    value="1"
+                  >
+
+                </div>
+
+
+                <div>
+
+                  <label>
+                    Video URL
+                  </label>
+
+                  <input
+                    id="adminEpisodeURL"
+                    type="url"
+                    placeholder="https://..."
+                  >
+
+                </div>
+
+              </div>
+
+
+              <button
+                id="adminAddEpisode"
+                class="admin-primary"
+              >
+                ➕ Add Episode
+              </button>
+
+            </div>
+
+
+            <div class="admin-card">
+
+              <h2>
+                Saved Episodes
+              </h2>
+
+              <div id="adminEpisodeList"></div>
+
+            </div>
+
+          </section>
+
+
+          <!-- USERS -->
+
+          <section
+            class="admin-section"
+            id="admin-users"
+          >
+
+            <div class="admin-section-title">
+
+              <div>
+
+                <small>
+                  ACCOUNTS
+                </small>
+
+                <h1>
+                  Users
+                </h1>
+
+              </div>
+
+            </div>
+
+
+            <div class="admin-card">
+
+              <div class="admin-user-row">
+
+                <span>
+                  👑
+                </span>
+
+                <div>
+
+                  <strong>
+                    Administrator
+                  </strong>
+
+                  <p>
+                    Full access
+                  </p>
+
+                </div>
+
+                <b>
+                  ACTIVE
+                </b>
+
+              </div>
+
+            </div>
+
+          </section>
+
+
+          <!-- SETTINGS -->
+
+          <section
+            class="admin-section"
+            id="admin-settings"
+          >
+
+            <div class="admin-section-title">
+
+              <div>
+
+                <small>
+                  SYSTEM
+                </small>
+
+                <h1>
+                  Settings
+                </h1>
+
+              </div>
+
+            </div>
+
+
+            <div class="admin-card">
+
+              <h2>
+                Website Settings
+              </h2>
+
+
+              <label class="admin-switch-row">
+
+                <span>
+                  Maintenance Mode
+                </span>
+
+                <input
+                  id="maintenanceMode"
+                  type="checkbox"
+                >
+
+              </label>
+
+
+              <label class="admin-switch-row">
+
+                <span>
+                  Enable Continue Watching
+                </span>
+
+                <input
+                  id="continueWatchingMode"
+                  type="checkbox"
+                  checked
+                >
+
+              </label>
+
+
+              <button
+                id="adminResetData"
+                class="admin-danger"
+              >
+                ⚠️ Reset Admin Data
+              </button>
+
+            </div>
+
+          </section>
+
+
+        </main>
+
+      </div>
+
+    </div>
+
+  `;
+
+
+  /* ================= INSERT ADMIN HTML ================= */
+
+  document.body.insertAdjacentHTML(
+    "beforeend",
+    adminHTML
+  );
+
+
+  /* ================= ADMIN CSS ================= */
+
+  const adminCSS = `
+
+    .admin-overlay {
+
+      position: fixed;
+      inset: 0;
+
+      z-index: 99999;
+
+      display: none;
+
+      align-items: center;
+      justify-content: center;
+
+      padding: 20px;
+
+      background:
+        radial-gradient(
+          circle at center,
+          rgba(229,9,20,.12),
+          rgba(0,0,0,.96) 60%
+        );
+
+      backdrop-filter: blur(20px);
+
+    }
+
+
+    .admin-overlay.show {
+
+      display: flex;
+
+    }
+
+
+    .admin-login-box {
+
+      width: min(430px, 95%);
+
+      padding: 35px;
+
+      background: #111118;
+
+      border: 1px solid rgba(255,255,255,.1);
+
+      border-radius: 20px;
+
+      box-shadow:
+        0 30px 100px rgba(0,0,0,.7);
+
+      position: relative;
+
+    }
+
+
+    .admin-close {
+
+      position: absolute;
+
+      top: 15px;
+      right: 15px;
+
+      width: 35px;
+      height: 35px;
+
+      border: 1px solid rgba(255,255,255,.1);
+
+      border-radius: 50%;
+
+      background: #191922;
+
+      color: white;
+
+    }
+
+
+    .admin-logo,
+    .admin-brand {
+
+      font-size: 24px;
+
+      font-weight: 900;
+
+      letter-spacing: 1px;
+
+    }
+
+
+    .admin-logo span,
+    .admin-brand span {
+
+      color: #e50914;
+
+    }
+
+
+    .admin-subtitle {
+
+      color: #888;
+
+      margin: 8px 0 30px;
+
+    }
+
+
+    .admin-input-group {
+
+      margin-bottom: 18px;
+
+    }
+
+
+    .admin-input-group label,
+    .admin-card label {
+
+      display: block;
+
+      margin-bottom: 8px;
+
+      color: #aaa;
+
+      font-size: 13px;
+
+    }
+
+
+    .admin-input-group input,
+    .admin-card input,
+    .admin-card select,
+    .admin-card textarea {
+
+      width: 100%;
+
+      padding: 13px 14px;
+
+      border: 1px solid rgba(255,255,255,.1);
+
+      border-radius: 10px;
+
+      outline: none;
+
+      background: #181820;
+
+      color: white;
+
+    }
+
+
+    .admin-card textarea {
+
+      min-height: 120px;
+
+      resize: vertical;
+
+      margin-bottom: 15px;
+
+    }
+
+
+    .admin-input-group input:focus,
+    .admin-card input:focus,
+    .admin-card select:focus,
+    .admin-card textarea:focus {
+
+      border-color: #e50914;
+
+    }
+
+
+    .admin-login-button {
+
+      width: 100%;
+
+      padding: 14px;
+
+      border: 0;
+
+      border-radius: 10px;
+
+      background: #e50914;
+
+      color: white;
+
+      font-weight: bold;
+
+      font-size: 15px;
+
+    }
+
+
+    .admin-login-button:hover {
+
+      background: #ff2633;
+
+    }
+
+
+    .admin-error {
+
+      min-height: 20px;
+
+      margin-top: 12px;
+
+      color: #ff4d5a;
+
+      font-size: 13px;
+
+      text-align: center;
+
+    }
+
+
+    .admin-panel {
+
+      position: fixed;
+
+      inset: 0;
+
+      z-index: 99998;
+
+      display: none;
+
+      overflow: auto;
+
+      background: #08080d;
+
+      color: white;
+
+    }
+
+
+    .admin-panel.show {
+
+      display: block;
+
+    }
+
+
+    .admin-panel-header {
+
+      min-height: 75px;
+
+      padding: 15px 4%;
+
+      display: flex;
+
+      align-items: center;
+
+      justify-content: space-between;
+
+      gap: 15px;
+
+      border-bottom: 1px solid rgba(255,255,255,.08);
+
+      background: #0d0d13;
+
+      position: sticky;
+
+      top: 0;
+
+      z-index: 10;
+
+    }
+
+
+    .admin-panel-header small {
+
+      color: #777;
+
+    }
+
+
+    .admin-header-actions {
+
+      display: flex;
+
+      gap: 8px;
+
+    }
+
+
+    .admin-header-actions button {
+
+      padding: 10px 14px;
+
+      border: 1px solid rgba(255,255,255,.1);
+
+      border-radius: 9px;
+
+      background: #17171f;
+
+      color: white;
+
+      cursor: pointer;
+
+    }
+
+
+    .admin-header-actions button:hover {
+
+      border-color: #e50914;
+
+    }
+
+
+    .admin-content {
+
+      min-height: calc(100vh - 75px);
+
+      display: grid;
+
+      grid-template-columns: 240px 1fr;
+
+    }
+
+
+    .admin-sidebar {
+
+      padding: 25px 15px;
+
+      border-right: 1px solid rgba(255,255,255,.08);
+
+      background: #0b0b11;
+
+    }
+
+
+    .admin-tab {
+
+      width: 100%;
+
+      margin-bottom: 7px;
+
+      padding: 13px;
+
+      text-align: left;
+
+      border: 1px solid transparent;
+
+      border-radius: 9px;
+
+      background: transparent;
+
+      color: #999;
+
+      cursor: pointer;
+
+    }
+
+
+    .admin-tab:hover,
+    .admin-tab.active {
+
+      background: rgba(229,9,20,.1);
+
+      border-color: rgba(229,9,20,.25);
+
+      color: white;
+
+    }
+
+
+    .admin-main {
+
+      padding: 40px;
+
+      max-width: 
