@@ -1,79 +1,123 @@
 <!DOCTYPE html>
-<html lang="ku" dir="rtl">
+<html lang="en">
 
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <meta name="theme-color" content="#08080c">
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
 
   <title>YUSUF ANIME</title>
+
+  <meta
+    name="description"
+    content="Yusuf Anime - Watch and discover anime."
+  >
 
   <link rel="stylesheet" href="style.css">
 </head>
 
+
 <body>
 
-  <!-- LOADING -->
+  <!-- ================= LOADER ================= -->
+
   <div id="loader">
+
     <div class="loader-logo">
       YUSUF<span>ANIME</span>
     </div>
 
     <div class="loader-ring"></div>
 
-    <p>چاوەڕوان بە...</p>
+    <p>Loading...</p>
+
   </div>
 
 
-  <!-- HEADER -->
+  <!-- ================= HEADER ================= -->
+
   <header class="header">
 
     <div class="header-inner">
 
-      <a href="#home" class="logo">
+      <a
+        href="#home"
+        class="logo"
+      >
         YUSUF<span>ANIME</span>
       </a>
 
+
       <nav class="desktop-nav">
 
-        <a href="#home" class="active">
-          🏠 سەرەتا
+        <a
+          href="#home"
+          class="active"
+        >
+          Home
         </a>
 
         <a href="#trending">
-          🔥 ترێند
+          Trending
         </a>
 
         <a href="#latest">
-          🆕 نوێترین
-        </a>
-
-        <a href="#top">
-          ⭐ باشترین
+          Latest
         </a>
 
         <a href="#genres">
-          🎭 جۆرەکان
+          Genres
+        </a>
+
+        <a href="#favorites">
+          Favorites
         </a>
 
       </nav>
 
+
       <div class="header-actions">
 
-        <button id="searchButton">
+        <!-- SEARCH -->
+
+        <button
+          id="searchButton"
+          aria-label="Search"
+        >
           🔍
         </button>
 
-        <button id="favoriteHeader">
-          ❤️
-        </button>
 
-        <button id="themeButton">
+        <!-- THEME -->
+
+        <button
+          id="themeButton"
+          aria-label="Theme"
+        >
           🌙
         </button>
 
-        <button id="menuButton" class="mobile-only">
+
+        <!-- FAVORITES -->
+
+        <button
+          id="favoriteHeader"
+          aria-label="Favorites"
+        >
+          ❤️
+        </button>
+
+
+        <!-- MOBILE -->
+
+        <button
+          id="menuButton"
+          class="mobile-only"
+          aria-label="Menu"
+        >
           ☰
         </button>
 
@@ -84,8 +128,9 @@
   </header>
 
 
-  <!-- MOBILE MENU -->
-  <aside id="mobileMenu">
+  <!-- ================= MOBILE MENU ================= -->
+
+  <div id="mobileMenu">
 
     <div class="mobile-menu-top">
 
@@ -99,17 +144,32 @@
 
     </div>
 
-    <a href="#home">🏠 سەرەتا</a>
-    <a href="#trending">🔥 ترێند</a>
-    <a href="#latest">🆕 نوێترین</a>
-    <a href="#top">⭐ باشترین</a>
-    <a href="#genres">🎭 جۆرەکان</a>
-    <a href="#favorites">❤️ دڵخوازەکان</a>
 
-  </aside>
+    <a href="#home">
+      🏠 Home
+    </a>
+
+    <a href="#trending">
+      🔥 Trending
+    </a>
+
+    <a href="#latest">
+      🆕 Latest
+    </a>
+
+    <a href="#genres">
+      🎭 Genres
+    </a>
+
+    <a href="#favorites">
+      ❤️ Favorites
+    </a>
+
+  </div>
 
 
-  <!-- SEARCH -->
+  <!-- ================= SEARCH ================= -->
+
   <div id="searchModal">
 
     <div class="search-box">
@@ -119,15 +179,17 @@
       </button>
 
       <h2>
-        🔎 گەڕان
+        Search Anime 🔍
       </h2>
+
 
       <div class="search-input">
 
         <input
           id="searchInput"
-          type="search"
-          placeholder="ناوی Anime بنووسە..."
+          type="text"
+          placeholder="Search anime..."
+          autocomplete="off"
         >
 
         <button id="doSearch">
@@ -136,6 +198,7 @@
 
       </div>
 
+
       <div id="searchResults"></div>
 
     </div>
@@ -143,184 +206,336 @@
   </div>
 
 
-  <!-- MAIN -->
-  <main>
+  <!-- ================= HOME ================= -->
+
+  <main id="home">
 
 
     <!-- HERO -->
-    <section id="home" class="hero">
+
+    <section class="hero">
 
       <div class="hero-content">
 
         <span class="hero-label">
-          🔥 YUSUF ANIME
+          ✨ WELCOME TO YUSUF ANIME
         </span>
 
+
         <h1>
-          دنیای
-          <span>Anime</span>
-          لێرەیە
+          Discover
+          <br>
+
+          <span>Anime World.</span>
         </h1>
 
+
         <p>
-          باشترین ئەنیەمەکان بدۆزەرەوە،
-          دڵخوازەکانت هەڵبژێرە و
-          چیرۆکە نوێکان بکەرەوە.
+          Discover your favorite anime,
+          explore new stories and enjoy
+          an amazing anime experience.
         </p>
+
 
         <div class="hero-buttons">
 
-          <a href="#trending" class="btn-primary">
-            🔥 ئێستا دەست پێبکە
+          <a
+            href="#trending"
+            class="btn-primary"
+          >
+            🔥 Explore Anime
           </a>
 
-          <a href="#genres" class="btn-secondary">
-            🎭 جۆرەکان
-          </a>
+
+          <button
+            class="btn-secondary"
+            id="heroSearch"
+          >
+            🔍 Search Anime
+          </button>
 
         </div>
 
       </div>
 
-      <div class="hero-decoration">
-        <div></div>
-      </div>
+
+      <div class="hero-decoration"></div>
 
     </section>
 
 
-    <!-- CONTINUE WATCHING -->
-    <section id="continueSection" class="section hidden">
+    <!-- ================= TRENDING ================= -->
+
+    <section
+      id="trending"
+      class="section"
+    >
 
       <div class="section-title">
 
         <div>
-          <small>⏯️ بەردەوام بە</small>
-          <h2>بەردەوام لە سەیرکردن</h2>
-        </div>
 
-      </div>
+          <small>
+            🔥 TRENDING NOW
+          </small>
 
-      <div id="continueGrid" class="anime-grid"></div>
+          <h2>
+            Popular Anime
+          </h2>
 
-    </section>
-
-
-    <!-- TRENDING -->
-    <section id="trending" class="section">
-
-      <div class="section-title">
-
-        <div>
-          <small>🔥 زۆرترین بینراو</small>
-          <h2>ترێندترینەکان</h2>
         </div>
 
         <button class="see-all">
-          هەمووی ←
+          View All →
         </button>
 
       </div>
 
-      <div id="trendingGrid" class="anime-grid"></div>
+
+      <div
+        id="trendingGrid"
+        class="anime-grid"
+      ></div>
 
     </section>
 
 
-    <!-- LATEST -->
-    <section id="latest" class="section">
+    <!-- ================= CONTINUE ================= -->
+
+    <section
+      id="continueSection"
+      class="section hidden"
+    >
 
       <div class="section-title">
 
         <div>
-          <small>🆕 تازە هاتووە</small>
-          <h2>نوێترین ئەڵقەکان</h2>
+
+          <small>
+            ▶️ CONTINUE WATCHING
+          </small>
+
+          <h2>
+            Continue Watching
+          </h2>
+
         </div>
 
       </div>
 
-      <div id="latestGrid" class="anime-grid"></div>
+
+      <div
+        id="continueGrid"
+        class="anime-grid"
+      ></div>
 
     </section>
 
 
-    <!-- TOP -->
-    <section id="top" class="section">
+    <!-- ================= LATEST ================= -->
+
+    <section
+      id="latest"
+      class="section"
+    >
 
       <div class="section-title">
 
         <div>
-          <small>⭐ بەپێی نمرە</small>
-          <h2>باشترین Anime</h2>
+
+          <small>
+            🆕 NEW RELEASES
+          </small>
+
+          <h2>
+            Latest Anime
+          </h2>
+
         </div>
 
       </div>
 
-      <div id="topGrid" class="anime-grid"></div>
+
+      <div
+        id="latestGrid"
+        class="anime-grid"
+      ></div>
 
     </section>
 
 
-    <!-- GENRES -->
-    <section id="genres" class="section">
+    <!-- ================= TOP ================= -->
+
+    <section class="section">
 
       <div class="section-title">
 
         <div>
-          <small>🎭 جۆرەکان</small>
-          <h2>جۆری دڵخوازت هەڵبژێرە</h2>
+
+          <small>
+            ⭐ TOP RATED
+          </small>
+
+          <h2>
+            Best Anime
+          </h2>
+
         </div>
 
       </div>
 
-      <div id="genreGrid" class="genre-grid">
+
+      <div
+        id="topGrid"
+        class="anime-grid"
+      ></div>
+
+    </section>
+
+
+    <!-- ================= GENRES ================= -->
+
+    <section
+      id="genres"
+      class="section"
+    >
+
+      <div class="section-title">
+
+        <div>
+
+          <small>
+            🎭 EXPLORE
+          </small>
+
+          <h2>
+            Browse Genres
+          </h2>
+
+        </div>
+
+      </div>
+
+
+      <div class="genre-grid">
 
         <button data-genre="Action">
+
           ⚔️
-          <strong>Action</strong>
-          <small>چالاکی</small>
+
+          <strong>
+            Action
+          </strong>
+
+          <small>
+            Adventure & fights
+          </small>
+
         </button>
+
 
         <button data-genre="Romance">
+
           ❤️
-          <strong>Romance</strong>
-          <small>ڕۆمانسی</small>
+
+          <strong>
+            Romance
+          </strong>
+
+          <small>
+            Love stories
+          </small>
+
         </button>
+
 
         <button data-genre="Comedy">
+
           😂
-          <strong>Comedy</strong>
-          <small>کۆمیدی</small>
+
+          <strong>
+            Comedy
+          </strong>
+
+          <small>
+            Funny anime
+          </small>
+
         </button>
+
 
         <button data-genre="Fantasy">
+
           🧙
-          <strong>Fantasy</strong>
-          <small>خەیاڵی</small>
+
+          <strong>
+            Fantasy
+          </strong>
+
+          <small>
+            Magical worlds
+          </small>
+
         </button>
 
-        <button data-genre="Adventure">
-          🗺️
-          <strong>Adventure</strong>
-          <small>سەرکێشی</small>
-        </button>
 
         <button data-genre="Drama">
+
           🎭
-          <strong>Drama</strong>
-          <small>دراما</small>
+
+          <strong>
+            Drama
+          </strong>
+
+          <small>
+            Emotional stories
+          </small>
+
         </button>
 
-        <button data-genre="Horror">
-          👻
-          <strong>Horror</strong>
-          <small>ترسناک</small>
+
+        <button data-genre="Adventure">
+
+          🌎
+
+          <strong>
+            Adventure
+          </strong>
+
+          <small>
+            Epic journeys
+          </small>
+
         </button>
 
-        <button data-genre="Sci-Fi">
-          🚀
-          <strong>Sci-Fi</strong>
-          <small>زانستی</small>
+
+        <button data-genre="School">
+
+          🎓
+
+          <strong>
+            School
+          </strong>
+
+          <small>
+            School life
+          </small>
+
+        </button>
+
+
+        <button data-genre="Action">
+
+          💥
+
+          <strong>
+            Shonen
+          </strong>
+
+          <small>
+            Epic battles
+          </small>
+
         </button>
 
       </div>
@@ -328,32 +543,61 @@
     </section>
 
 
-    <!-- FAVORITES -->
-    <section id="favorites" class="section">
+    <!-- ================= FAVORITES ================= -->
+
+    <section
+      id="favorites"
+      class="section"
+    >
 
       <div class="section-title">
 
         <div>
-          <small>❤️ لیستی تایبەتی تۆ</small>
-          <h2>دڵخوازەکان</h2>
+
+          <small>
+            ❤️ YOUR LIST
+          </small>
+
+          <h2>
+            My Favorites
+          </h2>
+
         </div>
 
       </div>
 
-      <div id="favoritesGrid" class="anime-grid"></div>
 
-      <div id="emptyFavorites" class="empty-state">
-        ❤️
-        <h3>هێشتا هیچ Anime ـێکت نییە</h3>
+      <div
+        id="favoritesGrid"
+        class="anime-grid"
+      ></div>
+
+
+      <div
+        id="emptyFavorites"
+        class="empty-state"
+      >
+
+        <div>
+          ❤️
+        </div>
+
+        <h3>
+          No Favorites Yet
+        </h3>
+
         <p>
-          Anime ـێک زیاد بکە بۆ لیستی دڵخوازەکانت.
+          Add anime to your favorites
+          and they will appear here.
         </p>
+
       </div>
 
     </section>
 
 
-    <!-- CTA -->
+    <!-- ================= CTA ================= -->
+
     <section class="cta">
 
       <span>
@@ -361,52 +605,89 @@
       </span>
 
       <h2>
-        چیرۆکێکی نوێ
-        <strong>دەست پێبکە.</strong>
+        Your Anime.
+        <strong>
+          Your World.
+        </strong>
       </h2>
 
       <p>
-        دنیایەکی گەورەی Anime چاوەڕێتە.
+        Find something you love
+        and start watching.
       </p>
 
-      <a href="#trending" class="btn-primary">
-        🔥 بینینی Anime ـەکان
-      </a>
+
+      <button
+        class="btn-primary"
+        id="ctaSearch"
+      >
+        🔍 Find Anime
+      </button>
 
     </section>
+
 
   </main>
 
 
-  <!-- DETAILS PAGE -->
-  <div id="detailsPage" class="page-overlay">
+  <!-- ================= DETAILS PAGE ================= -->
 
-    <button class="back-button" id="closeDetails">
-      → گەڕانەوە
+  <div
+    id="detailsPage"
+    class="page-overlay"
+  >
+
+    <button
+      id="closeDetails"
+      class="back-button"
+    >
+      ← Back
     </button>
+
 
     <div class="details">
 
-      <div id="detailsPoster" class="details-poster"></div>
+      <div
+        id="detailsPoster"
+        class="details-poster"
+      ></div>
+
 
       <div class="details-info">
 
-        <span id="detailsType"></span>
+        <span id="detailsType">
+          TV
+        </span>
 
-        <h1 id="detailsTitle"></h1>
+
+        <h1 id="detailsTitle">
+          Anime
+        </h1>
+
 
         <div id="detailsMeta"></div>
 
-        <p id="detailsDescription"></p>
+
+        <p id="detailsDescription">
+          Description
+        </p>
+
 
         <div class="details-actions">
 
-          <button id="detailsPlay" class="btn-primary">
-            ▶️ یەکەم ئەڵقە
+          <button
+            id="detailsPlay"
+            class="btn-primary"
+          >
+            ▶️ Watch Now
           </button>
 
-          <button id="detailsFavorite" class="btn-secondary">
-            ❤️ دڵخواز
+
+          <button
+            id="detailsFavorite"
+            class="btn-secondary"
+          >
+            ♡ Add to Favorites
           </button>
 
         </div>
@@ -416,38 +697,63 @@
     </div>
 
 
-    <!-- SEASONS -->
+    <!-- EPISODES -->
+
     <div class="episodes-area">
 
       <div class="episode-heading">
 
         <h2>
-          📺 ئەڵقەکان
+          Episodes
         </h2>
 
+
         <select id="seasonSelect">
+
           <option value="1">
             Season 1
           </option>
+
+          <option value="2">
+            Season 2
+          </option>
+
+          <option value="3">
+            Season 3
+          </option>
+
         </select>
 
       </div>
 
-      <div id="episodeGrid" class="episode-grid"></div>
+
+      <div
+        id="episodeGrid"
+        class="episode-grid"
+      ></div>
 
     </div>
 
   </div>
 
 
-  <!-- WATCH PAGE -->
-  <div id="watchPage" class="page-overlay">
+  <!-- ================= WATCH PAGE ================= -->
 
-    <button class="back-button" id="closeWatch">
-      → گەڕانەوە
+  <div
+    id="watchPage"
+    class="page-overlay"
+  >
+
+    <button
+      id="closeWatch"
+      class="back-button"
+    >
+      ← Back
     </button>
 
+
     <div class="watch-container">
+
 
       <div class="video-player">
 
@@ -457,9 +763,13 @@
             ▶
           </div>
 
-          <h2 id="watchAnime"></h2>
+          <h2 id="watchTitle">
+            Anime
+          </h2>
 
-          <p id="watchEpisode"></p>
+          <p>
+            This is a demo player.
+          </p>
 
         </div>
 
@@ -469,11 +779,12 @@
       <div class="watch-controls">
 
         <button id="previousEpisode">
-          ⏮️ پێشوو
+          ⏮ Previous
         </button>
 
+
         <button id="nextEpisode">
-          دواتر ⏭️
+          Next ⏭
         </button>
 
       </div>
@@ -481,10 +792,12 @@
 
       <div class="watch-info">
 
-        <h2 id="watchTitle"></h2>
+        <h2 id="watchAnime">
+          Anime
+        </h2>
 
-        <p>
-          YUSUF ANIME
+        <p id="watchEpisode">
+          Episode 1
         </p>
 
       </div>
@@ -494,41 +807,66 @@
   </div>
 
 
-  <!-- FOOTER -->
+  <!-- ================= TOP BUTTON ================= -->
+
+  <button
+    id="topButton"
+    aria-label="Back to top"
+  >
+    ↑
+  </button>
+
+
+  <!-- ================= FOOTER ================= -->
+
   <footer>
 
     <div class="footer-logo">
       YUSUF<span>ANIME</span>
     </div>
 
+
     <p>
-      دنیای Anime بە شێوازی Yusuf ❤️
+      Your personal anime world ❤️
     </p>
+
 
     <div class="footer-links">
 
-      <a href="#home">سەرەتا</a>
-      <a href="#trending">ترێند</a>
-      <a href="#latest">نوێترین</a>
-      <a href="#favorites">دڵخوازەکان</a>
-      <a href="#genres">جۆرەکان</a>
+      <a href="#home">
+        Home
+      </a>
+
+      <a href="#trending">
+        Trending
+      </a>
+
+      <a href="#latest">
+        Latest
+      </a>
+
+      <a href="#genres">
+        Genres
+      </a>
+
+      <a href="#favorites">
+        Favorites
+      </a>
 
     </div>
 
+
     <small>
-      © 2026 YUSUF ANIME
+      © 2026 Yusuf Anime.
+      All rights reserved.
     </small>
 
   </footer>
 
 
-  <!-- BACK TO TOP -->
-  <button id="topButton">
-    ↑
-  </button>
+  <!-- ================= JAVASCRIPT ================= -->
 
-
-  <script src="script.js"></script>
+  <script src="script.js?v=3"></script>
 
 </body>
 
