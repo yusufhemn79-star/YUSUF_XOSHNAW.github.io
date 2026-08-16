@@ -1,70 +1,111 @@
-/* =========================
-   LOADER
-========================= */
+/* LOADER */
 
 window.addEventListener("load", () => {
-
   setTimeout(() => {
     document.getElementById("loader").classList.add("hide");
   }, 1200);
-
 });
 
 
-/* =========================
-   MOBILE MENU
-========================= */
+/* MOBILE MENU */
 
 const menuBtn = document.getElementById("menuBtn");
-const navLinks = document.getElementById("navLinks");
+const navMenu = document.getElementById("navMenu");
 
 menuBtn.addEventListener("click", () => {
+  navMenu.classList.toggle("open");
 
-  navLinks.classList.toggle("open");
-
-  if (navLinks.classList.contains("open")) {
-    menuBtn.textContent = "✕";
-  } else {
-    menuBtn.textContent = "☰";
-  }
-
+  menuBtn.textContent =
+    navMenu.classList.contains("open")
+      ? "✕"
+      : "☰";
 });
 
 
-/* Close menu after clicking link */
+/* SEARCH */
 
-document.querySelectorAll(".nav-links a").forEach(link => {
+const searchBtn = document.getElementById("searchBtn");
+const searchPanel = document.getElementById("searchPanel");
+const closeSearch = document.getElementById("closeSearch");
+const searchInput = document.getElementById("searchInput");
 
-  link.addEventListener("click", () => {
+searchBtn.addEventListener("click", () => {
+  searchPanel.classList.add("show");
+  searchInput.focus();
+});
 
-    navLinks.classList.remove("open");
-    menuBtn.textContent = "☰";
+closeSearch.addEventListener("click", () => {
+  searchPanel.classList.remove("show");
+  searchInput.value = "";
+  showAllAnime();
+});
+
+
+searchInput.addEventListener("input", () => {
+
+  const query = searchInput.value.toLowerCase().trim();
+
+  const cards = document.querySelectorAll(".anime-card");
+
+  cards.forEach(card => {
+
+    const name =
+      card.dataset.name.toLowerCase();
+
+    if (name.includes(query)) {
+      card.style.display = "";
+    } else {
+      card.style.display = "none";
+    }
 
   });
 
 });
 
 
-/* =========================
-   CONTACT BUTTON
-========================= */
+function showAllAnime() {
 
-const contactButton = document.getElementById("contactBtn");
+  document.querySelectorAll(".anime-card")
+    .forEach(card => {
+      card.style.display = "";
+    });
 
-contactButton.addEventListener("click", () => {
+}
+
+
+/* ANIME BUTTON */
+
+function showAnime(name) {
 
   alert(
-    "Hello Yusuf! 👋\n\nThanks for visiting my website! 🚀"
+    "🎬 " + name +
+    "\n\nAnime details page coming soon! 🔥"
   );
+
+}
+
+
+/* THEME */
+
+const themeBtn =
+  document.getElementById("themeBtn");
+
+themeBtn.addEventListener("click", () => {
+
+  document.body.classList.toggle("light");
+
+  themeBtn.textContent =
+    document.body.classList.contains("light")
+      ? "🌙"
+      : "☀️";
 
 });
 
 
-/* =========================
-   BACK TO TOP
-========================= */
+/* BACK TO TOP */
 
-const topBtn = document.getElementById("topBtn");
+const topBtn =
+  document.getElementById("topBtn");
 
 window.addEventListener("scroll", () => {
 
@@ -76,6 +117,7 @@ window.addEventListener("scroll", () => {
 
 });
 
+
 topBtn.addEventListener("click", () => {
 
   window.scrollTo({
@@ -86,98 +128,14 @@ topBtn.addEventListener("click", () => {
 });
 
 
-/* =========================
-   SCROLL REVEAL
-========================= */
+/* CLOSE MOBILE MENU */
 
-const revealElements = document.querySelectorAll(".reveal");
+document.querySelectorAll("#navMenu a")
+  .forEach(link => {
 
-const observer = new IntersectionObserver(
-  (entries) => {
-
-    entries.forEach(entry => {
-
-      if (entry.isIntersecting) {
-
-        entry.target.classList.add("show");
-
-      }
-
+    link.addEventListener("click", () => {
+      navMenu.classList.remove("open");
+      menuBtn.textContent = "☰";
     });
 
-  },
-  {
-    threshold: 0.12
-  }
-);
-
-revealElements.forEach(element => {
-
-  observer.observe(element);
-
-});
-
-
-/* =========================
-   THEME BUTTON
-========================= */
-
-const themeBtn = document.getElementById("themeBtn");
-
-let lightMode = false;
-
-themeBtn.addEventListener("click", () => {
-
-  lightMode = !lightMode;
-
-  if (lightMode) {
-
-    document.documentElement.style.setProperty(
-      "--bg",
-      "#eef4ff"
-    );
-
-    document.documentElement.style.setProperty(
-      "--bg2",
-      "#ffffff"
-    );
-
-    document.documentElement.style.setProperty(
-      "--text",
-      "#07101f"
-    );
-
-    document.documentElement.style.setProperty(
-      "--muted",
-      "#526078"
-    );
-
-    themeBtn.textContent = "🌙";
-
-  } else {
-
-    document.documentElement.style.setProperty(
-      "--bg",
-      "#050816"
-    );
-
-    document.documentElement.style.setProperty(
-      "--bg2",
-      "#080d1f"
-    );
-
-    document.documentElement.style.setProperty(
-      "--text",
-      "#ffffff"
-    );
-
-    document.documentElement.style.setProperty(
-      "--muted",
-      "#9ba3b8"
-    );
-
-    themeBtn.textContent = "☀️";
-
-  }
-
-});
+  });
