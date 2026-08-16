@@ -5,8 +5,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <meta name="description"
-        content="Yusuf Anime - سەرچاوەیەکی جوان بۆ دۆزینەوەی ئەنیەمەکان">
+  <meta name="theme-color" content="#08080c">
 
   <title>YUSUF ANIME</title>
 
@@ -15,74 +14,66 @@
 
 <body>
 
-  <!-- ================= LOADING ================= -->
-
+  <!-- LOADING -->
   <div id="loader">
-
     <div class="loader-logo">
-      YUSUF <span>ANIME</span>
+      YUSUF<span>ANIME</span>
     </div>
 
-    <div class="loader-spinner"></div>
+    <div class="loader-ring"></div>
 
-    <p>تکایە چاوەڕوان بە...</p>
-
+    <p>چاوەڕوان بە...</p>
   </div>
 
 
-  <!-- ================= HEADER ================= -->
-
+  <!-- HEADER -->
   <header class="header">
 
     <div class="header-inner">
-
-      <!-- LOGO -->
 
       <a href="#home" class="logo">
         YUSUF<span>ANIME</span>
       </a>
 
+      <nav class="desktop-nav">
 
-      <!-- NAVIGATION -->
-
-      <nav id="navigation">
-
-        <a href="#home" class="nav-link active">
+        <a href="#home" class="active">
           🏠 سەرەتا
         </a>
 
-        <a href="#trending" class="nav-link">
+        <a href="#trending">
           🔥 ترێند
         </a>
 
-        <a href="#latest" class="nav-link">
-          🆕 نوێترینەکان
+        <a href="#latest">
+          🆕 نوێترین
         </a>
 
-        <a href="#popular" class="nav-link">
-          ⭐ بەناوبانگەکان
+        <a href="#top">
+          ⭐ باشترین
         </a>
 
-        <a href="#genres" class="nav-link">
+        <a href="#genres">
           🎭 جۆرەکان
         </a>
 
       </nav>
 
-
-      <!-- HEADER BUTTONS -->
-
       <div class="header-actions">
 
-        <button id="searchOpen" class="icon-button">
+        <button id="searchButton">
           🔍
         </button>
 
-        <button id="themeButton" class="icon-button">
+        <button id="favoriteHeader">
+          ❤️
+        </button>
+
+        <button id="themeButton">
           🌙
         </button>
 
-        <button id="menuButton" class="icon-button mobile-menu">
+        <button id="menuButton" class="mobile-only">
           ☰
         </button>
 
@@ -93,53 +84,16 @@
   </header>
 
 
-  <!-- ================= SEARCH ================= -->
+  <!-- MOBILE MENU -->
+  <aside id="mobileMenu">
 
-  <div id="searchOverlay" class="search-overlay">
-
-    <div class="search-container">
-
-      <button id="searchClose" class="search-close">
-        ✕
-      </button>
-
-      <p class="search-label">
-        گەڕان لە ناو ئەنیەمەکان
-      </p>
-
-      <div class="search-input-wrapper">
-
-        <input
-          id="searchInput"
-          type="search"
-          placeholder="ناوی ئەنیەمەکە بنووسە..."
-          autocomplete="off"
-        >
-
-        <button id="searchSubmit">
-          🔍
-        </button>
-
-      </div>
-
-      <div id="searchResults" class="search-results"></div>
-
-    </div>
-
-  </div>
-
-
-  <!-- ================= MOBILE MENU ================= -->
-
-  <div id="mobileMenu" class="mobile-menu-panel">
-
-    <div class="mobile-menu-header">
+    <div class="mobile-menu-top">
 
       <strong>
         YUSUF<span>ANIME</span>
       </strong>
 
-      <button id="mobileClose">
+      <button id="closeMenu">
         ✕
       </button>
 
@@ -147,56 +101,80 @@
 
     <a href="#home">🏠 سەرەتا</a>
     <a href="#trending">🔥 ترێند</a>
-    <a href="#latest">🆕 نوێترینەکان</a>
-    <a href="#popular">⭐ بەناوبانگەکان</a>
+    <a href="#latest">🆕 نوێترین</a>
+    <a href="#top">⭐ باشترین</a>
     <a href="#genres">🎭 جۆرەکان</a>
+    <a href="#favorites">❤️ دڵخوازەکان</a>
+
+  </aside>
+
+
+  <!-- SEARCH -->
+  <div id="searchModal">
+
+    <div class="search-box">
+
+      <button id="closeSearch">
+        ✕
+      </button>
+
+      <h2>
+        🔎 گەڕان
+      </h2>
+
+      <div class="search-input">
+
+        <input
+          id="searchInput"
+          type="search"
+          placeholder="ناوی Anime بنووسە..."
+        >
+
+        <button id="doSearch">
+          🔍
+        </button>
+
+      </div>
+
+      <div id="searchResults"></div>
+
+    </div>
 
   </div>
 
 
-  <!-- ================= MAIN ================= -->
+  <!-- MAIN -->
+  <main>
 
-  <main id="app">
 
-
-    <!-- ================= HOME ================= -->
-
+    <!-- HERO -->
     <section id="home" class="hero">
-
-      <div class="hero-background"></div>
-
-      <div class="hero-overlay"></div>
 
       <div class="hero-content">
 
-        <span class="hero-badge">
-          🔥 ئەمڕۆ ترێندە
-        </span>
-
-        <span class="hero-small-title">
-          بەخێربێیت بۆ
+        <span class="hero-label">
+          🔥 YUSUF ANIME
         </span>
 
         <h1>
-          YUSUF
-          <span>ANIME</span>
+          دنیای
+          <span>Anime</span>
+          لێرەیە
         </h1>
 
-        <p class="hero-description">
-
+        <p>
           باشترین ئەنیەمەکان بدۆزەرەوە،
           دڵخوازەکانت هەڵبژێرە و
-          دنیایەکی نوێ لە چیرۆک و خەیاڵ ببینەوە.
-
+          چیرۆکە نوێکان بکەرەوە.
         </p>
 
         <div class="hero-buttons">
 
-          <a href="#trending" class="primary-button">
-            🔥 دەست پێبکە
+          <a href="#trending" class="btn-primary">
+            🔥 ئێستا دەست پێبکە
           </a>
 
-          <a href="#genres" class="secondary-button">
+          <a href="#genres" class="btn-secondary">
             🎭 جۆرەکان
           </a>
 
@@ -204,604 +182,142 @@
 
       </div>
 
-      <div class="hero-scroll">
-        <span>بۆ خوارەوە</span>
-        ↓
+      <div class="hero-decoration">
+        <div></div>
       </div>
 
     </section>
 
 
-    <!-- ================= TRENDING ================= -->
+    <!-- CONTINUE WATCHING -->
+    <section id="continueSection" class="section hidden">
 
-    <section id="trending" class="content-section">
-
-      <div class="section-heading">
+      <div class="section-title">
 
         <div>
-
-          <span>
-            🔥 زۆرترین بینراو
-          </span>
-
-          <h2>
-            ترێندترین ئەنیەمەکان
-          </h2>
-
+          <small>⏯️ بەردەوام بە</small>
+          <h2>بەردەوام لە سەیرکردن</h2>
         </div>
 
-        <button class="view-all">
-          هەمووی ببینە ←
+      </div>
+
+      <div id="continueGrid" class="anime-grid"></div>
+
+    </section>
+
+
+    <!-- TRENDING -->
+    <section id="trending" class="section">
+
+      <div class="section-title">
+
+        <div>
+          <small>🔥 زۆرترین بینراو</small>
+          <h2>ترێندترینەکان</h2>
+        </div>
+
+        <button class="see-all">
+          هەمووی ←
         </button>
 
       </div>
 
-
-      <div id="trendingGrid" class="anime-grid">
-
-
-        <!-- ONE PIECE -->
-
-        <article
-          class="anime-card"
-          data-title="One Piece"
-          data-category="Action Adventure"
-        >
-
-          <div class="anime-poster poster-one">
-
-            <span class="anime-rank">
-              #1
-            </span>
-
-            <button
-              class="play-button"
-              onclick="openAnime('One Piece')"
-            >
-              ▶
-            </button>
-
-            <span class="quality">
-              HD
-            </span>
-
-          </div>
-
-          <div class="anime-info">
-
-            <h3>
-              One Piece
-            </h3>
-
-            <div class="anime-meta">
-
-              <span>⭐ 9.0</span>
-              <span>TV</span>
-              <span>1000+</span>
-
-            </div>
-
-          </div>
-
-        </article>
-
-
-        <!-- SOLO LEVELING -->
-
-        <article
-          class="anime-card"
-          data-title="Solo Leveling"
-          data-category="Action Fantasy"
-        >
-
-          <div class="anime-poster poster-two">
-
-            <span class="anime-rank">
-              #2
-            </span>
-
-            <button
-              class="play-button"
-              onclick="openAnime('Solo Leveling')"
-            >
-              ▶
-            </button>
-
-            <span class="quality">
-              HD
-            </span>
-
-          </div>
-
-          <div class="anime-info">
-
-            <h3>
-              Solo Leveling
-            </h3>
-
-            <div class="anime-meta">
-
-              <span>⭐ 8.8</span>
-              <span>TV</span>
-              <span>25+</span>
-
-            </div>
-
-          </div>
-
-        </article>
-
-
-        <!-- JUJUTSU KAISEN -->
-
-        <article
-          class="anime-card"
-          data-title="Jujutsu Kaisen"
-          data-category="Action Fantasy"
-        >
-
-          <div class="anime-poster poster-three">
-
-            <span class="anime-rank">
-              #3
-            </span>
-
-            <button
-              class="play-button"
-              onclick="openAnime('Jujutsu Kaisen')"
-            >
-              ▶
-            </button>
-
-            <span class="quality">
-              HD
-            </span>
-
-          </div>
-
-          <div class="anime-info">
-
-            <h3>
-              Jujutsu Kaisen
-            </h3>
-
-            <div class="anime-meta">
-
-              <span>⭐ 8.7</span>
-              <span>TV</span>
-              <span>47+</span>
-
-            </div>
-
-          </div>
-
-        </article>
-
-
-        <!-- DEMON SLAYER -->
-
-        <article
-          class="anime-card"
-          data-title="Demon Slayer"
-          data-category="Action Fantasy"
-        >
-
-          <div class="anime-poster poster-four">
-
-            <span class="anime-rank">
-              #4
-            </span>
-
-            <button
-              class="play-button"
-              onclick="openAnime('Demon Slayer')"
-            >
-              ▶
-            </button>
-
-            <span class="quality">
-              HD
-            </span>
-
-          </div>
-
-          <div class="anime-info">
-
-            <h3>
-              Demon Slayer
-            </h3>
-
-            <div class="anime-meta">
-
-              <span>⭐ 8.6</span>
-              <span>TV</span>
-              <span>63+</span>
-
-            </div>
-
-          </div>
-
-        </article>
-
-      </div>
+      <div id="trendingGrid" class="anime-grid"></div>
 
     </section>
 
 
-    <!-- ================= LATEST ================= -->
+    <!-- LATEST -->
+    <section id="latest" class="section">
 
-    <section id="latest" class="content-section">
-
-      <div class="section-heading">
+      <div class="section-title">
 
         <div>
-
-          <span>
-            🆕 تازەترین
-          </span>
-
-          <h2>
-            نوێترین ئەڵقەکان
-          </h2>
-
+          <small>🆕 تازە هاتووە</small>
+          <h2>نوێترین ئەڵقەکان</h2>
         </div>
 
-        <button class="view-all">
-          هەمووی ببینە ←
-        </button>
-
       </div>
 
-
-      <div class="episode-grid">
-
-
-        <article class="episode-card">
-
-          <div class="episode-poster episode-one">
-
-            <span class="episode-number">
-              EP 1171
-            </span>
-
-            <button
-              onclick="openEpisode('One Piece',1171)"
-              class="play-button"
-            >
-              ▶
-            </button>
-
-          </div>
-
-          <div class="episode-info">
-
-            <h3>
-              One Piece
-            </h3>
-
-            <p>
-              ئەڵقەی 1171
-            </p>
-
-          </div>
-
-        </article>
-
-
-        <article class="episode-card">
-
-          <div class="episode-poster episode-two">
-
-            <span class="episode-number">
-              EP 25
-            </span>
-
-            <button
-              onclick="openEpisode('Solo Leveling',25)"
-              class="play-button"
-            >
-              ▶
-            </button>
-
-          </div>
-
-          <div class="episode-info">
-
-            <h3>
-              Solo Leveling
-            </h3>
-
-            <p>
-              ئەڵقەی 25
-            </p>
-
-          </div>
-
-        </article>
-
-
-        <article class="episode-card">
-
-          <div class="episode-poster episode-three">
-
-            <span class="episode-number">
-              EP 47
-            </span>
-
-            <button
-              onclick="openEpisode('Jujutsu Kaisen',47)"
-              class="play-button"
-            >
-              ▶
-            </button>
-
-          </div>
-
-          <div class="episode-info">
-
-            <h3>
-              Jujutsu Kaisen
-            </h3>
-
-            <p>
-              ئەڵقەی 47
-            </p>
-
-          </div>
-
-        </article>
-
-
-        <article class="episode-card">
-
-          <div class="episode-poster episode-four">
-
-            <span class="episode-number">
-              EP 63
-            </span>
-
-            <button
-              onclick="openEpisode('Demon Slayer',63)"
-              class="play-button"
-            >
-              ▶
-            </button>
-
-          </div>
-
-          <div class="episode-info">
-
-            <h3>
-              Demon Slayer
-            </h3>
-
-            <p>
-              ئەڵقەی 63
-            </p>
-
-          </div>
-
-        </article>
-
-      </div>
+      <div id="latestGrid" class="anime-grid"></div>
 
     </section>
 
 
-    <!-- ================= POPULAR ================= -->
+    <!-- TOP -->
+    <section id="top" class="section">
 
-    <section id="popular" class="content-section">
-
-      <div class="section-heading">
+      <div class="section-title">
 
         <div>
-
-          <span>
-            ⭐ دڵخواز
-          </span>
-
-          <h2>
-            بەناوبانگترینەکان
-          </h2>
-
+          <small>⭐ بەپێی نمرە</small>
+          <h2>باشترین Anime</h2>
         </div>
 
       </div>
 
-
-      <div class="anime-grid">
-
-
-        <article class="anime-card">
-
-          <div class="anime-poster poster-five">
-
-            <button
-              class="play-button"
-              onclick="openAnime('Attack on Titan')"
-            >
-              ▶
-            </button>
-
-          </div>
-
-          <div class="anime-info">
-
-            <h3>
-              Attack on Titan
-            </h3>
-
-            <div class="anime-meta">
-              <span>⭐ 9.1</span>
-              <span>TV</span>
-              <span>89</span>
-            </div>
-
-          </div>
-
-        </article>
-
-
-        <article class="anime-card">
-
-          <div class="anime-poster poster-six">
-
-            <button
-              class="play-button"
-              onclick="openAnime('Naruto')"
-            >
-              ▶
-            </button>
-
-          </div>
-
-          <div class="anime-info">
-
-            <h3>
-              Naruto
-            </h3>
-
-            <div class="anime-meta">
-              <span>⭐ 8.4</span>
-              <span>TV</span>
-              <span>720</span>
-            </div>
-
-          </div>
-
-        </article>
-
-
-        <article class="anime-card">
-
-          <div class="anime-poster poster-seven">
-
-            <button
-              class="play-button"
-              onclick="openAnime('Hunter x Hunter')"
-            >
-              ▶
-            </button>
-
-          </div>
-
-          <div class="anime-info">
-
-            <h3>
-              Hunter x Hunter
-            </h3>
-
-            <div class="anime-meta">
-              <span>⭐ 9.0</span>
-              <span>TV</span>
-              <span>148</span>
-            </div>
-
-          </div>
-
-        </article>
-
-
-        <article class="anime-card">
-
-          <div class="anime-poster poster-eight">
-
-            <button
-              class="play-button"
-              onclick="openAnime('Death Note')"
-            >
-              ▶
-            </button>
-
-          </div>
-
-          <div class="anime-info">
-
-            <h3>
-              Death Note
-            </h3>
-
-            <div class="anime-meta">
-              <span>⭐ 8.9</span>
-              <span>TV</span>
-              <span>37</span>
-            </div>
-
-          </div>
-
-        </article>
-
-      </div>
+      <div id="topGrid" class="anime-grid"></div>
 
     </section>
 
 
-    <!-- ================= GENRES ================= -->
+    <!-- GENRES -->
+    <section id="genres" class="section">
 
-    <section id="genres" class="content-section">
-
-      <div class="section-heading">
+      <div class="section-title">
 
         <div>
-
-          <span>
-            🎭 جۆر
-          </span>
-
-          <h2>
-            ئەنیەم بە جۆر
-          </h2>
-
+          <small>🎭 جۆرەکان</small>
+          <h2>جۆری دڵخوازت هەڵبژێرە</h2>
         </div>
 
       </div>
 
+      <div id="genreGrid" class="genre-grid">
 
-      <div class="genre-grid">
-
-        <button onclick="filterGenre('Action')">
+        <button data-genre="Action">
           ⚔️
           <strong>Action</strong>
           <small>چالاکی</small>
         </button>
 
-        <button onclick="filterGenre('Romance')">
+        <button data-genre="Romance">
           ❤️
           <strong>Romance</strong>
           <small>ڕۆمانسی</small>
         </button>
 
-        <button onclick="filterGenre('Comedy')">
+        <button data-genre="Comedy">
           😂
           <strong>Comedy</strong>
           <small>کۆمیدی</small>
         </button>
 
-        <button onclick="filterGenre('Fantasy')">
+        <button data-genre="Fantasy">
           🧙
           <strong>Fantasy</strong>
           <small>خەیاڵی</small>
         </button>
 
-        <button onclick="filterGenre('Horror')">
-          👻
-          <strong>Horror</strong>
-          <small>ترسناک</small>
-        </button>
-
-        <button onclick="filterGenre('Adventure')">
+        <button data-genre="Adventure">
           🗺️
           <strong>Adventure</strong>
           <small>سەرکێشی</small>
         </button>
 
-        <button onclick="filterGenre('School')">
-          🏫
-          <strong>School</strong>
-          <small>قوتابخانە</small>
+        <button data-genre="Drama">
+          🎭
+          <strong>Drama</strong>
+          <small>دراما</small>
         </button>
 
-        <button onclick="filterGenre('Sci-Fi')">
+        <button data-genre="Horror">
+          👻
+          <strong>Horror</strong>
+          <small>ترسناک</small>
+        </button>
+
+        <button data-genre="Sci-Fi">
           🚀
           <strong>Sci-Fi</strong>
           <small>زانستی</small>
@@ -812,25 +328,49 @@
     </section>
 
 
-    <!-- ================= CTA ================= -->
+    <!-- FAVORITES -->
+    <section id="favorites" class="section">
 
-    <section class="cta-section">
+      <div class="section-title">
+
+        <div>
+          <small>❤️ لیستی تایبەتی تۆ</small>
+          <h2>دڵخوازەکان</h2>
+        </div>
+
+      </div>
+
+      <div id="favoritesGrid" class="anime-grid"></div>
+
+      <div id="emptyFavorites" class="empty-state">
+        ❤️
+        <h3>هێشتا هیچ Anime ـێکت نییە</h3>
+        <p>
+          Anime ـێک زیاد بکە بۆ لیستی دڵخوازەکانت.
+        </p>
+      </div>
+
+    </section>
+
+
+    <!-- CTA -->
+    <section class="cta">
 
       <span>
         YUSUF ANIME
       </span>
 
       <h2>
-        ئەنیەمی داهاتووت
-        <strong>بدۆزەرەوە.</strong>
+        چیرۆکێکی نوێ
+        <strong>دەست پێبکە.</strong>
       </h2>
 
       <p>
-        دنیایەک لە چیرۆک و کارەکتەرە جیاوازەکان چاوەڕێتە.
+        دنیایەکی گەورەی Anime چاوەڕێتە.
       </p>
 
-      <a href="#trending" class="primary-button">
-        🔥 ئێستا بگەڕێ
+      <a href="#trending" class="btn-primary">
+        🔥 بینینی Anime ـەکان
       </a>
 
     </section>
@@ -838,96 +378,36 @@
   </main>
 
 
-  <!-- ================= ANIME DETAILS PAGE ================= -->
+  <!-- DETAILS PAGE -->
+  <div id="detailsPage" class="page-overlay">
 
-  <section
-    id="animePage"
-    class="hidden-page"
-  >
-
-    <button
-      class="back-button"
-      onclick="closeAnime()"
-    >
+    <button class="back-button" id="closeDetails">
       → گەڕانەوە
     </button>
 
-    <div class="details-container">
+    <div class="details">
 
       <div id="detailsPoster" class="details-poster"></div>
 
-      <div class="details-content">
+      <div class="details-info">
 
-        <span id="detailsType">
-          TV
-        </span>
+        <span id="detailsType"></span>
 
-        <h1 id="detailsTitle">
-          Anime
-        </h1>
+        <h1 id="detailsTitle"></h1>
 
-        <div id="detailsMeta" class="details-meta"></div>
+        <div id="detailsMeta"></div>
 
-        <p id="detailsDescription">
-          زانیارییەکانی ئەنیەم لێرە دەردەکەون.
-        </p>
+        <p id="detailsDescription"></p>
 
-        <button
-          id="favoriteButton"
-          class="primary-button"
-        >
-          ❤️ زیادکردن بۆ دڵخوازەکان
-        </button>
+        <div class="details-actions">
 
-      </div>
+          <button id="detailsPlay" class="btn-primary">
+            ▶️ یەکەم ئەڵقە
+          </button>
 
-    </div>
-
-
-    <div class="episodes-container">
-
-      <h2>
-        📺 ئەڵقەکان
-      </h2>
-
-      <div id="episodeList" class="episode-list"></div>
-
-    </div>
-
-  </section>
-
-
-  <!-- ================= WATCH PAGE ================= -->
-
-  <section
-    id="watchPage"
-    class="hidden-page"
-  >
-
-    <button
-      class="back-button"
-      onclick="closeWatch()"
-    >
-      → گەڕانەوە
-    </button>
-
-    <div class="player-container">
-
-      <div class="video-placeholder">
-
-        <div>
-
-          <div class="big-play">
-            ▶
-          </div>
-
-          <h2 id="watchTitle">
-            Video Player
-          </h2>
-
-          <p>
-            ئەمە شوێنی video player ـە.
-          </p>
+          <button id="detailsFavorite" class="btn-secondary">
+            ❤️ دڵخواز
+          </button>
 
         </div>
 
@@ -935,11 +415,86 @@
 
     </div>
 
-  </section>
+
+    <!-- SEASONS -->
+    <div class="episodes-area">
+
+      <div class="episode-heading">
+
+        <h2>
+          📺 ئەڵقەکان
+        </h2>
+
+        <select id="seasonSelect">
+          <option value="1">
+            Season 1
+          </option>
+        </select>
+
+      </div>
+
+      <div id="episodeGrid" class="episode-grid"></div>
+
+    </div>
+
+  </div>
 
 
-  <!-- ================= FOOTER ================= -->
+  <!-- WATCH PAGE -->
+  <div id="watchPage" class="page-overlay">
 
+    <button class="back-button" id="closeWatch">
+      → گەڕانەوە
+    </button>
+
+    <div class="watch-container">
+
+      <div class="video-player">
+
+        <div class="video-screen">
+
+          <div class="player-play">
+            ▶
+          </div>
+
+          <h2 id="watchAnime"></h2>
+
+          <p id="watchEpisode"></p>
+
+        </div>
+
+      </div>
+
+
+      <div class="watch-controls">
+
+        <button id="previousEpisode">
+          ⏮️ پێشوو
+        </button>
+
+        <button id="nextEpisode">
+          دواتر ⏭️
+        </button>
+
+      </div>
+
+
+      <div class="watch-info">
+
+        <h2 id="watchTitle"></h2>
+
+        <p>
+          YUSUF ANIME
+        </p>
+
+      </div>
+
+    </div>
+
+  </div>
+
+
+  <!-- FOOTER -->
   <footer>
 
     <div class="footer-logo">
@@ -947,26 +502,16 @@
     </div>
 
     <p>
-      دنیای ئەنیەم، بە شێوازی یوسف ❤️
+      دنیای Anime بە شێوازی Yusuf ❤️
     </p>
 
     <div class="footer-links">
 
-      <a href="#home">
-        سەرەتا
-      </a>
-
-      <a href="#trending">
-        ترێند
-      </a>
-
-      <a href="#latest">
-        نوێترین
-      </a>
-
-      <a href="#genres">
-        جۆرەکان
-      </a>
+      <a href="#home">سەرەتا</a>
+      <a href="#trending">ترێند</a>
+      <a href="#latest">نوێترین</a>
+      <a href="#favorites">دڵخوازەکان</a>
+      <a href="#genres">جۆرەکان</a>
 
     </div>
 
@@ -978,11 +523,7 @@
 
 
   <!-- BACK TO TOP -->
-
-  <button
-    id="topButton"
-    class="top-button"
-  >
+  <button id="topButton">
     ↑
   </button>
 
