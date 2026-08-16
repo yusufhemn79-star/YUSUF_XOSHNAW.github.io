@@ -2047,3 +2047,330 @@ if (ctaSearch) {
 /* ================= START LANGUAGE ================= */
 
 updateLanguage();
+/* =====================================================
+   REAL ANIME SEARCH - JIKAN API
+===================================================== */
+
+const JIKAN_API = "https://api.jikan.moe/v4";
+
+async function searchAnimeAPI(query) {
+
+  if (!query || query.trim() === "") {
+    return;
+  }
+
+  const resultsContainer =
+    document.getElementById("searchResults");
+
+  if (!resultsContainer) {
+    return;
+  }
+
+  resultsContainer.innerHTML = `
+    <div class="search-loading">
+      🔎 Searching for "${query}"...
+    </div>
+  `;
+
+  try {
+
+    const response = await fetch(
+      `${JIKAN_API}/anime?q=${encodeURIComponent(query)}&sfw=true&limit=12`
+    );
+
+    if (!response.ok) {
+      throw new Error("Search failed");
+    }
+
+    const data = await response.json();
+
+    if (!data.data || data.data.length === 0) {
+
+      resultsContainer.innerHTML = `
+        <div class="search-empty">
+          😢 No anime found.
+        </div>
+      `;
+
+      return;
+    }
+
+    resultsContainer.innerHTML = "";
+
+    data.data.forEach(anime => {
+
+      const card = document.createElement("div");
+
+      card.className = "search-result-card";
+
+      card.innerHTML = `
+
+        <img
+          src="${anime.images?.jpg?.image_url || ""}"
+          alt="${anime.title}"
+          loading="lazy"
+        >
+
+        <div class="search-result-info">
+
+          <h3>
+            ${anime.title}
+          </h3>
+
+          <p>
+            ⭐ ${anime.score || "N/A"}
+          </p>
+
+          <p>
+            📺 ${anime.episodes || "?"} Episodes
+          </p>
+
+          <p>
+            🎬 ${anime.type || "Unknown"}
+          </p>
+
+          <button
+            class="search-watch-button"
+            type="button"
+          >
+            View Details
+          </button>
+
+        </div>
+
+      `;
+
+
+      const detailsButton =
+        card.querySelector(".search-watch-button");
+
+
+      detailsButton.addEventListener(
+        "click",
+        function() {
+
+          showAnimeFromAPI(anime.mal_id);
+
+        }
+      );
+
+
+      resultsContainer.appendChild(card);
+
+    });
+
+  } catch (error) {
+
+    console.error(error);
+
+    resultsContainer.innerHTML = `
+      <div class="search-empty">
+        ⚠️ Something went wrong.
+        Please try again.
+      </div>
+    `;
+
+  }
+
+}
+
+
+/* =====================================================
+   SEARCH BUTTON
+===================================================== */
+
+const realSearchButton =
+  document.getElementById("doSearch");
+
+
+const realSearchInput =
+  document.getElementById("searchInput");
+
+
+if (realSearchButton) {
+
+  realSearchButton.addEventListener(
+    "click",
+    function() {
+
+      searchAnimeAPI(
+        realSearchInput.value
+      );
+
+    }
+  );
+
+}
+
+
+if (realSearchInput) {
+
+  realSearchInput.addEventListener(
+    "keydown",
+    function(event) {
+
+      if (event.key === "Enter") {
+
+        searchAnimeAPI(
+          realSearchInput.value
+        );
+
+      }
+
+    }
+  );
+
+}
+
+
+/* =====================================================
+   GET FULL ANIME DETAILS
+===================================================== */
+
+async function showAnimeFromAPI(id) {
+
+  try {
+
+    const response = await fetch(
+      `${JIKAN_API}/anime/${id}/full`
+    );
+
+    if (!response.ok) {
+      throw new Error("Anime details failed");
+    }
+
+    const result =
+      await response.json();
+
+    const anime =
+      result.data;
+
+
+    /* TITLE */
+
+    const title =
+      document.getElementById("detailsTitle");
+
+    if (title) {
+      title.textContent =
+        anime.title || "Anime";
+    }
+
+
+    /* TYPE */
+
+    const type =
+      document.getElementById("detailsType");
+
+    if (type) {
+      type.textContent =
+        anime.type || "TV";
+    }
+
+
+    /* POSTER */
+
+    const poster =
+      document.getElementById("detailsPoster");
+
+    if (poster) {
+
+      poster.style.backgroundImage =
+        `url("${anime.images?.jpg?.large_image_url || anime.images?.jpg?.image_url}")`;
+
+    }
+
+
+    /* DESCRIPTION */
+
+    const description =
+      document.getElementById(
+        "detailsDescription"
+      );
+
+    if (description) {
+
+      description.textContent =
+        anime.synopsis ||
+        "No description available.";
+
+    }
+
+
+    /* META */
+
+    const meta =
+      document.getElementById(
+        "detailsMeta"
+      );
+
+    if (meta) {
+
+      meta.innerHTML = `
+
+        <span>
+          ⭐ ${anime.score || "N/A"}
+        </span>
+
+        <span>
+          📺 ${anime.episodes || "?"} Episodes
+        </span>
+
+        <span>
+          🎬 ${anime.status || "Unknown"}
+        </span>
+
+        <span>
+          📅 ${anime.year || "Unknown"}
+        </span>
+
+      `;
+
+    }
+
+
+    /* SHOW DETAILS PAGE */
+
+    const detailsPage =
+      document.getElementById(
+        "detailsPage"
+      );
+
+    if (detailsPage) {
+
+      detailsPage.classList.add(
+        "show"
+      );
+
+      document.body.style.overflow =
+        "hidden";
+
+    }
+
+
+    /* CLOSE SEARCH */
+
+    const searchModal =
+      document.getElementById(
+        "searchModal"
+      );
+
+    if (searchModal) {
+
+      searchModal.classList.remove(
+        "show"
+      );
+
+    }
+
+  } catch (error) {
+
+    console.error(error);
+
+    alert(
+      "Could not load anime details."
+    );
+
+  }
+
+}
