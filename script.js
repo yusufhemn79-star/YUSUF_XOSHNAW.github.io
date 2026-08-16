@@ -1,250 +1,541 @@
-/* =====================================================
-   YUSUF ANIME - MAIN JAVASCRIPT
-===================================================== */
+/* =========================================================
+   YUSUF ANIME
+   Complete Front-End System
+========================================================= */
 
-"use strict";
 
-/* ================= DEFAULT ANIME ================= */
+/* =========================================================
+   DEFAULT ANIME DATABASE
+========================================================= */
 
-const defaultAnime = [
+const DEFAULT_ANIME = [
 
   {
-    id: 1,
-    title: "One Piece",
-    year: 1999,
-    rating: 9.0,
-    type: "TV",
-    genres: ["Action","Adventure","Fantasy","Shonen"],
-    episodes: 1170,
-    image: "",
-    description: "Follow Monkey D. Luffy and his crew as they travel across the Grand Line searching for the legendary One Piece."
+    id:1,
+    title:"One Piece",
+    type:"TV",
+    year:1999,
+    rating:9.0,
+    episodes:1000,
+    genre:["Action","Adventure","Fantasy","Shonen"],
+    description:"Monkey D. Luffy and his crew travel across the Grand Line in search of the legendary One Piece.",
+    poster:"",
+    trending:true,
+    latest:false,
+    top:true
   },
 
   {
-    id: 2,
-    title: "Naruto",
-    year: 2002,
-    rating: 8.4,
-    type: "TV",
-    genres: ["Action","Adventure","Shonen"],
-    episodes: 220,
-    image: "",
-    description: "Naruto Uzumaki dreams of becoming the strongest ninja and earning the respect of his village."
+    id:2,
+    title:"Naruto Shippuden",
+    type:"TV",
+    year:2007,
+    rating:8.7,
+    episodes:500,
+    genre:["Action","Adventure","Shonen"],
+    description:"Naruto returns stronger and continues his journey to become Hokage while facing dangerous enemies.",
+    poster:"",
+    trending:true,
+    latest:false,
+    top:true
   },
 
   {
-    id: 3,
-    title: "Attack on Titan",
-    year: 2013,
-    rating: 9.1,
-    type: "TV",
-    genres: ["Action","Drama","Fantasy"],
-    episodes: 87,
-    image: "",
-    description: "Humanity fights for survival against terrifying Titans beyond the walls."
+    id:3,
+    title:"Demon Slayer",
+    type:"TV",
+    year:2019,
+    rating:8.6,
+    episodes:63,
+    genre:["Action","Fantasy","Drama"],
+    description:"Tanjiro Kamado becomes a demon slayer after his family is attacked and his sister is transformed.",
+    poster:"",
+    trending:true,
+    latest:true,
+    top:true
   },
 
   {
-    id: 4,
-    title: "Demon Slayer",
-    year: 2019,
-    rating: 8.7,
-    type: "TV",
-    genres: ["Action","Fantasy","Adventure"],
-    episodes: 63,
-    image: "",
-    description: "Tanjiro joins the Demon Slayer Corps after tragedy strikes his family."
+    id:4,
+    title:"Jujutsu Kaisen",
+    type:"TV",
+    year:2020,
+    rating:8.7,
+    episodes:47,
+    genre:["Action","Fantasy","Shonen"],
+    description:"Yuji Itadori enters the dangerous world of curses after swallowing a cursed object.",
+    poster:"",
+    trending:true,
+    latest:true,
+    top:true
   },
 
   {
-    id: 5,
-    title: "Jujutsu Kaisen",
-    year: 2020,
-    rating: 8.6,
-    type: "TV",
-    genres: ["Action","Fantasy","Shonen"],
-    episodes: 47,
-    image: "",
-    description: "Yuji Itadori enters the dangerous world of curses and sorcery."
+    id:5,
+    title:"Attack on Titan",
+    type:"TV",
+    year:2013,
+    rating:9.1,
+    episodes:89,
+    genre:["Action","Drama","Fantasy"],
+    description:"Humanity fights for survival against terrifying Titans outside the walls.",
+    poster:"",
+    trending:true,
+    latest:false,
+    top:true
   },
 
   {
-    id: 6,
-    title: "My Dress-Up Darling",
-    year: 2022,
-    rating: 8.2,
-    type: "TV",
-    genres: ["Romance","Comedy","School"],
-    episodes: 12,
-    image: "",
-    description: "A shy doll maker becomes friends with a popular girl who loves cosplay."
+    id:6,
+    title:"My Dress-Up Darling",
+    type:"TV",
+    year:2022,
+    rating:8.2,
+    episodes:12,
+    genre:["Romance","Comedy","School"],
+    description:"A shy doll maker discovers cosplay and meets an energetic classmate who changes his life.",
+    poster:"",
+    trending:true,
+    latest:true,
+    top:false
   },
 
   {
-    id: 7,
-    title: "Horimiya",
-    year: 2021,
-    rating: 8.6,
-    type: "TV",
-    genres: ["Romance","Comedy","School"],
-    episodes: 13,
-    image: "",
-    description: "Two classmates discover unexpected sides of each other and slowly fall in love."
+    id:7,
+    title:"Horimiya",
+    type:"TV",
+    year:2021,
+    rating:8.5,
+    episodes:13,
+    genre:["Romance","Comedy","School"],
+    description:"Two classmates discover unexpected sides of each other and slowly fall in love.",
+    poster:"",
+    trending:true,
+    latest:false,
+    top:true
   },
 
   {
-    id: 8,
-    title: "Your Name",
-    year: 2016,
-    rating: 8.8,
-    type: "Movie",
-    genres: ["Romance","Drama","Fantasy"],
-    episodes: 1,
-    image: "",
-    description: "Two teenagers mysteriously begin switching bodies and searching for each other."
+    id:8,
+    title:"The Angel Next Door Spoils Me Rotten",
+    type:"TV",
+    year:2023,
+    rating:7.8,
+    episodes:12,
+    genre:["Romance","Comedy","School"],
+    description:"A quiet student unexpectedly becomes close to the beautiful girl who lives next door.",
+    poster:"",
+    trending:false,
+    latest:true,
+    top:false
   },
 
   {
-    id: 9,
-    title: "Solo Leveling",
-    year: 2024,
-    rating: 8.9,
-    type: "TV",
-    genres: ["Action","Fantasy"],
-    episodes: 25,
-    image: "",
-    description: "A weak hunter gains a mysterious system that allows him to become stronger."
+    id:9,
+    title:"Solo Leveling",
+    type:"TV",
+    year:2024,
+    rating:8.8,
+    episodes:25,
+    genre:["Action","Fantasy","Adventure"],
+    description:"Sung Jin-Woo receives a mysterious system that allows him to level up beyond normal limits.",
+    poster:"",
+    trending:true,
+    latest:true,
+    top:true
   },
 
   {
-    id: 10,
-    title: "Death Note",
-    year: 2006,
-    rating: 8.9,
-    type: "TV",
-    genres: ["Drama","Fantasy"],
-    episodes: 37,
-    image: "",
-    description: "A student discovers a supernatural notebook that can kill anyone whose name is written inside."
+    id:10,
+    title:"The Quintessential Quintuplets",
+    type:"TV",
+    year:2019,
+    rating:8.5,
+    episodes:24,
+    genre:["Romance","Comedy","School"],
+    description:"A hardworking student becomes the tutor of five identical sisters with very different personalities.",
+    poster:"",
+    trending:true,
+    latest:false,
+    top:true
+  },
+
+  {
+    id:11,
+    title:"Tonikawa",
+    type:"TV",
+    year:2020,
+    rating:7.9,
+    episodes:24,
+    genre:["Romance","Comedy"],
+    description:"A young couple begins married life together after an unusual first meeting.",
+    poster:"",
+    trending:false,
+    latest:true,
+    top:false
+  },
+
+  {
+    id:12,
+    title:"Your Name",
+    type:"Movie",
+    year:2016,
+    rating:8.8,
+    episodes:1,
+    genre:["Romance","Drama","Fantasy"],
+    description:"Two strangers mysteriously begin switching bodies and discover a connection that crosses time.",
+    poster:"",
+    trending:true,
+    latest:false,
+    top:true
   }
 
 ];
 
-/* ================= STORAGE ================= */
 
-let animeList =
-  JSON.parse(localStorage.getItem("yusufAnime")) ||
-  defaultAnime;
+/* =========================================================
+   STORAGE
+========================================================= */
 
-let favorites =
-  JSON.parse(localStorage.getItem("yusufFavorites")) ||
-  [];
+const STORAGE = {
 
-let watchProgress =
-  JSON.parse(localStorage.getItem("yusufProgress")) ||
-  {};
+  anime:"yusuf_anime_database",
+  favorites:"yusuf_anime_favorites",
+  watched:"yusuf_anime_watched",
+  history:"yusuf_anime_history",
+  theme:"yusuf_anime_theme",
+  language:"yusuf_anime_language",
+  admin:"yusuf_anime_admin"
+
+};
+
+
+function load(key, fallback){
+
+  try{
+
+    const data = localStorage.getItem(key);
+
+    return data ? JSON.parse(data) : fallback;
+
+  }catch{
+
+    return fallback;
+
+  }
+
+}
+
+
+function save(key,value){
+
+  localStorage.setItem(key,JSON.stringify(value));
+
+}
+
+
+/* =========================================================
+   STATE
+========================================================= */
+
+let animeDatabase = load(STORAGE.anime,null);
+
+if(!Array.isArray(animeDatabase) || !animeDatabase.length){
+
+  animeDatabase = DEFAULT_ANIME;
+
+  save(STORAGE.anime,animeDatabase);
+
+}
+
+let favorites = load(STORAGE.favorites,[]);
+
+let watched = load(STORAGE.watched,{});
+
+let history = load(STORAGE.history,[]);
 
 let currentAnime = null;
+
 let currentEpisode = 1;
-let editingId = null;
 
-/* ================= SAVE ================= */
+let currentSeason = 1;
 
-function saveAnime() {
-  localStorage.setItem(
-    "yusufAnime",
-    JSON.stringify(animeList)
-  );
-}
+let currentLanguage = localStorage.getItem(
+  STORAGE.language
+) || "en";
 
-function saveFavorites() {
-  localStorage.setItem(
-    "yusufFavorites",
-    JSON.stringify(favorites)
-  );
-}
 
-function saveProgress() {
-  localStorage.setItem(
-    "yusufProgress",
-    JSON.stringify(watchProgress)
-  );
-}
+/* =========================================================
+   DOM
+========================================================= */
 
-/* ================= LOADER ================= */
+const $ = selector => document.querySelector(selector);
 
-window.addEventListener("load", () => {
+const $$ = selector => document.querySelectorAll(selector);
 
-  setTimeout(() => {
 
-    document
-      .getElementById("loader")
-      .classList.add("hide");
+/* =========================================================
+   LOADER
+========================================================= */
 
-  }, 700);
+window.addEventListener("load",()=>{
 
-  renderAll();
+  setTimeout(()=>{
+
+    $("#loader")?.classList.add("hide");
+
+  },700);
 
 });
 
-/* ================= HELPERS ================= */
 
-function getAnime(id) {
+/* =========================================================
+   TOAST
+========================================================= */
 
-  return animeList.find(
-    anime => anime.id === Number(id)
+let toastTimer;
+
+function toast(message){
+
+  const box = $("#toast");
+
+  if(!box) return;
+
+  box.textContent = message;
+
+  box.classList.add("show");
+
+  clearTimeout(toastTimer);
+
+  toastTimer = setTimeout(()=>{
+
+    box.classList.remove("show");
+
+  },2500);
+
+}
+
+
+/* =========================================================
+   THEME
+========================================================= */
+
+function applyTheme(){
+
+  const theme = localStorage.getItem(STORAGE.theme) || "dark";
+
+  document.body.classList.toggle(
+    "light",
+    theme === "light"
   );
 
-}
+  const button = $("#themeButton");
 
-function escapeHTML(text) {
+  if(button){
 
-  return String(text ?? "")
-    .replaceAll("&","&amp;")
-    .replaceAll("<","&lt;")
-    .replaceAll(">","&gt;")
-    .replaceAll('"',"&quot;")
-    .replaceAll("'","&#039;");
+    button.textContent =
+      theme === "light" ? "☀️" : "🌙";
+
+  }
 
 }
 
-/* ================= CARD ================= */
 
-function animeCard(anime) {
+$("#themeButton")?.addEventListener("click",()=>{
+
+  const isLight =
+    document.body.classList.contains("light");
+
+  localStorage.setItem(
+    STORAGE.theme,
+    isLight ? "dark" : "light"
+  );
+
+  applyTheme();
+
+});
+
+
+applyTheme();
+
+
+/* =========================================================
+   LANGUAGE
+========================================================= */
+
+const translations = {
+
+  en:{
+    name:"English"
+  },
+
+  ku:{
+    name:"کوردی"
+  },
+
+  ar:{
+    name:"العربية"
+  },
+
+  tr:{
+    name:"Türkçe"
+  },
+
+  ja:{
+    name:"日本語"
+  },
+
+  es:{
+    name:"Español"
+  },
+
+  fr:{
+    name:"Français"
+  },
+
+  de:{
+    name:"Deutsch"
+  }
+
+};
+
+
+function applyLanguage(language){
+
+  currentLanguage = language;
+
+  localStorage.setItem(
+    STORAGE.language,
+    language
+  );
+
+  const current = $("#currentLanguage");
+
+  if(current){
+
+    current.textContent =
+      translations[language]?.name ||
+      translations.en.name;
+
+  }
+
+  $$(".language-menu button").forEach(button=>{
+
+    button.classList.toggle(
+      "active",
+      button.dataset.language === language
+    );
+
+  });
+
+}
+
+
+$("#languageButton")?.addEventListener("click",event=>{
+
+  event.stopPropagation();
+
+  $("#languageMenu")?.classList.toggle("show");
+
+});
+
+
+$$(".language-menu button").forEach(button=>{
+
+  button.addEventListener("click",()=>{
+
+    applyLanguage(button.dataset.language);
+
+    $("#languageMenu")?.classList.remove("show");
+
+    toast(
+      `${translations[button.dataset.language].name} selected`
+    );
+
+  });
+
+});
+
+
+document.addEventListener("click",event=>{
+
+  if(
+    !event.target.closest(".language-wrapper")
+  ){
+
+    $("#languageMenu")?.classList.remove("show");
+
+  }
+
+});
+
+
+applyLanguage(currentLanguage);
+
+
+/* =========================================================
+   MOBILE MENU
+========================================================= */
+
+$("#menuButton")?.addEventListener("click",()=>{
+
+  $("#mobileMenu")?.classList.add("open");
+
+});
+
+
+$("#closeMenu")?.addEventListener("click",()=>{
+
+  $("#mobileMenu")?.classList.remove("open");
+
+});
+
+
+$$('#mobileMenu a').forEach(link=>{
+
+  link.addEventListener("click",()=>{
+
+    $("#mobileMenu")?.classList.remove("open");
+
+  });
+
+});
+
+
+/* =========================================================
+   CARD HTML
+========================================================= */
+
+function createCard(anime){
 
   const isFavorite =
     favorites.includes(anime.id);
 
-  const letter =
-    anime.title.charAt(0).toUpperCase();
-
-  const image = anime.image
-    ? `<img class="poster-image" src="${escapeHTML(anime.image)}" alt="${escapeHTML(anime.title)}" onerror="this.style.display='none'">`
-    : "";
+  const posterStyle =
+    anime.poster
+      ? `background-image:url("${escapeAttribute(anime.poster)}")`
+      : "";
 
   return `
 
-    <article class="anime-card"
-      data-id="${anime.id}">
+    <article
+      class="anime-card"
+      data-id="${anime.id}"
+    >
 
       <div
-        class="poster poster-${(anime.id % 10) + 1} ${anime.image ? "has-image" : ""}"
-        data-letter="${letter}"
+        class="poster"
+        style="${posterStyle}"
       >
 
-        ${image}
-
         <span class="card-top">
-          ${escapeHTML(anime.type)}
-        </span>
-
-        <span class="card-bottom">
-          ⭐ ${anime.rating}
+          ${anime.type}
         </span>
 
         <button
-          class="card-favorite ${isFavorite ? "active" : ""}"
+          class="favorite-card ${isFavorite ? "active":""}"
           data-favorite="${anime.id}"
+          title="Favorite"
         >
           ${isFavorite ? "❤️" : "♡"}
         </button>
@@ -252,9 +543,14 @@ function animeCard(anime) {
         <button
           class="card-play"
           data-play="${anime.id}"
+          aria-label="Watch"
         >
           ▶
         </button>
+
+        <span class="card-bottom">
+          ⭐ ${anime.rating}
+        </span>
 
       </div>
 
@@ -263,7 +559,13 @@ function animeCard(anime) {
         <h3>${escapeHTML(anime.title)}</h3>
 
         <p>
-          ${anime.year} • ${anime.genres.slice(0,2).join(" • ")}
+          ${anime.year}
+          •
+          ${anime.episodes} Episodes
+          •
+          <span class="rating">
+            ⭐ ${anime.rating}
+          </span>
         </p>
 
       </div>
@@ -274,124 +576,96 @@ function animeCard(anime) {
 
 }
 
-/* ================= RENDER GRID ================= */
 
-function renderGrid(elementId, list) {
+/* =========================================================
+   RENDER GRID
+========================================================= */
 
-  const element =
-    document.getElementById(elementId);
+function renderGrid(elementId,list){
 
-  if (!element) return;
+  const container = $(`#${elementId}`);
 
-  element.innerHTML =
-    list.map(animeCard).join("");
+  if(!container) return;
+
+  container.innerHTML =
+    list.length
+      ? list.map(createCard).join("")
+      : `<div class="empty-state">
+           <div>😔</div>
+           <h3>No Anime Found</h3>
+           <p>Try another category or search.</p>
+         </div>`;
 
 }
 
-/* ================= RENDER ALL ================= */
 
-function renderAll() {
+/* =========================================================
+   RENDER ALL
+========================================================= */
+
+function renderAll(){
 
   renderGrid(
     "trendingGrid",
-    animeList.slice(0,5)
+    animeDatabase.filter(a=>a.trending)
   );
 
   renderGrid(
     "latestGrid",
-    [...animeList]
-      .sort((a,b) => b.year - a.year)
-      .slice(0,5)
+    animeDatabase.filter(a=>a.latest)
   );
 
   renderGrid(
     "topGrid",
-    [...animeList]
-      .sort((a,b) => b.rating - a.rating)
-      .slice(0,5)
+    [...animeDatabase]
+      .sort((a,b)=>b.rating-a.rating)
+      .filter(a=>a.top)
   );
 
-  renderFavorites();
+  const favoriteAnime =
+    animeDatabase.filter(a=>
+      favorites.includes(a.id)
+    );
+
+  renderGrid(
+    "favoritesGrid",
+    favoriteAnime
+  );
+
+  $("#emptyFavorites")?.classList.toggle(
+    "hidden",
+    favoriteAnime.length > 0
+  );
 
   renderContinue();
 
-  renderAdminList();
+  updateFavoriteCount();
+
+  bindCards();
+
+  renderAdminAnime();
 
   updateStats();
 
 }
 
-/* ================= FAVORITES ================= */
 
-function toggleFavorite(id) {
+/* =========================================================
+   CONTINUE WATCHING
+========================================================= */
 
-  id = Number(id);
+function renderContinue(){
 
-  if (favorites.includes(id)) {
+  const section = $("#continueSection");
+  const grid = $("#continueGrid");
 
-    favorites =
-      favorites.filter(
-        item => item !== id
-      );
+  if(!section || !grid) return;
 
-  } else {
+  const list = history
+    .map(id=>animeDatabase.find(a=>a.id===id))
+    .filter(Boolean);
 
-    favorites.push(id);
-
-  }
-
-  saveFavorites();
-
-  renderAll();
-
-  if (currentAnime) {
-    updateFavoriteButton();
-  }
-
-}
-
-function renderFavorites() {
-
-  const list =
-    animeList.filter(
-      anime => favorites.includes(anime.id)
-    );
-
-  renderGrid(
-    "favoritesGrid",
-    list
-  );
-
-  const empty =
-    document.getElementById("emptyFavorites");
-
-  if (empty) {
-
-    empty.style.display =
-      list.length ? "none" : "block";
-
-  }
-
-}
-
-/* ================= CONTINUE ================= */
-
-function renderContinue() {
-
-  const ids =
-    Object.keys(watchProgress);
-
-  const list =
-    ids
-      .map(id => getAnime(id))
-      .filter(Boolean);
-
-  const section =
-    document.getElementById(
-      "continueSection"
-    );
-
-  if (!list.length) {
+  if(!list.length){
 
     section.classList.add("hidden");
 
@@ -401,89 +675,214 @@ function renderContinue() {
 
   section.classList.remove("hidden");
 
-  renderGrid(
-    "continueGrid",
-    list
-  );
+  grid.innerHTML =
+    list.map(createCard).join("");
 
 }
 
-/* ================= DETAILS ================= */
 
-function openDetails(id) {
+/* =========================================================
+   CARD EVENTS
+========================================================= */
+
+function bindCards(){
+
+  $$(".anime-card").forEach(card=>{
+
+    card.onclick = event=>{
+
+      if(
+        event.target.closest(".favorite-card") ||
+        event.target.closest(".card-play")
+      ) return;
+
+      openDetails(
+        Number(card.dataset.id)
+      );
+
+    };
+
+  });
+
+
+  $$("[data-play]").forEach(button=>{
+
+    button.onclick = event=>{
+
+      event.stopPropagation();
+
+      openWatch(
+        Number(button.dataset.play),
+        1,
+        1
+      );
+
+    };
+
+  });
+
+
+  $$("[data-favorite]").forEach(button=>{
+
+    button.onclick = event=>{
+
+      event.stopPropagation();
+
+      toggleFavorite(
+        Number(button.dataset.favorite)
+      );
+
+    };
+
+  });
+
+}
+
+
+/* =========================================================
+   FAVORITES
+========================================================= */
+
+function toggleFavorite(id){
+
+  if(favorites.includes(id)){
+
+    favorites =
+      favorites.filter(item=>item!==id);
+
+    toast("Removed from favorites");
+
+  }else{
+
+    favorites.push(id);
+
+    toast("Added to favorites ❤️");
+
+  }
+
+  save(STORAGE.favorites,favorites);
+
+  renderAll();
+
+  if(currentAnime?.id===id){
+
+    updateDetailsFavorite();
+
+  }
+
+}
+
+
+function updateFavoriteCount(){
+
+  const count = $("#favoriteCount");
+
+  if(count){
+
+    count.textContent =
+      favorites.length;
+
+  }
+
+}
+
+
+$("#favoriteHeader")?.addEventListener("click",()=>{
+
+  document
+    .querySelector("#favorites")
+    ?.scrollIntoView({
+      behavior:"smooth"
+    });
+
+});
+
+
+/* =========================================================
+   DETAILS
+========================================================= */
+
+function openDetails(id){
 
   const anime =
-    getAnime(id);
+    animeDatabase.find(a=>a.id===id);
 
-  if (!anime) return;
+  if(!anime) return;
 
   currentAnime = anime;
 
-  document
-    .getElementById("detailsPage")
-    .classList.add("show");
+  $("#detailsTitle").textContent =
+    anime.title;
 
-  document.body.style.overflow = "hidden";
+  $("#detailsType").textContent =
+    anime.type;
 
-  document.getElementById(
-    "detailsTitle"
-  ).textContent = anime.title;
+  $("#detailsDescription").textContent =
+    anime.description;
 
-  document.getElementById(
-    "detailsType"
-  ).textContent = anime.type;
-
-  document.getElementById(
-    "detailsMeta"
-  ).innerHTML = `
+  $("#detailsMeta").innerHTML = `
 
     <span>⭐ ${anime.rating}</span>
     <span>📅 ${anime.year}</span>
     <span>🎬 ${anime.episodes} Episodes</span>
-    <span>🎭 ${anime.genres.join(", ")}</span>
 
   `;
 
-  document.getElementById(
-    "detailsDescription"
-  ).textContent = anime.description;
+  $("#detailsGenres").innerHTML =
+    anime.genre
+      .map(g=>`<span>${escapeHTML(g)}</span>`)
+      .join("");
 
   const poster =
-    document.getElementById("detailsPoster");
+    $("#detailsPoster");
 
-  poster.style.backgroundImage =
-    anime.image
-      ? `url("${anime.image}")`
-      : "";
+  if(anime.poster){
+
+    poster.style.backgroundImage =
+      `url("${escapeAttribute(anime.poster)}")`;
+
+  }else{
+
+    poster.style.backgroundImage = "";
+
+  }
+
+  createSeasonSelect(anime);
+
+  currentSeason = 1;
 
   renderEpisodes();
 
-  updateFavoriteButton();
+  updateDetailsFavorite();
+
+  $("#detailsPage")?.classList.add("show");
+
+  document.body.classList.add("no-scroll");
 
 }
 
-/* ================= CLOSE DETAILS ================= */
 
-function closeDetails() {
+function closeDetails(){
 
-  document
-    .getElementById("detailsPage")
-    .classList.remove("show");
+  $("#detailsPage")?.classList.remove("show");
 
-  document.body.style.overflow = "";
+  document.body.classList.remove("no-scroll");
 
 }
 
-/* ================= FAVORITE BUTTON ================= */
 
-function updateFavoriteButton() {
+$("#closeDetails")?.addEventListener(
+  "click",
+  closeDetails
+);
+
+
+function updateDetailsFavorite(){
+
+  if(!currentAnime) return;
 
   const button =
-    document.getElementById(
-      "detailsFavorite"
-    );
-
-  if (!currentAnime) return;
+    $("#detailsFavorite");
 
   const active =
     favorites.includes(currentAnime.id);
@@ -495,34 +894,148 @@ function updateFavoriteButton() {
 
 }
 
-/* ================= EPISODES ================= */
 
-function renderEpisodes() {
+$("#detailsFavorite")?.addEventListener("click",()=>{
 
-  const grid =
-    document.getElementById(
-      "episodeGrid"
+  if(currentAnime){
+
+    toggleFavorite(currentAnime.id);
+
+  }
+
+});
+
+
+$("#detailsPlay")?.addEventListener("click",()=>{
+
+  if(currentAnime){
+
+    openWatch(
+      currentAnime.id,
+      1,
+      1
     );
 
-  if (!currentAnime) return;
+  }
 
-  const total =
-    currentAnime.episodes;
+});
 
-  let html = "";
 
-  for (let i = 1; i <= total; i++) {
+/* =========================================================
+   SEASONS
+========================================================= */
 
-    const watched =
-      watchProgress[currentAnime.id] >= i;
+function getSeasonCount(anime){
+
+  if(anime.type==="Movie") return 1;
+
+  if(anime.episodes>=100) return 3;
+
+  if(anime.episodes>=40) return 3;
+
+  if(anime.episodes>=20) return 2;
+
+  return 1;
+
+}
+
+
+function createSeasonSelect(anime){
+
+  const select =
+    $("#seasonSelect");
+
+  if(!select) return;
+
+  const seasons =
+    getSeasonCount(anime);
+
+  select.innerHTML =
+    Array.from(
+      {length:seasons},
+      (_,i)=>`
+        <option value="${i+1}">
+          Season ${i+1}
+        </option>
+      `
+    ).join("");
+
+}
+
+
+$("#seasonSelect")?.addEventListener("change",event=>{
+
+  currentSeason =
+    Number(event.target.value);
+
+  renderEpisodes();
+
+});
+
+
+function getEpisodesForSeason(anime,season){
+
+  if(anime.type==="Movie") return 1;
+
+  const seasons =
+    getSeasonCount(anime);
+
+  return Math.ceil(
+    anime.episodes / seasons
+  );
+
+}
+
+
+function episodeKey(
+  animeId,
+  season,
+  episode
+){
+
+  return `${animeId}-${season}-${episode}`;
+
+}
+
+
+function renderEpisodes(){
+
+  if(!currentAnime) return;
+
+  const grid =
+    $("#episodeGrid");
+
+  if(!grid) return;
+
+  const count =
+    getEpisodesForSeason(
+      currentAnime,
+      currentSeason
+    );
+
+  let html="";
+
+  for(let i=1;i<=count;i++){
+
+    const key =
+      episodeKey(
+        currentAnime.id,
+        currentSeason,
+        i
+      );
+
+    const isWatched =
+      watched[key];
 
     html += `
 
       <button
-        class="episode-button ${watched ? "watched" : ""}"
+        class="episode-button ${isWatched ? "watched":""}"
+        data-season="${currentSeason}"
         data-episode="${i}"
       >
-        EP ${i}
+        ${isWatched ? "✓ " : ""}
+        Episode ${i}
       </button>
 
     `;
@@ -531,472 +1044,354 @@ function renderEpisodes() {
 
   grid.innerHTML = html;
 
+  $$(".episode-button").forEach(button=>{
+
+    button.addEventListener("click",()=>{
+
+      openWatch(
+        currentAnime.id,
+        Number(button.dataset.season),
+        Number(button.dataset.episode)
+      );
+
+    });
+
+  });
+
 }
 
-/* ================= WATCH ================= */
 
-function openWatch(id, episode = 1) {
+/* =========================================================
+   WATCH
+========================================================= */
+
+function openWatch(
+  animeId,
+  season,
+  episode
+){
 
   const anime =
-    getAnime(id);
+    animeDatabase.find(a=>a.id===animeId);
 
-  if (!anime) return;
+  if(!anime) return;
 
   currentAnime = anime;
 
-  currentEpisode =
-    Math.max(
-      1,
-      Math.min(
-        Number(episode),
-        anime.episodes
-      )
+  currentSeason = season;
+
+  currentEpisode = episode;
+
+  markWatched(
+    animeId,
+    season,
+    episode
+  );
+
+  addHistory(animeId);
+
+  $("#watchTitle").textContent =
+    anime.title;
+
+  $("#watchAnime").textContent =
+    anime.title;
+
+  $("#watchEpisode").textContent =
+    `Season ${season} • Episode ${episode}`;
+
+  $("#watchStatus").textContent =
+    "Demo player — connect your video source here.";
+
+  $("#watchPage")?.classList.add("show");
+
+  document.body.classList.add("no-scroll");
+
+}
+
+
+function closeWatch(){
+
+  $("#watchPage")?.classList.remove("show");
+
+  document.body.classList.remove("no-scroll");
+
+  renderAll();
+
+}
+
+
+$("#closeWatch")?.addEventListener(
+  "click",
+  closeWatch
+);
+
+
+function markWatched(
+  animeId,
+  season,
+  episode
+){
+
+  const key =
+    episodeKey(
+      animeId,
+      season,
+      episode
     );
 
-  watchProgress[anime.id] =
-    currentEpisode;
+  watched[key]=true;
 
-  saveProgress();
-
-  document
-    .getElementById("watchPage")
-    .classList.add("show");
-
-  document.body.style.overflow =
-    "hidden";
-
-  updateWatchUI();
-
-  renderContinue();
+  save(
+    STORAGE.watched,
+    watched
+  );
 
 }
 
-/* ================= WATCH UI ================= */
 
-function updateWatchUI() {
+function addHistory(id){
 
-  document.getElementById(
-    "watchTitle"
-  ).textContent =
-    `${currentAnime.title} - Episode ${currentEpisode}`;
+  history =
+    history.filter(item=>item!==id);
 
-  document.getElementById(
-    "watchAnime"
-  ).textContent =
-    currentAnime.title;
+  history.unshift(id);
 
-  document.getElementById(
-    "watchEpisode"
-  ).textContent =
-    `Episode ${currentEpisode} / ${currentAnime.episodes}`;
+  history =
+    history.slice(0,10);
+
+  save(
+    STORAGE.history,
+    history
+  );
 
 }
 
-/* ================= NEXT ================= */
 
-function nextEpisode() {
+/* =========================================================
+   PREVIOUS / NEXT
+========================================================= */
 
-  if (!currentAnime) return;
+$("#previousEpisode")?.addEventListener(
+  "click",
+  ()=>{
 
-  if (
-    currentEpisode <
-    currentAnime.episodes
-  ) {
+    if(!currentAnime) return;
 
-    currentEpisode++;
+    if(currentEpisode<=1){
 
-    watchProgress[currentAnime.id] =
-      currentEpisode;
+      if(currentSeason>1){
 
-    saveProgress();
+        currentSeason--;
 
-    updateWatchUI();
+        currentEpisode =
+          getEpisodesForSeason(
+            currentAnime,
+            currentSeason
+          );
+
+      }else{
+
+        toast("This is the first episode");
+
+        return;
+
+      }
+
+    }else{
+
+      currentEpisode--;
+
+    }
+
+    openWatch(
+      currentAnime.id,
+      currentSeason,
+      currentEpisode
+    );
 
   }
+);
 
-}
 
-/* ================= PREVIOUS ================= */
+$("#nextEpisode")?.addEventListener(
+  "click",
+  ()=>{
 
-function previousEpisode() {
+    if(!currentAnime) return;
 
-  if (!currentAnime) return;
+    const max =
+      getEpisodesForSeason(
+        currentAnime,
+        currentSeason
+      );
 
-  if (currentEpisode > 1) {
+    if(currentEpisode<max){
 
-    currentEpisode--;
+      currentEpisode++;
 
-    watchProgress[currentAnime.id] =
-      currentEpisode;
+    }else{
 
-    saveProgress();
+      const seasons =
+        getSeasonCount(
+          currentAnime
+        );
 
-    updateWatchUI();
+      if(currentSeason<seasons){
+
+        currentSeason++;
+
+        currentEpisode=1;
+
+      }else{
+
+        toast("You reached the last episode");
+
+        return;
+
+      }
+
+    }
+
+    openWatch(
+      currentAnime.id,
+      currentSeason,
+      currentEpisode
+    );
 
   }
+);
+
+
+/* =========================================================
+   SEARCH
+========================================================= */
+
+function openSearch(){
+
+  $("#searchModal")?.classList.add("show");
+
+  document.body.classList.add("no-scroll");
+
+  setTimeout(()=>{
+
+    $("#searchInput")?.focus();
+
+  },100);
 
 }
 
-/* ================= SEARCH ================= */
 
-function openSearch() {
+function closeSearch(){
 
-  document
-    .getElementById("searchModal")
-    .classList.add("show");
+  $("#searchModal")?.classList.remove("show");
 
-  document
-    .getElementById("searchInput")
-    .focus();
+  document.body.classList.remove("no-scroll");
 
 }
 
-function closeSearch() {
 
-  document
-    .getElementById("searchModal")
-    .classList.remove("show");
+$("#searchButton")?.addEventListener(
+  "click",
+  openSearch
+);
 
-}
+$("#heroSearch")?.addEventListener(
+  "click",
+  openSearch
+);
 
-function searchAnime() {
+$("#ctaSearch")?.addEventListener(
+  "click",
+  openSearch
+);
+
+$("#closeSearch")?.addEventListener(
+  "click",
+  closeSearch
+);
+
+
+function searchAnime(){
 
   const query =
-    document
-      .getElementById("searchInput")
-      .value
+    $("#searchInput")?.value
       .trim()
       .toLowerCase();
 
   const results =
-    animeList.filter(anime => {
+    $("#searchResults");
 
-      const text =
-        `${anime.title}
-        ${anime.genres.join(" ")}
-        ${anime.description}`
-        .toLowerCase();
+  if(!results) return;
 
-      return text.includes(query);
+  if(!query){
+
+    results.innerHTML =
+      `<p style="color:#999;margin-top:20px">
+        Type an anime name to search.
+       </p>`;
+
+    return;
+
+  }
+
+  const matches =
+    animeDatabase.filter(anime=>{
+
+      const title =
+        anime.title.toLowerCase();
+
+      const genres =
+        anime.genre.join(" ").toLowerCase();
+
+      return (
+        title.includes(query) ||
+        genres.includes(query)
+      );
 
     });
 
-  const box =
-    document.getElementById(
-      "searchResults"
-    );
+  if(!matches.length){
 
-  if (!query) {
-
-    box.innerHTML =
-      "<p>Type an anime name.</p>";
-
-    return;
-
-  }
-
-  if (!results.length) {
-
-    box.innerHTML =
-      "<p>No anime found.</p>";
+    results.innerHTML =
+      `<div class="empty-state">
+        <div>🔍</div>
+        <h3>No Results</h3>
+        <p>We couldn't find that anime.</p>
+       </div>`;
 
     return;
 
   }
 
-  box.innerHTML =
-    results.map(anime => `
+  results.innerHTML =
+    matches.map(anime=>`
 
       <div
         class="search-result"
         data-search-id="${anime.id}"
       >
-        <strong>
-          ${escapeHTML(anime.title)}
-        </strong>
 
-        <br>
-
-        <small>
-          ⭐ ${anime.rating}
-          • ${anime.year}
-        </small>
-
-      </div>
-
-    `).join("");
-
-}
-
-/* ================= THEME ================= */
-
-function loadTheme() {
-
-  const theme =
-    localStorage.getItem(
-      "yusufTheme"
-    );
-
-  if (theme === "light") {
-
-    document.body.classList.add("light");
-
-    document.getElementById(
-      "themeButton"
-    ).textContent = "☀️";
-
-  }
-
-}
-
-function toggleTheme() {
-
-  document.body.classList.toggle("light");
-
-  const light =
-    document.body.classList.contains("light");
-
-  localStorage.setItem(
-    "yusufTheme",
-    light ? "light" : "dark"
-  );
-
-  document.getElementById(
-    "themeButton"
-  ).textContent =
-    light ? "☀️" : "🌙";
-
-}
-
-/* ================= LANGUAGE ================= */
-
-const languages = {
-
-  en: {
-    name: "English"
-  },
-
-  ku: {
-    name: "کوردی"
-  },
-
-  ar: {
-    name: "العربية"
-  },
-
-  tr: {
-    name: "Türkçe"
-  },
-
-  ja: {
-    name: "日本語"
-  },
-
-  es: {
-    name: "Español"
-  },
-
-  fr: {
-    name: "Français"
-  },
-
-  de: {
-    name: "Deutsch"
-  }
-
-};
-
-function selectLanguage(language) {
-
-  const data =
-    languages[language];
-
-  if (!data) return;
-
-  document.getElementById(
-    "currentLanguage"
-  ).textContent =
-    data.name;
-
-  localStorage.setItem(
-    "yusufLanguage",
-    language
-  );
-
-  document
-    .querySelectorAll(
-      ".language-menu button"
-    )
-    .forEach(button => {
-
-      button.classList.toggle(
-        "active",
-        button.dataset.language === language
-      );
-
-    });
-
-}
-
-function loadLanguage() {
-
-  const language =
-    localStorage.getItem(
-      "yusufLanguage"
-    ) || "en";
-
-  selectLanguage(language);
-
-}
-
-/* ================= ADMIN LOGIN ================= */
-
-/*
-  DEMO LOGIN
-
-  Username: admin
-  Password: 1234
-*/
-
-function openAdmin() {
-
-  const loggedIn =
-    localStorage.getItem(
-      "yusufAdmin"
-    ) === "true";
-
-  if (loggedIn) {
-
-    openAdminPanel();
-
-  } else {
-
-    document
-      .getElementById("loginModal")
-      .classList.add("show");
-
-  }
-
-}
-
-function loginAdmin() {
-
-  const username =
-    document.getElementById(
-      "adminUsername"
-    ).value.trim();
-
-  const password =
-    document.getElementById(
-      "adminPassword"
-    ).value;
-
-  if (
-    username === "admin" &&
-    password === "1234"
-  ) {
-
-    localStorage.setItem(
-      "yusufAdmin",
-      "true"
-    );
-
-    document
-      .getElementById("loginModal")
-      .classList.remove("show");
-
-    openAdminPanel();
-
-  } else {
-
-    document.getElementById(
-      "loginError"
-    ).textContent =
-      "❌ Wrong username or password.";
-
-  }
-
-}
-
-/* ================= ADMIN PANEL ================= */
-
-function openAdminPanel() {
-
-  document
-    .getElementById("adminPanel")
-    .classList.add("show");
-
-  document.body.style.overflow =
-    "hidden";
-
-  renderAdminList();
-
-  updateStats();
-
-}
-
-function closeAdminPanel() {
-
-  document
-    .getElementById("adminPanel")
-    .classList.remove("show");
-
-  document.body.style.overflow =
-    "";
-
-}
-
-/* ================= ADMIN LIST ================= */
-
-function renderAdminList() {
-
-  const container =
-    document.getElementById(
-      "adminAnimeList"
-    );
-
-  if (!container) return;
-
-  container.innerHTML =
-    animeList.map(anime => `
-
-      <div class="admin-item">
-
-        ${
-          anime.image
-          ? `<img src="${escapeHTML(anime.image)}" alt="">`
-          : `<div class="admin-placeholder">
-              ${escapeHTML(anime.title.charAt(0))}
-             </div>`
-        }
-
-        <div class="admin-item-info">
+        <div class="search-result-poster"
+          ${
+            anime.poster
+              ? `style="background-image:url('${escapeAttribute(anime.poster)}')"`
+              : ""
+          }
+        ></div>
+
+        <div>
 
           <strong>
             ${escapeHTML(anime.title)}
           </strong>
 
-          <span>
+          <p style="color:#999;margin-top:5px">
             ${anime.year}
-            • ⭐ ${anime.rating}
-            • ${anime.episodes} Episodes
-          </span>
-
-        </div>
-
-        <div class="admin-item-actions">
-
-          <button
-            data-edit="${anime.id}"
-          >
-            ✏️
-          </button>
-
-          <button
-            data-delete="${anime.id}"
-          >
-            🗑️
-          </button>
+            •
+            ⭐ ${anime.rating}
+            •
+            ${anime.type}
+          </p>
 
         </div>
 
@@ -1004,888 +1399,857 @@ function renderAdminList() {
 
     `).join("");
 
-}
+  $$("[data-search-id]").forEach(item=>{
 
-/* ================= ADMIN SAVE ================= */
-
-function saveAnimeForm() {
-
-  const title =
-    document.getElementById(
-      "animeTitle"
-    ).value.trim();
-
-  const image =
-    document.getElementById(
-      "animeImage"
-    ).value.trim();
-
-  const year =
-    Number(
-      document.getElementById(
-        "animeYear"
-      ).value
-    );
-
-  const rating =
-    Number(
-      document.getElementById(
-        "animeRating"
-      ).value
-    );
-
-  const type =
-    document.getElementById(
-      "animeType"
-    ).value;
-
-  const genreText =
-    document.getElementById(
-      "animeGenre"
-    ).value;
-
-  const description =
-    document.getElementById(
-      "animeDescription"
-    ).value.trim();
-
-  const episodes =
-    Number(
-      document.getElementById(
-        "animeEpisodes"
-      ).value
-    );
-
-  if (
-    !title ||
-    !year ||
-    !rating ||
-    !episodes
-  ) {
-
-    alert(
-      "Please fill the required fields."
-    );
-
-    return;
-
-  }
-
-  const genres =
-    genreText
-      .split(",")
-      .map(item => item.trim())
-      .filter(Boolean);
-
-  if (editingId !== null) {
-
-    const anime =
-      getAnime(editingId);
-
-    if (!anime) return;
-
-    anime.title = title;
-    anime.image = image;
-    anime.year = year;
-    anime.rating = rating;
-    anime.type = type;
-    anime.genres =
-      genres.length
-        ? genres
-        : ["Action"];
-    anime.description =
-      description;
-    anime.episodes = episodes;
-
-  } else {
-
-    animeList.push({
-
-      id:
-        Date.now(),
-
-      title,
-
-      image,
-
-      year,
-
-      rating,
-
-      type,
-
-      genres:
-        genres.length
-          ? genres
-          : ["Action"],
-
-      description,
-
-      episodes
-
-    });
-
-  }
-
-  saveAnime();
-
-  resetForm();
-
-  renderAll();
-
-}
-
-/* ================= EDIT ================= */
-
-function editAnime(id) {
-
-  const anime =
-    getAnime(id);
-
-  if (!anime) return;
-
-  editingId =
-    Number(id);
-
-  document.getElementById(
-    "formTitle"
-  ).textContent =
-    "✏️ Edit Anime";
-
-  document.getElementById(
-    "animeTitle"
-  ).value =
-    anime.title;
-
-  document.getElementById(
-    "animeImage"
-  ).value =
-    anime.image;
-
-  document.getElementById(
-    "animeYear"
-  ).value =
-    anime.year;
-
-  document.getElementById(
-    "animeRating"
-  ).value =
-    anime.rating;
-
-  document.getElementById(
-    "animeType"
-  ).value =
-    anime.type;
-
-  document.getElementById(
-    "animeGenre"
-  ).value =
-    anime.genres.join(", ");
-
-  document.getElementById(
-    "animeDescription"
-  ).value =
-    anime.description;
-
-  document.getElementById(
-    "animeEpisodes"
-  ).value =
-    anime.episodes;
-
-  document.getElementById(
-    "cancelEdit"
-  ).classList.remove("hidden");
-
-}
-
-/* ================= DELETE ================= */
-
-function deleteAnime(id) {
-
-  const anime =
-    getAnime(id);
-
-  if (!anime) return;
-
-  const ok =
-    confirm(
-      `Delete "${anime.title}"?`
-    );
-
-  if (!ok) return;
-
-  animeList =
-    animeList.filter(
-      item =>
-        item.id !== Number(id)
-    );
-
-  favorites =
-    favorites.filter(
-      item =>
-        item !== Number(id)
-    );
-
-  delete watchProgress[id];
-
-  saveAnime();
-  saveFavorites();
-  saveProgress();
-
-  renderAll();
-
-}
-
-/* ================= RESET FORM ================= */
-
-function resetForm() {
-
-  editingId = null;
-
-  document.getElementById(
-    "formTitle"
-  ).textContent =
-    "➕ Add Anime";
-
-  document.querySelectorAll(
-    ".admin-form input, .admin-form textarea"
-  ).forEach(input => {
-
-    input.value = "";
-
-  });
-
-  document.getElementById(
-    "animeType"
-  ).value = "TV";
-
-  document.getElementById(
-    "cancelEdit"
-  ).classList.add("hidden");
-
-}
-
-/* ================= STATS ================= */
-
-function updateStats() {
-
-  document.getElementById(
-    "statAnime"
-  ).textContent =
-    animeList.length;
-
-  document.getElementById(
-    "statFavorites"
-  ).textContent =
-    favorites.length;
-
-  document.getElementById(
-    "statEpisodes"
-  ).textContent =
-    animeList.reduce(
-      (sum, anime) =>
-        sum + Number(anime.episodes || 0),
-      0
-    );
-
-}
-
-/* ================= RESET DEFAULT ================= */
-
-function resetDefaultAnime() {
-
-  const ok =
-    confirm(
-      "Reset anime library to default?"
-    );
-
-  if (!ok) return;
-
-  animeList =
-    JSON.parse(
-      JSON.stringify(defaultAnime)
-    );
-
-  favorites = [];
-
-  watchProgress = {};
-
-  saveAnime();
-  saveFavorites();
-  saveProgress();
-
-  renderAll();
-
-}
-
-/* ================= MOBILE MENU ================= */
-
-function openMobileMenu() {
-
-  document
-    .getElementById("mobileMenu")
-    .classList.add("open");
-
-}
-
-function closeMobileMenu() {
-
-  document
-    .getElementById("mobileMenu")
-    .classList.remove("open");
-
-}
-
-/* ================= EVENTS ================= */
-
-document.addEventListener(
-  "click",
-  event => {
-
-    const favorite =
-      event.target.closest(
-        "[data-favorite]"
-      );
-
-    if (favorite) {
-
-      event.stopPropagation();
-
-      toggleFavorite(
-        favorite.dataset.favorite
-      );
-
-      return;
-
-    }
-
-    const play =
-      event.target.closest(
-        "[data-play]"
-      );
-
-    if (play) {
-
-      event.stopPropagation();
-
-      openWatch(
-        play.dataset.play
-      );
-
-      return;
-
-    }
-
-    const card =
-      event.target.closest(
-        ".anime-card"
-      );
-
-    if (card) {
-
-      openDetails(
-        card.dataset.id
-      );
-
-      return;
-
-    }
-
-    const episode =
-      event.target.closest(
-        "[data-episode]"
-      );
-
-    if (episode) {
-
-      openWatch(
-        currentAnime.id,
-        Number(
-          episode.dataset.episode
-        )
-      );
-
-      return;
-
-    }
-
-    const searchResult =
-      event.target.closest(
-        "[data-search-id]"
-      );
-
-    if (searchResult) {
+    item.addEventListener("click",()=>{
 
       closeSearch();
 
       openDetails(
-        searchResult.dataset.searchId
+        Number(item.dataset.searchId)
       );
 
-      return;
+    });
+
+  });
+
+}
+
+
+$("#doSearch")?.addEventListener(
+  "click",
+  searchAnime
+);
+
+
+$("#searchInput")?.addEventListener(
+  "input",
+  searchAnime
+);
+
+
+$("#searchInput")?.addEventListener(
+  "keydown",
+  event=>{
+
+    if(event.key==="Enter"){
+
+      searchAnime();
 
     }
 
-    const edit =
-      event.target.closest(
-        "[data-edit]"
-      );
+    if(event.key==="Escape"){
 
-    if (edit) {
-
-      editAnime(
-        edit.dataset.edit
-      );
-
-      return;
+      closeSearch();
 
     }
 
-    const del =
-      event.target.closest(
-        "[data-delete]"
-      );
+  }
+);
 
-    if (del) {
 
-      deleteAnime(
-        del.dataset.delete
-      );
+/* =========================================================
+   GENRES
+========================================================= */
 
-      return;
+$$(".genre-grid button").forEach(button=>{
 
-    }
+  button.addEventListener("click",()=>{
 
     const genre =
-      event.target.closest(
-        "[data-genre]"
+      button.dataset.genre;
+
+    const matches =
+      animeDatabase.filter(anime=>
+        anime.genre.includes(genre)
       );
 
-    if (genre) {
-
-      const name =
-        genre.dataset.genre;
-
-      const results =
-        animeList.filter(
-          anime =>
-            anime.genres.includes(name)
-        );
-
-      renderGrid(
-        "trendingGrid",
-        results
-      );
-
-      document
-        .getElementById("trending")
-        .scrollIntoView({
-          behavior: "smooth"
-        });
-
-    }
-
-  }
-);
-
-/* SEARCH */
-
-document
-  .getElementById("searchButton")
-  .addEventListener(
-    "click",
-    openSearch
-  );
-
-document
-  .getElementById("heroSearch")
-  .addEventListener(
-    "click",
-    openSearch
-  );
-
-document
-  .getElementById("ctaSearch")
-  .addEventListener(
-    "click",
-    openSearch
-  );
-
-document
-  .getElementById("closeSearch")
-  .addEventListener(
-    "click",
-    closeSearch
-  );
-
-document
-  .getElementById("doSearch")
-  .addEventListener(
-    "click",
-    searchAnime
-  );
-
-document
-  .getElementById("searchInput")
-  .addEventListener(
-    "input",
-    searchAnime
-  );
-
-/* THEME */
-
-document
-  .getElementById("themeButton")
-  .addEventListener(
-    "click",
-    toggleTheme
-  );
-
-/* LANGUAGE */
-
-document
-  .getElementById("languageButton")
-  .addEventListener(
-    "click",
-    event => {
-
-      event.stopPropagation();
-
-      document
-        .getElementById("languageMenu")
-        .classList.toggle("show");
-
-    }
-  );
-
-document
-  .querySelectorAll(
-    "[data-language]"
-  )
-  .forEach(button => {
-
-    button.addEventListener(
-      "click",
-      () => {
-
-        selectLanguage(
-          button.dataset.language
-        );
-
-        document
-          .getElementById(
-            "languageMenu"
-          )
-          .classList.remove("show");
-
-      }
+    openGenreResults(
+      genre,
+      matches
     );
 
   });
 
-/* ADMIN */
+});
 
-document
-  .getElementById("adminButton")
-  .addEventListener(
-    "click",
-    openAdmin
-  );
 
-document
-  .getElementById("mobileAdmin")
-  .addEventListener(
-    "click",
-    () => {
+function openGenreResults(
+  genre,
+  matches
+){
 
-      closeMobileMenu();
+  const modal =
+    $("#searchModal");
 
-      openAdmin();
+  const input =
+    $("#searchInput");
 
-    }
-  );
+  const results =
+    $("#searchResults");
 
-document
-  .getElementById("closeLogin")
-  .addEventListener(
-    "click",
-    () => {
+  modal?.classList.add("show");
 
-      document
-        .getElementById("loginModal")
-        .classList.remove("show");
+  document.body.classList.add("no-scroll");
 
-    }
-  );
+  if(input){
 
-document
-  .getElementById("loginButton")
-  .addEventListener(
-    "click",
-    loginAdmin
-  );
-
-document
-  .getElementById("logoutButton")
-  .addEventListener(
-    "click",
-    () => {
-
-      localStorage.removeItem(
-        "yusufAdmin"
-      );
-
-      closeAdminPanel();
-
-    }
-  );
-
-document
-  .getElementById("closeAdmin")
-  .addEventListener(
-    "click",
-    closeAdminPanel
-  );
-
-document
-  .getElementById("saveAnime")
-  .addEventListener(
-    "click",
-    saveAnimeForm
-  );
-
-document
-  .getElementById("cancelEdit")
-  .addEventListener(
-    "click",
-    resetForm
-  );
-
-document
-  .getElementById("resetAnime")
-  .addEventListener(
-    "click",
-    resetDefaultAnime
-  );
-
-/* DETAILS */
-
-document
-  .getElementById("closeDetails")
-  .addEventListener(
-    "click",
-    closeDetails
-  );
-
-document
-  .getElementById("detailsPlay")
-  .addEventListener(
-    "click",
-    () => {
-
-      if (currentAnime) {
-
-        openWatch(
-          currentAnime.id,
-          watchProgress[currentAnime.id] || 1
-        );
-
-      }
-
-    }
-  );
-
-document
-  .getElementById("detailsFavorite")
-  .addEventListener(
-    "click",
-    () => {
-
-      if (currentAnime) {
-
-        toggleFavorite(
-          currentAnime.id
-        );
-
-      }
-
-    }
-  );
-
-document
-  .getElementById("seasonSelect")
-  .addEventListener(
-    "change",
-    renderEpisodes
-  );
-
-/* WATCH */
-
-document
-  .getElementById("closeWatch")
-  .addEventListener(
-    "click",
-    () => {
-
-      document
-        .getElementById("watchPage")
-        .classList.remove("show");
-
-      document.body.style.overflow = "";
-
-    }
-  );
-
-document
-  .getElementById("nextEpisode")
-  .addEventListener(
-    "click",
-    nextEpisode
-  );
-
-document
-  .getElementById("previousEpisode")
-  .addEventListener(
-    "click",
-    previousEpisode
-  );
-
-/* MOBILE */
-
-document
-  .getElementById("menuButton")
-  .addEventListener(
-    "click",
-    openMobileMenu
-  );
-
-document
-  .getElementById("closeMenu")
-  .addEventListener(
-    "click",
-    closeMobileMenu
-  );
-
-/* FAVORITE HEADER */
-
-document
-  .getElementById("favoriteHeader")
-  .addEventListener(
-    "click",
-    () => {
-
-      document
-        .getElementById("favorites")
-        .scrollIntoView({
-          behavior: "smooth"
-        });
-
-    }
-  );
-
-/* NAV */
-
-document
-  .querySelectorAll(
-    ".desktop-nav a"
-  )
-  .forEach(link => {
-
-    link.addEventListener(
-      "click",
-      () => {
-
-        document
-          .querySelectorAll(
-            ".desktop-nav a"
-          )
-          .forEach(item =>
-            item.classList.remove("active")
-          );
-
-        link.classList.add("active");
-
-      }
-    );
-
-  });
-
-/* TOP */
-
-const topButton =
-  document.getElementById(
-    "topButton"
-  );
-
-window.addEventListener(
-  "scroll",
-  () => {
-
-    if (window.scrollY > 500) {
-
-      topButton.classList.add("show");
-
-    } else {
-
-      topButton.classList.remove("show");
-
-    }
+    input.value=genre;
 
   }
-);
 
-topButton.addEventListener(
+  if(results){
+
+    results.innerHTML =
+      matches.length
+        ? matches.map(anime=>`
+
+            <div
+              class="search-result"
+              data-search-id="${anime.id}"
+            >
+
+              <div class="search-result-poster"></div>
+
+              <div>
+
+                <strong>
+                  ${escapeHTML(anime.title)}
+                </strong>
+
+                <p style="color:#999;margin-top:5px">
+                  ${anime.genre.join(" • ")}
+                </p>
+
+              </div>
+
+            </div>
+
+          `).join("")
+        : `<div class="empty-state">
+             <div>😔</div>
+             <h3>No Anime</h3>
+             <p>No anime found in ${escapeHTML(genre)}.</p>
+           </div>`;
+
+    $$("[data-search-id]").forEach(item=>{
+
+      item.addEventListener("click",()=>{
+
+        closeSearch();
+
+        openDetails(
+          Number(item.dataset.searchId)
+        );
+
+      });
+
+    });
+
+  }
+
+}
+
+
+/* =========================================================
+   ADMIN LOGIN
+========================================================= */
+
+function openAdmin(){
+
+  const loggedIn =
+    localStorage.getItem(STORAGE.admin)==="true";
+
+  if(loggedIn){
+
+    showAdminPanel();
+
+  }else{
+
+    $("#adminLogin")?.classList.add("show");
+
+    document.body.classList.add("no-scroll");
+
+  }
+
+}
+
+
+$("#adminButton")?.addEventListener(
   "click",
-  () => {
+  openAdmin
+);
+
+
+$("#mobileAdmin")?.addEventListener(
+  "click",
+  ()=>{
+
+    $("#mobileMenu")?.classList.remove("open");
+
+    openAdmin();
+
+  }
+);
+
+
+$("#closeAdminLogin")?.addEventListener(
+  "click",
+  ()=>{
+
+    $("#adminLogin")?.classList.remove("show");
+
+    document.body.classList.remove("no-scroll");
+
+  }
+);
+
+
+/* =========================================================
+   ADMIN LOGIN FORM
+========================================================= */
+
+/*
+  DEMO LOGIN:
+
+  Username: admin
+  Password: 123456
+
+  For a real website, NEVER keep admin credentials
+  in front-end JavaScript.
+*/
+
+$("#adminLoginForm")?.addEventListener(
+  "submit",
+  event=>{
+
+    event.preventDefault();
+
+    const username =
+      $("#adminUsername").value.trim();
+
+    const password =
+      $("#adminPassword").value;
+
+    const error =
+      $("#loginError");
+
+    if(
+      username==="admin" &&
+      password==="123456"
+    ){
+
+      localStorage.setItem(
+        STORAGE.admin,
+        "true"
+      );
+
+      error.textContent="";
+
+      $("#adminLogin")?.classList.remove("show");
+
+      showAdminPanel();
+
+      toast("Admin login successful");
+
+    }else{
+
+      error.textContent =
+        "Incorrect username or password.";
+
+    }
+
+  }
+);
+
+
+/* =========================================================
+   ADMIN PANEL
+========================================================= */
+
+function showAdminPanel(){
+
+  $("#adminPanel")?.classList.add("show");
+
+  document.body.classList.add("no-scroll");
+
+  updateStats();
+
+  renderAdminAnime();
+
+}
+
+
+function closeAdminPanel(){
+
+  $("#adminPanel")?.classList.remove("show");
+
+  document.body.classList.remove("no-scroll");
+
+}
+
+
+$("#adminHomeButton")?.addEventListener(
+  "click",
+  closeAdminPanel
+);
+
+
+$("#adminLogout")?.addEventListener(
+  "click",
+  ()=>{
+
+    localStorage.removeItem(
+      STORAGE.admin
+    );
+
+    closeAdminPanel();
+
+    toast("Logged out");
+
+  }
+);
+
+
+/* =========================================================
+   ADMIN TABS
+========================================================= */
+
+$$(".admin-tab").forEach(button=>{
+
+  button.addEventListener("click",()=>{
+
+    const tab =
+      button.dataset.adminTab;
+
+    $$(".admin-tab").forEach(item=>
+      item.classList.remove("active")
+    );
+
+    $$(".admin-tab-content").forEach(item=>
+      item.classList.remove("active")
+    );
+
+    button.classList.add("active");
+
+    const content =
+      $(`#admin${capitalize(tab)}Tab`);
+
+    content?.classList.add("active");
+
+  });
+
+});
+
+
+function capitalize(text){
+
+  return text.charAt(0).toUpperCase()+
+    text.slice(1);
+
+}
+
+
+/* =========================================================
+   ADMIN ADD TAB
+========================================================= */
+
+$("#adminAddAnime")?.addEventListener(
+  "click",
+  ()=>{
+
+    switchAdminTab("add");
+
+  }
+);
+
+
+function switchAdminTab(tab){
+
+  const button =
+    $(`.admin-tab[data-admin-tab="${tab}"]`);
+
+  button?.click();
+
+}
+
+
+/* =========================================================
+   ADD ANIME
+========================================================= */
+
+$("#addAnimeForm")?.addEventListener(
+  "submit",
+  event=>{
+
+    event.preventDefault();
+
+    const title =
+      $("#animeTitle").value.trim();
+
+    if(!title){
+
+      toast("Please enter an anime title");
+
+      return;
+
+    }
+
+    const newAnime={
+
+      id:Date.now(),
+
+      title,
+
+      type:
+        $("#animeType").value,
+
+      year:
+        Number($("#animeYear").value)||2026,
+
+      rating:
+        Number($("#animeRating").value)||8,
+
+      episodes:
+        Number($("#animeEpisodes").value)||12,
+
+      genre:[
+        $("#animeGenre").value
+      ],
+
+      description:
+        $("#animeDescription").value.trim() ||
+        "A new anime added to YUSUF ANIME.",
+
+      poster:
+        $("#animePoster").value.trim(),
+
+      trending:false,
+
+      latest:true,
+
+      top:false
+
+    };
+
+    animeDatabase.push(newAnime);
+
+    save(
+      STORAGE.anime,
+      animeDatabase
+    );
+
+    event.target.reset();
+
+    $("#animeYear").value=2026;
+
+    $("#animeRating").value=8.5;
+
+    $("#animeEpisodes").value=12;
+
+    renderAll();
+
+    switchAdminTab("anime");
+
+    toast("Anime added successfully 🎬");
+
+  }
+);
+
+
+/* =========================================================
+   ADMIN ANIME LIST
+========================================================= */
+
+function renderAdminAnime(){
+
+  const list =
+    $("#adminAnimeList");
+
+  if(!list) return;
+
+  list.innerHTML =
+    animeDatabase.map(anime=>`
+
+      <div class="admin-anime-row">
+
+        <div class="admin-anime-info">
+
+          <div
+            class="admin-anime-thumb"
+            ${
+              anime.poster
+                ? `style="background-image:url('${escapeAttribute(anime.poster)}')"`
+                : ""
+            }
+          ></div>
+
+          <div>
+
+            <strong>
+              ${escapeHTML(anime.title)}
+            </strong>
+
+            <small>
+              ${anime.type}
+              •
+              ${anime.year}
+              •
+              ⭐ ${anime.rating}
+            </small>
+
+          </div>
+
+        </div>
+
+        <button
+          class="delete-anime"
+          data-delete-anime="${anime.id}"
+        >
+          🗑️ Delete
+        </button>
+
+      </div>
+
+    `).join("");
+
+
+  $$("[data-delete-anime]").forEach(button=>{
+
+    button.addEventListener("click",()=>{
+
+      deleteAnime(
+        Number(button.dataset.deleteAnime)
+      );
+
+    });
+
+  });
+
+}
+
+
+/* =========================================================
+   DELETE ANIME
+========================================================= */
+
+function deleteAnime(id){
+
+  const anime =
+    animeDatabase.find(a=>a.id===id);
+
+  if(!anime) return;
+
+  const confirmed =
+    confirm(
+      `Delete "${anime.title}"?`
+    );
+
+  if(!confirmed) return;
+
+  animeDatabase =
+    animeDatabase.filter(a=>a.id!==id);
+
+  favorites =
+    favorites.filter(a=>a!==id);
+
+  history =
+    history.filter(a=>a!==id);
+
+  save(STORAGE.anime,animeDatabase);
+
+  save(STORAGE.favorites,favorites);
+
+  save(STORAGE.history,history);
+
+  renderAll();
+
+  toast("Anime deleted");
+
+}
+
+
+/* =========================================================
+   ADMIN STATISTICS
+========================================================= */
+
+function updateStats(){
+
+  const animeCount =
+    $("#statAnime");
+
+  const favoriteCount =
+    $("#statFavorites");
+
+  const watchedCount =
+    $("#statWatched");
+
+  const episodeCount =
+    $("#statEpisodes");
+
+  if(animeCount){
+
+    animeCount.textContent =
+      animeDatabase.length;
+
+  }
+
+  if(favoriteCount){
+
+    favoriteCount.textContent =
+      favorites.length;
+
+  }
+
+  if(watchedCount){
+
+    watchedCount.textContent =
+      Object.keys(watched).length;
+
+  }
+
+  if(episodeCount){
+
+    const total =
+      animeDatabase.reduce(
+        (sum,anime)=>
+          sum + Number(anime.episodes||0),
+        0
+      );
+
+    episodeCount.textContent =
+      total;
+
+  }
+
+}
+
+
+/* =========================================================
+   ADMIN SETTINGS
+========================================================= */
+
+$("#resetData")?.addEventListener(
+  "click",
+  ()=>{
+
+    const ok =
+      confirm(
+        "Reset the anime database to the default data?"
+      );
+
+    if(!ok) return;
+
+    animeDatabase =
+      DEFAULT_ANIME.map(anime=>({...anime}));
+
+    save(
+      STORAGE.anime,
+      animeDatabase
+    );
+
+    renderAll();
+
+    toast("Database reset");
+
+  }
+);
+
+
+$("#clearFavorites")?.addEventListener(
+  "click",
+  ()=>{
+
+    favorites=[];
+
+    save(
+      STORAGE.favorites,
+      favorites
+    );
+
+    renderAll();
+
+    toast("Favorites cleared");
+
+  }
+);
+
+
+$("#clearHistory")?.addEventListener(
+  "click",
+  ()=>{
+
+    history=[];
+
+    watched={};
+
+    save(
+      STORAGE.history,
+      history
+    );
+
+    save(
+      STORAGE.watched,
+      watched
+    );
+
+    renderAll();
+
+    toast("Watch history cleared");
+
+  }
+);
+
+
+/* =========================================================
+   TOP BUTTON
+========================================================= */
+
+window.addEventListener("scroll",()=>{
+
+  const button =
+    $("#topButton");
+
+  if(!button) return;
+
+  button.classList.toggle(
+    "show",
+    window.scrollY>500
+  );
+
+});
+
+
+$("#topButton")?.addEventListener(
+  "click",
+  ()=>{
 
     window.scrollTo({
-      top: 0,
-      behavior: "smooth"
+      top:0,
+      behavior:"smooth"
     });
 
   }
 );
 
-/* CLOSE LANGUAGE OUTSIDE */
 
-document.addEventListener(
-  "click",
-  () => {
+/* =========================================================
+   ACTIVE NAVIGATION
+========================================================= */
 
-    document
-      .getElementById("languageMenu")
-      .classList.remove("show");
+const navLinks =
+  $$(".desktop-nav a");
+
+window.addEventListener(
+  "scroll",
+  ()=>{
+
+    const sections =
+      ["home","trending","latest","genres","favorites"];
+
+    let current="home";
+
+    sections.forEach(id=>{
+
+      const section =
+        document.getElementById(id);
+
+      if(!section) return;
+
+      const top =
+        section.getBoundingClientRect().top;
+
+      if(top<=150){
+
+        current=id;
+
+      }
+
+    });
+
+    navLinks.forEach(link=>{
+
+      link.classList.toggle(
+        "active",
+        link.getAttribute("href") ===
+        `#${current}`
+      );
+
+    });
 
   }
 );
 
-/* ESC */
+
+/* =========================================================
+   KEYBOARD SHORTCUTS
+========================================================= */
 
 document.addEventListener(
   "keydown",
-  event => {
+  event=>{
 
-    if (event.key !== "Escape") return;
+    if(event.key==="Escape"){
 
-    closeSearch();
-    closeDetails();
-    closeAdminPanel();
-    closeMobileMenu();
+      closeSearch();
 
-    document
-      .getElementById("watchPage")
-      .classList.remove("show");
+      closeDetails();
 
-    document
-      .getElementById("loginModal")
-      .classList.remove("show");
+      closeWatch();
 
-    document.body.style.overflow = "";
+      $("#adminLogin")?.classList.remove("show");
+
+      if(
+        $("#adminPanel")?.classList.contains("show")
+      ){
+
+        closeAdminPanel();
+
+      }
+
+    }
 
   }
 );
 
-/* INITIAL */
 
-loadTheme();
-loadLanguage();
+/* =========================================================
+   SECURITY HELPERS
+========================================================= */
+
+function escapeHTML(value){
+
+  return String(value ?? "")
+    .replaceAll("&","&amp;")
+    .replaceAll("<","&lt;")
+    .replaceAll(">","&gt;")
+    .replaceAll('"',"&quot;")
+    .replaceAll("'","&#039;");
+
+}
+
+
+function escapeAttribute(value){
+
+  return String(value ?? "")
+    .replaceAll('"',"&quot;")
+    .replaceAll("'","&#039;");
+
+}
+
+
+/* =========================================================
+   INITIALIZE
+========================================================= */
+
+renderAll();
+
+updateFavoriteCount();
+
+console.log(
+  "YUSUF ANIME loaded successfully."
+);
+
+console.log(
+  "Admin demo: admin / 123456"
+);
