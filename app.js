@@ -1,16 +1,15 @@
-/* =========================================
-   YUSUF ANIME - MAIN JAVASCRIPT
-========================================= */
+/* =========================================================
+   YUSUF ANIME
+   MAIN JAVASCRIPT
+========================================================= */
 
 "use strict";
 
-
-/* =========================================
+/* =========================================================
    ANIME DATA
-========================================= */
+========================================================= */
 
 const animeData = [
-
   {
     id: 1,
     title: "One Piece",
@@ -21,66 +20,57 @@ const animeData = [
     status: "Ongoing",
     genres: ["Action", "Adventure", "Fantasy", "Shonen"],
     description:
-      "Follow Monkey D. Luffy and his crew on their incredible journey across the Grand Line in search of the legendary One Piece.",
+      "Monkey D. Luffy and his crew sail across the Grand Line in search of the legendary One Piece.",
     image:
-      "https://images.unsplash.com/photo-1578632767115-351597cf2477?w=800",
+      "https://images.unsplash.com/photo-1578632767115-351597cf2477?auto=format&fit=crop&w=600&q=80",
     banner:
-      "https://images.unsplash.com/photo-1578632767115-351597cf2477?w=1600"
+      "https://images.unsplash.com/photo-1534447677768-be436bb09401?auto=format&fit=crop&w=1600&q=80",
+    trending: true,
+    latest: true,
+    topRated: true
   },
 
   {
     id: 2,
-    title: "Naruto Shippuden",
+    title: "Demon Slayer",
     type: "TV",
-    year: 2007,
+    year: 2019,
     rating: 8.7,
-    episodes: 500,
-    status: "Completed",
-    genres: ["Action", "Adventure", "Shonen"],
+    episodes: 63,
+    status: "Ongoing",
+    genres: ["Action", "Fantasy", "Shonen"],
     description:
-      "Naruto returns stronger than ever and faces powerful enemies while fighting to protect his friends and village.",
+      "Tanjiro Kamado joins the Demon Slayer Corps after his family is attacked and his sister becomes a demon.",
     image:
-      "https://images.unsplash.com/photo-1607604276583-eef5c6d1c8f0?w=800",
+      "https://images.unsplash.com/photo-1607604276583-eef5d076aa5f?auto=format&fit=crop&w=600&q=80",
     banner:
-      "https://images.unsplash.com/photo-1607604276583-eef5c6d1c8f0?w=1600"
+      "https://images.unsplash.com/photo-1518709268805-4e9042af9f23?auto=format&fit=crop&w=1600&q=80",
+    trending: true,
+    latest: true,
+    topRated: true
   },
 
   {
     id: 3,
-    title: "Demon Slayer",
+    title: "Naruto",
     type: "TV",
-    year: 2019,
-    rating: 8.6,
-    episodes: 63,
-    status: "Ongoing",
-    genres: ["Action", "Fantasy", "Adventure"],
+    year: 2002,
+    rating: 8.4,
+    episodes: 220,
+    status: "Completed",
+    genres: ["Action", "Adventure", "Shonen"],
     description:
-      "Tanjiro begins a dangerous journey to save his sister and defeat the demons responsible for destroying his family.",
+      "Naruto Uzumaki dreams of becoming Hokage while growing stronger and protecting his friends.",
     image:
-      "https://images.unsplash.com/photo-1614583224978-f3f0c2c1a2a8?w=800",
+      "https://images.unsplash.com/photo-1612036782180-6f0b6cd846fe?auto=format&fit=crop&w=600&q=80",
     banner:
-      "https://images.unsplash.com/photo-1614583224978-f3f0c2c1a2a8?w=1600"
+      "https://images.unsplash.com/photo-1538481199705-c710c4e965fc?auto=format&fit=crop&w=1600&q=80",
+    trending: true,
+    topRated: true
   },
 
   {
     id: 4,
-    title: "Jujutsu Kaisen",
-    type: "TV",
-    year: 2020,
-    rating: 8.6,
-    episodes: 47,
-    status: "Ongoing",
-    genres: ["Action", "Fantasy", "Shonen"],
-    description:
-      "Yuji Itadori enters the world of cursed spirits and sorcery after becoming the host of a powerful curse.",
-    image:
-      "https://images.unsplash.com/photo-1612036782180-6f0b6cd846fe?w=800",
-    banner:
-      "https://images.unsplash.com/photo-1612036782180-6f0b6cd846fe?w=1600"
-  },
-
-  {
-    id: 5,
     title: "Attack on Titan",
     type: "TV",
     year: 2013,
@@ -89,15 +79,17 @@ const animeData = [
     status: "Completed",
     genres: ["Action", "Drama", "Fantasy"],
     description:
-      "Humanity fights for survival behind enormous walls while terrifying Titans threaten everything they know.",
+      "Humanity fights for survival behind enormous walls against terrifying Titans.",
     image:
-      "https://images.unsplash.com/photo-1541562232579-512a21360020?w=800",
+      "https://images.unsplash.com/photo-1578632767115-351597cf2477?auto=format&fit=crop&w=600&q=80",
     banner:
-      "https://images.unsplash.com/photo-1541562232579-512a21360020?w=1600"
+      "https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1600&q=80",
+    trending: true,
+    topRated: true
   },
 
   {
-    id: 6,
+    id: 5,
     title: "My Dress-Up Darling",
     type: "TV",
     year: 2022,
@@ -106,264 +98,381 @@ const animeData = [
     status: "Ongoing",
     genres: ["Romance", "Comedy", "School"],
     description:
-      "A shy student who loves traditional doll making discovers cosplay and forms a surprising friendship with a popular classmate.",
+      "Wakana Gojo and Marin Kitagawa discover a special friendship through their shared love of cosplay.",
     image:
-      "https://images.unsplash.com/photo-1560972550-aba3456b5564?w=800",
+      "https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=600&q=80",
     banner:
-      "https://images.unsplash.com/photo-1560972550-aba3456b5564?w=1600"
+      "https://images.unsplash.com/photo-1492684223066-81342ee5ff30?auto=format&fit=crop&w=1600&q=80",
+    trending: true,
+    latest: true
+  },
+
+  {
+    id: 6,
+    title: "Horimiya",
+    type: "TV",
+    year: 2021,
+    rating: 8.6,
+    episodes: 13,
+    status: "Completed",
+    genres: ["Romance", "Comedy", "School", "Drama"],
+    description:
+      "Two students discover each other's hidden sides and slowly build a beautiful relationship.",
+    image:
+      "https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=600&q=80",
+    banner:
+      "https://images.unsplash.com/photo-1511988617509-a57c8a288659?auto=format&fit=crop&w=1600&q=80",
+    trending: true,
+    topRated: true
   },
 
   {
     id: 7,
-    title: "Horimiya",
+    title: "Jujutsu Kaisen",
     type: "TV",
-    year: 2021,
-    rating: 8.4,
-    episodes: 13,
-    status: "Completed",
-    genres: ["Romance", "Comedy", "School"],
+    year: 2020,
+    rating: 8.7,
+    episodes: 47,
+    status: "Ongoing",
+    genres: ["Action", "Fantasy", "Shonen"],
     description:
-      "Two classmates discover unexpected sides of each other and slowly develop a beautiful relationship.",
+      "Yuji Itadori enters the world of cursed spirits after swallowing a powerful cursed object.",
     image:
-      "https://images.unsplash.com/photo-1518709268805-4e9042af9f23?w=800",
+      "https://images.unsplash.com/photo-1578632767115-351597cf2477?auto=format&fit=crop&w=600&q=80",
     banner:
-      "https://images.unsplash.com/photo-1518709268805-4e9042af9f23?w=1600"
+      "https://images.unsplash.com/photo-1519608487953-e999c86e7455?auto=format&fit=crop&w=1600&q=80",
+    trending: true,
+    latest: true,
+    topRated: true
   },
 
   {
     id: 8,
-    title: "Your Lie in April",
-    type: "TV",
-    year: 2014,
-    rating: 8.6,
-    episodes: 22,
-    status: "Completed",
-    genres: ["Romance", "Drama", "School"],
-    description:
-      "A talented pianist who lost his ability to hear music meets a violinist who changes his world forever.",
-    image:
-      "https://images.unsplash.com/photo-1520523839897-bd0b52f945a0?w=800",
-    banner:
-      "https://images.unsplash.com/photo-1520523839897-bd0b52f945a0?w=1600"
-  },
-
-  {
-    id: 9,
     title: "Spy x Family",
     type: "TV",
     year: 2022,
     rating: 8.5,
     episodes: 37,
     status: "Ongoing",
-    genres: ["Comedy", "Action", "Adventure"],
+    genres: ["Comedy", "Action", "School"],
     description:
-      "A spy, an assassin and a telepath create a fake family while hiding their extraordinary secrets from one another.",
+      "A spy, an assassin and a telepath form an unusual family while hiding their secrets from each other.",
     image:
-      "https://images.unsplash.com/photo-1517849845537-4d257902454a?w=800",
+      "https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=600&q=80",
     banner:
-      "https://images.unsplash.com/photo-1517849845537-4d257902454a?w=1600"
+      "https://images.unsplash.com/photo-1504150558240-0b4fd8946624?auto=format&fit=crop&w=1600&q=80",
+    trending: true,
+    latest: true
+  },
+
+  {
+    id: 9,
+    title: "Your Name",
+    type: "Movie",
+    year: 2016,
+    rating: 8.8,
+    episodes: 1,
+    status: "Completed",
+    genres: ["Romance", "Drama", "Fantasy"],
+    description:
+      "Two teenagers mysteriously begin switching bodies and discover a connection that crosses time and distance.",
+    image:
+      "https://images.unsplash.com/photo-1534447677768-be436bb09401?auto=format&fit=crop&w=600&q=80",
+    banner:
+      "https://images.unsplash.com/photo-1534791547706-7b5758f464a0?auto=format&fit=crop&w=1600&q=80",
+    topRated: true
   },
 
   {
     id: 10,
-    title: "That Time I Got Reincarnated as a Slime",
+    title: "Death Note",
     type: "TV",
-    year: 2018,
-    rating: 8.1,
-    episodes: 72,
-    status: "Ongoing",
-    genres: ["Fantasy", "Adventure", "Comedy"],
+    year: 2006,
+    rating: 8.6,
+    episodes: 37,
+    status: "Completed",
+    genres: ["Drama", "Fantasy"],
     description:
-      "A man is reincarnated in another world as a powerful slime and begins building his own monster nation.",
+      "A mysterious notebook gives Light Yagami the power to kill anyone whose name he writes in it.",
     image:
-      "https://images.unsplash.com/photo-1518709594023-6eab9bab7b23?w=800",
+      "https://images.unsplash.com/photo-1516339901601-2e1b62dc0c45?auto=format&fit=crop&w=600&q=80",
     banner:
-      "https://images.unsplash.com/photo-1518709594023-6eab9bab7b23?w=1600"
+      "https://images.unsplash.com/photo-1518709268805-4e9042af9f23?auto=format&fit=crop&w=1600&q=80",
+    topRated: true
   },
 
   {
     id: 11,
-    title: "The Quintessential Quintuplets",
+    title: "Blue Lock",
     type: "TV",
-    year: 2019,
-    rating: 8.5,
-    episodes: 24,
-    status: "Completed",
-    genres: ["Romance", "Comedy", "School"],
+    year: 2022,
+    rating: 8.3,
+    episodes: 38,
+    status: "Ongoing",
+    genres: ["Action", "Shonen", "Drama"],
     description:
-      "A high school student becomes a tutor for five sisters who all struggle academically and have very different personalities.",
+      "Japan creates an extreme training program designed to produce the world's greatest striker.",
     image:
-      "https://images.unsplash.com/photo-1499750310107-5fef28a66643?w=800",
+      "https://images.unsplash.com/photo-1579952363873-27f3bade9f55?auto=format&fit=crop&w=600&q=80",
     banner:
-      "https://images.unsplash.com/photo-1499750310107-5fef28a66643?w=1600"
+      "https://images.unsplash.com/photo-1461896836934-ffe607ba8211?auto=format&fit=crop&w=1600&q=80",
+    latest: true,
+    trending: true
   },
 
   {
     id: 12,
-    title: "Tonikawa",
+    title: "The Quintessential Quintuplets",
     type: "TV",
-    year: 2020,
-    rating: 7.8,
+    year: 2019,
+    rating: 8.4,
     episodes: 24,
-    status: "Ongoing",
-    genres: ["Romance", "Comedy"],
+    status: "Completed",
+    genres: ["Romance", "Comedy", "School"],
     description:
-      "A young couple unexpectedly gets married and begins discovering what married life is really like.",
+      "A high school student becomes a tutor for five sisters, each with a very different personality.",
     image:
-      "https://images.unsplash.com/photo-1516589178581-6cd7833ae3b2?w=800",
+      "https://images.unsplash.com/photo-1544717305-2782549b5136?auto=format&fit=crop&w=600&q=80",
     banner:
-      "https://images.unsplash.com/photo-1516589178581-6cd7833ae3b2?w=1600"
+      "https://images.unsplash.com/photo-1491438590914-bc09fcaaf77a?auto=format&fit=crop&w=1600&q=80",
+    topRated: true
   }
-
 ];
 
 
-/* =========================================
+/* =========================================================
    STATE
-========================================= */
+========================================================= */
 
-let favorites = JSON.parse(
-  localStorage.getItem("yusufAnimeFavorites") || "[]"
-);
-
-let currentAnime = null;
-
-let currentSearchFilter = "all";
-
-let currentTheme =
-  localStorage.getItem("yusufAnimeTheme") || "dark";
-
-
-/* =========================================
-   DOM
-========================================= */
-
-const $ = (selector) =>
-  document.querySelector(selector);
-
-const $$ = (selector) =>
-  document.querySelectorAll(selector);
+const state = {
+  favorites: loadStorage("yusufAnimeFavorites", []),
+  history: loadStorage("yusufAnimeHistory", []),
+  continueWatching: loadStorage("yusufAnimeContinue", []),
+  theme: localStorage.getItem("yusufAnimeTheme") || "dark",
+  language: localStorage.getItem("yusufAnimeLanguage") || "en",
+  currentAnime: null,
+  currentSeason: 1,
+  searchFilter: "all"
+};
 
 
-/* =========================================
-   INITIALIZE
-========================================= */
+/* =========================================================
+   STORAGE
+========================================================= */
+
+function loadStorage(key, fallback) {
+  try {
+    const value = localStorage.getItem(key);
+
+    if (!value) {
+      return fallback;
+    }
+
+    return JSON.parse(value);
+  } catch (error) {
+    return fallback;
+  }
+}
+
+
+function saveStorage(key, value) {
+  localStorage.setItem(key, JSON.stringify(value));
+}
+
+
+/* =========================================================
+   DOM HELPERS
+========================================================= */
+
+function $(selector) {
+  return document.querySelector(selector);
+}
+
+
+function $$(selector) {
+  return document.querySelectorAll(selector);
+}
+
+
+function show(element) {
+  if (element) {
+    element.classList.remove("hidden");
+  }
+}
+
+
+function hide(element) {
+  if (element) {
+    element.classList.add("hidden");
+  }
+}
+
+
+/* =========================================================
+   INITIALIZATION
+========================================================= */
 
 document.addEventListener("DOMContentLoaded", () => {
 
   initializeTheme();
 
-  renderAnimeSections();
+  initializeLoader();
 
-  updateFavorites();
+  renderAllAnime();
 
-  setupNavigation();
+  initializeNavigation();
 
-  setupSearch();
+  initializeSearch();
 
-  setupLanguage();
+  initializeMobileMenu();
 
-  setupMobileMenu();
+  initializeLanguage();
 
-  setupAnimeDetails();
+  initializeFavorites();
 
-  setupGenreButtons();
+  initializeAnimeDetails();
 
-  setupBackToTop();
+  initializeGenres();
 
-  setupLoader();
+  initializeBackToTop();
 
-  updateStats();
+  updateHeroStats();
+
+  updateFavoritesCount();
+
+  renderContinueWatching();
+
+  setTimeout(() => {
+    document.body.classList.add("app-ready");
+  }, 100);
 
 });
 
 
-/* =========================================
+/* =========================================================
    LOADER
-========================================= */
+========================================================= */
 
-function setupLoader() {
+function initializeLoader() {
 
   const loader = $("#appLoader");
 
   if (!loader) return;
 
-  setTimeout(() => {
+  window.addEventListener("load", () => {
 
-    loader.classList.add("hidden");
+    setTimeout(() => {
 
-  }, 800);
+      loader.classList.add("loaded");
 
-}
+      setTimeout(() => {
+        loader.remove();
+      }, 600);
 
-
-/* =========================================
-   THEME
-========================================= */
-
-function initializeTheme() {
-
-  document.body.dataset.theme = currentTheme;
-
-  const themeButton = $("#themeToggle");
-
-  if (!themeButton) return;
-
-  themeButton.textContent =
-    currentTheme === "dark" ? "☀️" : "🌙";
-
-  themeButton.addEventListener("click", () => {
-
-    currentTheme =
-      currentTheme === "dark" ? "light" : "dark";
-
-    document.body.dataset.theme = currentTheme;
-
-    localStorage.setItem(
-      "yusufAnimeTheme",
-      currentTheme
-    );
-
-    themeButton.textContent =
-      currentTheme === "dark" ? "☀️" : "🌙";
+    }, 500);
 
   });
 
 }
 
 
-/* =========================================
-   RENDER ANIME SECTIONS
-========================================= */
+/* =========================================================
+   THEME
+========================================================= */
 
-function renderAnimeSections() {
+function initializeTheme() {
 
-  const trending = [...animeData]
-    .sort((a, b) => b.rating - a.rating)
-    .slice(0, 6);
+  document.documentElement.setAttribute(
+    "data-theme",
+    state.theme
+  );
 
-  const latest = [...animeData]
-    .sort((a, b) => b.year - a.year)
-    .slice(0, 6);
+  const button = $("#themeToggle");
 
-  const topRated = [...animeData]
-    .sort((a, b) => b.rating - a.rating)
-    .slice(0, 6);
+  if (!button) return;
 
-  renderGrid("#trendingGrid", trending);
+  updateThemeButton();
 
-  renderGrid("#latestGrid", latest);
-
-  renderGrid("#topRatedGrid", topRated);
+  button.addEventListener("click", toggleTheme);
 
 }
 
 
-/* =========================================
-   RENDER GRID
-========================================= */
+function toggleTheme() {
 
-function renderGrid(selector, animeList) {
+  state.theme =
+    state.theme === "dark"
+      ? "light"
+      : "dark";
+
+  localStorage.setItem(
+    "yusufAnimeTheme",
+    state.theme
+  );
+
+  document.documentElement.setAttribute(
+    "data-theme",
+    state.theme
+  );
+
+  updateThemeButton();
+
+  showToast(
+    state.theme === "dark"
+      ? "🌙 Dark mode enabled"
+      : "☀️ Light mode enabled"
+  );
+
+}
+
+
+function updateThemeButton() {
+
+  const button = $("#themeToggle");
+
+  if (!button) return;
+
+  button.textContent =
+    state.theme === "dark"
+      ? "☀️"
+      : "🌙";
+
+}
+
+
+/* =========================================================
+   RENDER ALL ANIME
+========================================================= */
+
+function renderAllAnime() {
+
+  renderAnimeGrid(
+    "#trendingGrid",
+    animeData.filter(anime => anime.trending)
+  );
+
+  renderAnimeGrid(
+    "#latestGrid",
+    animeData.filter(anime => anime.latest)
+  );
+
+  renderAnimeGrid(
+    "#topRatedGrid",
+    animeData
+      .filter(anime => anime.topRated)
+      .sort((a, b) => b.rating - a.rating)
+  );
+
+  renderFavorites();
+
+}
+
+
+/* =========================================================
+   ANIME CARD
+========================================================= */
+
+function renderAnimeGrid(selector, animeList) {
 
   const grid = $(selector);
 
@@ -371,7 +480,20 @@ function renderGrid(selector, animeList) {
 
   grid.innerHTML = "";
 
-  animeList.forEach((anime) => {
+  if (!animeList.length) {
+
+    grid.innerHTML = `
+      <div class="empty-state">
+        <span>🎬</span>
+        <h3>No anime found</h3>
+        <p>Try another category.</p>
+      </div>
+    `;
+
+    return;
+  }
+
+  animeList.forEach(anime => {
 
     grid.appendChild(
       createAnimeCard(anime)
@@ -381,10 +503,6 @@ function renderGrid(selector, animeList) {
 
 }
 
-
-/* =========================================
-   ANIME CARD
-========================================= */
 
 function createAnimeCard(anime) {
 
@@ -393,7 +511,7 @@ function createAnimeCard(anime) {
   card.className = "anime-card";
 
   const isFavorite =
-    favorites.includes(anime.id);
+    state.favorites.includes(anime.id);
 
   card.innerHTML = `
 
@@ -401,83 +519,83 @@ function createAnimeCard(anime) {
 
       <img
         src="${anime.image}"
-        alt="${anime.title}"
+        alt="${escapeHTML(anime.title)}"
         loading="lazy"
       >
 
-      <span class="anime-card-rating">
-        ⭐ ${anime.rating}
-      </span>
+      <div class="anime-card-overlay"></div>
 
       <button
-        class="favorite-button ${isFavorite ? "active" : ""}"
-        data-favorite="${anime.id}"
+        class="anime-favorite ${isFavorite ? "active" : ""}"
         type="button"
         aria-label="Add to favorites"
+        data-favorite="${anime.id}"
       >
         ${isFavorite ? "❤️" : "♡"}
       </button>
 
-    </div>
+      <span class="anime-rating">
+        ⭐ ${anime.rating}
+      </span>
 
-    <div class="anime-card-body">
-
-      <span class="anime-card-type">
+      <span class="anime-type">
         ${anime.type}
       </span>
 
-      <h3 class="anime-card-title">
-        ${anime.title}
-      </h3>
-
-      <div class="anime-card-meta">
-        ${anime.year} • ${anime.episodes} Episodes
-      </div>
-
       <button
-        class="button button-primary anime-watch-button"
-        data-anime="${anime.id}"
+        class="anime-play"
         type="button"
+        data-anime="${anime.id}"
+        aria-label="View ${escapeHTML(anime.title)}"
       >
-        ▶ Watch
+        ▶
       </button>
 
     </div>
 
+    <div class="anime-card-content">
+
+      <h3>
+        ${escapeHTML(anime.title)}
+      </h3>
+
+      <div class="anime-card-meta">
+        <span>${anime.year}</span>
+        <span>•</span>
+        <span>${anime.episodes} EP</span>
+      </div>
+
+      <div class="anime-card-genres">
+
+        ${anime.genres
+          .slice(0, 2)
+          .map(genre => `<span>${genre}</span>`)
+          .join("")}
+
+      </div>
+
+    </div>
   `;
 
 
-  const watchButton =
-    card.querySelector(".anime-watch-button");
+  card
+    .querySelector("[data-anime]")
+    ?.addEventListener("click", () => {
 
-  watchButton.addEventListener("click", () => {
+      openAnimeDetails(anime.id);
 
-    openAnimeDetails(anime.id);
-
-  });
-
-
-  const favoriteButton =
-    card.querySelector(".favorite-button");
-
-  favoriteButton.addEventListener("click", (event) => {
-
-    event.stopPropagation();
-
-    toggleFavorite(anime.id);
-
-  });
+    });
 
 
-  card.addEventListener("click", (event) => {
+  card
+    .querySelector("[data-favorite]")
+    ?.addEventListener("click", event => {
 
-    if (
-      event.target.closest("button")
-    ) return;
+      event.stopPropagation();
 
-    openAnimeDetails(anime.id);
+      toggleFavorite(anime.id);
 
-  });
+    });
 
 
   return card;
@@ -485,83 +603,83 @@ function createAnimeCard(anime) {
 }
 
 
-/* =========================================
+/* =========================================================
    FAVORITES
-========================================= */
+========================================================= */
 
-function toggleFavorite(id) {
+function initializeFavorites() {
 
-  if (favorites.includes(id)) {
+  $("#headerFavoritesButton")
+    ?.addEventListener("click", () => {
 
-    favorites =
-      favorites.filter(
-        favoriteId => favoriteId !== id
-      );
+      setTimeout(() => {
+        renderFavorites();
+      }, 100);
 
-    showToast("Removed from favorites");
-
-  } else {
-
-    favorites.push(id);
-
-    showToast("Added to favorites ❤️");
-
-  }
-
-  localStorage.setItem(
-    "yusufAnimeFavorites",
-    JSON.stringify(favorites)
-  );
-
-  updateFavorites();
-
-  renderAnimeSections();
+    });
 
 }
 
 
-/* =========================================
-   UPDATE FAVORITES
-========================================= */
+function toggleFavorite(animeId) {
 
-function updateFavorites() {
+  const index =
+    state.favorites.indexOf(animeId);
 
-  const grid =
-    $("#favoritesGrid");
+  if (index === -1) {
 
-  const empty =
-    $("#emptyFavorites");
+    state.favorites.push(animeId);
 
-  const count =
-    $("#headerFavoritesCount");
+    showToast("❤️ Added to favorites");
 
+  } else {
 
-  if (count) {
+    state.favorites.splice(index, 1);
 
-    count.textContent =
-      favorites.length;
-
-    count.classList.toggle(
-      "hidden",
-      favorites.length === 0
-    );
+    showToast("💔 Removed from favorites");
 
   }
 
+  saveStorage(
+    "yusufAnimeFavorites",
+    state.favorites
+  );
+
+  renderAllAnime();
+
+  updateFavoritesCount();
+
+  updateDetailsFavoriteButton();
+
+}
+
+
+function renderFavorites() {
+
+  const grid = $("#favoritesGrid");
+
+  const empty = $("#emptyFavorites");
 
   if (!grid) return;
 
-
-  const favoriteAnime =
-    animeData.filter(
-      anime => favorites.includes(anime.id)
+  const favorites =
+    animeData.filter(anime =>
+      state.favorites.includes(anime.id)
     );
-
 
   grid.innerHTML = "";
 
+  if (!favorites.length) {
 
-  favoriteAnime.forEach(anime => {
+    show(empty);
+
+    return;
+
+  }
+
+  hide(empty);
+
+  favorites.forEach(anime => {
 
     grid.appendChild(
       createAnimeCard(anime)
@@ -569,35 +687,43 @@ function updateFavorites() {
 
   });
 
+}
 
-  if (empty) {
 
-    empty.classList.toggle(
-      "hidden",
-      favoriteAnime.length > 0
-    );
+function updateFavoritesCount() {
 
+  const counter =
+    $("#headerFavoritesCount");
+
+  if (!counter) return;
+
+  counter.textContent =
+    state.favorites.length;
+
+  if (state.favorites.length > 0) {
+    show(counter);
+  } else {
+    hide(counter);
   }
 
 }
 
 
-/* =========================================
+/* =========================================================
    SEARCH
-========================================= */
+========================================================= */
 
-function setupSearch() {
+function initializeSearch() {
 
   const openButtons = [
-    $("#openSearchButton"),
-    $("#heroSearchButton"),
-    $("#ctaSearchButton")
-  ].filter(Boolean);
+    "#openSearchButton",
+    "#heroSearchButton",
+    "#ctaSearchButton"
+  ];
 
+  openButtons.forEach(selector => {
 
-  openButtons.forEach(button => {
-
-    button.addEventListener(
+    $(selector)?.addEventListener(
       "click",
       openSearch
     );
@@ -605,87 +731,62 @@ function setupSearch() {
   });
 
 
-  const closeButton =
-    $("#closeSearchButton");
-
-  if (closeButton) {
-
-    closeButton.addEventListener(
+  $("#closeSearchButton")
+    ?.addEventListener(
       "click",
       closeSearch
     );
 
-  }
 
-
-  const backdrop =
-    $(".modal-backdrop");
-
-  if (backdrop) {
-
-    backdrop.addEventListener(
+  $(".modal-backdrop")
+    ?.addEventListener(
       "click",
       closeSearch
     );
 
-  }
 
-
-  const input =
-    $("#searchInput");
-
-  const submit =
-    $("#searchSubmit");
-
-
-  if (submit) {
-
-    submit.addEventListener(
+  $("#searchSubmit")
+    ?.addEventListener(
       "click",
       performSearch
     );
 
-  }
+
+  $("#searchInput")
+    ?.addEventListener(
+      "input",
+      performSearch
+    );
 
 
-  if (input) {
-
-    input.addEventListener(
+  $("#searchInput")
+    ?.addEventListener(
       "keydown",
       event => {
 
         if (event.key === "Enter") {
-
           performSearch();
-
         }
 
       }
     );
 
-    input.addEventListener(
-      "input",
-      performSearch
-    );
 
-  }
-
-
-  $$(".search-filter").forEach(
-    button => {
+  $$(".search-filter")
+    .forEach(button => {
 
       button.addEventListener(
         "click",
         () => {
 
-          $$(".search-filter").forEach(
-            item =>
+          $$(".search-filter")
+            .forEach(item =>
               item.classList.remove("active")
-          );
+            );
 
           button.classList.add("active");
 
-          currentSearchFilter =
+          state.searchFilter =
             button.dataset.filter;
 
           performSearch();
@@ -693,130 +794,98 @@ function setupSearch() {
         }
       );
 
-    }
-  );
+    });
 
 }
 
 
-/* =========================================
-   OPEN SEARCH
-========================================= */
-
 function openSearch() {
 
-  const modal =
-    $("#searchModal");
+  const modal = $("#searchModal");
 
   if (!modal) return;
 
-  modal.classList.add("active");
+  modal.classList.add("open");
 
   modal.setAttribute(
     "aria-hidden",
     "false"
   );
 
+  document.body.classList.add("modal-open");
+
   setTimeout(() => {
-
     $("#searchInput")?.focus();
+  }, 150);
 
-  }, 100);
+  performSearch();
 
 }
 
 
-/* =========================================
-   CLOSE SEARCH
-========================================= */
-
 function closeSearch() {
 
-  const modal =
-    $("#searchModal");
+  const modal = $("#searchModal");
 
   if (!modal) return;
 
-  modal.classList.remove("active");
+  modal.classList.remove("open");
 
   modal.setAttribute(
     "aria-hidden",
     "true"
   );
 
+  document.body.classList.remove("modal-open");
+
 }
 
 
-/* =========================================
-   SEARCH
-========================================= */
-
 function performSearch() {
 
-  const input =
-    $("#searchInput");
+  const input = $("#searchInput");
 
-  const results =
-    $("#searchResults");
+  const results = $("#searchResults");
 
   if (!input || !results) return;
 
-
   const query =
-    input.value.trim().toLowerCase();
-
+    input.value
+      .trim()
+      .toLowerCase();
 
   let filtered =
-    [...animeData];
+    animeData.filter(anime => {
 
-
-  if (currentSearchFilter !== "all") {
-
-    filtered =
-      filtered.filter(anime =>
-        anime.genres.some(
-          genre =>
-            genre.toLowerCase() ===
-            currentSearchFilter
-        )
-      );
-
-  }
-
-
-  if (query) {
-
-    filtered =
-      filtered.filter(anime =>
+      const matchesText =
+        !query ||
         anime.title
           .toLowerCase()
-          .includes(query)
-      );
+          .includes(query) ||
+        anime.genres.some(genre =>
+          genre.toLowerCase().includes(query)
+        );
 
-  }
+      const matchesFilter =
+        state.searchFilter === "all" ||
+        anime.genres.some(genre =>
+          genre.toLowerCase() ===
+          state.searchFilter.toLowerCase()
+        );
+
+      return matchesText && matchesFilter;
+
+    });
 
 
-  results.innerHTML = "";
-
-
-  if (filtered.length === 0) {
+  if (!filtered.length) {
 
     results.innerHTML = `
-
       <div class="empty-state">
-
         <span>🔍</span>
-
-        <h3>
-          No anime found
-        </h3>
-
-        <p>
-          Try another search.
-        </p>
-
+        <h3>No anime found</h3>
+        <p>Try another search.</p>
       </div>
-
     `;
 
     return;
@@ -824,251 +893,63 @@ function performSearch() {
   }
 
 
+  results.innerHTML = "";
+
   filtered.forEach(anime => {
 
-    results.appendChild(
-      createSearchResult(anime)
+    const item =
+      document.createElement("button");
+
+    item.type = "button";
+
+    item.className = "search-result-item";
+
+    item.innerHTML = `
+
+      <img
+        src="${anime.image}"
+        alt="${escapeHTML(anime.title)}"
+      >
+
+      <div>
+
+        <strong>
+          ${escapeHTML(anime.title)}
+        </strong>
+
+        <span>
+          ⭐ ${anime.rating}
+          • ${anime.year}
+          • ${anime.type}
+        </span>
+
+      </div>
+
+    `;
+
+    item.addEventListener(
+      "click",
+      () => {
+
+        closeSearch();
+
+        openAnimeDetails(anime.id);
+
+      }
     );
+
+    results.appendChild(item);
 
   });
 
 }
 
 
-/* =========================================
-   SEARCH RESULT
-========================================= */
-
-function createSearchResult(anime) {
-
-  const item =
-    document.createElement("div");
-
-  item.className =
-    "search-result-item";
-
-
-  item.innerHTML = `
-
-    <img
-      src="${anime.image}"
-      alt="${anime.title}"
-    >
-
-    <div>
-
-      <h3>
-        ${anime.title}
-      </h3>
-
-      <p>
-        ⭐ ${anime.rating}
-        • ${anime.year}
-        • ${anime.episodes} Episodes
-      </p>
-
-    </div>
-
-    <button
-      type="button"
-      class="button button-primary"
-    >
-      View
-    </button>
-
-  `;
-
-
-  item
-    .querySelector("button")
-    .addEventListener("click", () => {
-
-      closeSearch();
-
-      openAnimeDetails(anime.id);
-
-    });
-
-
-  return item;
-
-}
-
-
-/* =========================================
-   LANGUAGE
-========================================= */
-
-function setupLanguage() {
-
-  const button =
-    $("#languageButton");
-
-  const dropdown =
-    $("#languageDropdown");
-
-  if (!button || !dropdown) return;
-
-
-  button.addEventListener(
-    "click",
-    event => {
-
-      event.stopPropagation();
-
-      dropdown.classList.toggle("active");
-
-      button.setAttribute(
-        "aria-expanded",
-        dropdown.classList.contains("active")
-      );
-
-    }
-  );
-
-
-  dropdown
-    .querySelectorAll("button")
-    .forEach(languageButton => {
-
-      languageButton.addEventListener(
-        "click",
-        () => {
-
-          const language =
-            languageButton.dataset.language;
-
-          const text =
-            languageButton.textContent.trim();
-
-          const selected =
-            $("#selectedLanguage");
-
-          if (selected) {
-
-            selected.textContent =
-              text.replace(
-                /^[^\p{L}\p{N}]*/u,
-                ""
-              );
-
-          }
-
-          dropdown.classList.remove(
-            "active"
-          );
-
-          showToast(
-            `Language changed`
-          );
-
-          document.documentElement.lang =
-            language;
-
-        }
-      );
-
-    });
-
-
-  document.addEventListener(
-    "click",
-    () => {
-
-      dropdown.classList.remove(
-        "active"
-      );
-
-    }
-  );
-
-}
-
-
-/* =========================================
-   MOBILE MENU
-========================================= */
-
-function setupMobileMenu() {
-
-  const menu =
-    $("#mobileMenu");
-
-  const overlay =
-    $("#mobileMenuOverlay");
-
-  const open =
-    $("#openMobileMenu");
-
-  const close =
-    $("#closeMobileMenu");
-
-
-  if (!menu) return;
-
-
-  function openMenu() {
-
-    menu.classList.add("active");
-
-    overlay?.classList.add("active");
-
-    menu.setAttribute(
-      "aria-hidden",
-      "false"
-    );
-
-  }
-
-
-  function closeMenu() {
-
-    menu.classList.remove("active");
-
-    overlay?.classList.remove("active");
-
-    menu.setAttribute(
-      "aria-hidden",
-      "true"
-    );
-
-  }
-
-
-  open?.addEventListener(
-    "click",
-    openMenu
-  );
-
-  close?.addEventListener(
-    "click",
-    closeMenu
-  );
-
-  overlay?.addEventListener(
-    "click",
-    closeMenu
-  );
-
-
-  $$(".mobile-navigation a")
-    .forEach(link => {
-
-      link.addEventListener(
-        "click",
-        closeMenu
-      );
-
-    });
-
-}
-
-
-/* =========================================
+/* =========================================================
    ANIME DETAILS
-========================================= */
+========================================================= */
 
-function setupAnimeDetails() {
+function initializeAnimeDetails() {
 
   $("#closeAnimeDetails")
     ?.addEventListener(
@@ -1089,13 +970,13 @@ function setupAnimeDetails() {
       "click",
       () => {
 
-        if (!currentAnime) return;
+        if (state.currentAnime) {
 
-        toggleFavorite(
-          currentAnime.id
-        );
+          toggleFavorite(
+            state.currentAnime.id
+          );
 
-        updateDetailsFavoriteButton();
+        }
 
       }
     );
@@ -1106,10 +987,11 @@ function setupAnimeDetails() {
       "click",
       () => {
 
-        if (!currentAnime) return;
+        if (!state.currentAnime) return;
 
-        showToast(
-          `Starting ${currentAnime.title} ▶️`
+        watchAnime(
+          state.currentAnime.id,
+          1
         );
 
       }
@@ -1119,27 +1001,33 @@ function setupAnimeDetails() {
   $("#detailsSeasonSelect")
     ?.addEventListener(
       "change",
-      renderEpisodes
+      event => {
+
+        state.currentSeason =
+          Number(event.target.value);
+
+        renderEpisodes(
+          state.currentAnime
+        );
+
+      }
     );
 
 }
 
 
-/* =========================================
-   OPEN DETAILS
-========================================= */
-
-function openAnimeDetails(id) {
+function openAnimeDetails(animeId) {
 
   const anime =
     animeData.find(
-      item => item.id === Number(id)
+      item => item.id === Number(animeId)
     );
 
   if (!anime) return;
 
-  currentAnime = anime;
+  state.currentAnime = anime;
 
+  state.currentSeason = 1;
 
   const modal =
     $("#animeDetailsModal");
@@ -1147,30 +1035,16 @@ function openAnimeDetails(id) {
   if (!modal) return;
 
 
-  const banner =
-    $("#detailsBanner");
+  $("#detailsBanner").style.backgroundImage =
+    `url("${anime.banner}")`;
 
-  const poster =
-    $("#detailsPoster");
-
-  if (banner) {
-
-    banner.style.backgroundImage =
-      `url("${anime.banner}")`;
-
-  }
-
-
-  if (poster) {
-
-    poster.style.backgroundImage =
-      `url("${anime.image}")`;
-
-  }
+  $("#detailsPoster").style.backgroundImage =
+    `url("${anime.image}")`;
 
 
   $("#detailsType").textContent =
     anime.type;
+
 
   $("#detailsTitle").textContent =
     anime.title;
@@ -1179,21 +1053,17 @@ function openAnimeDetails(id) {
   $("#detailsMeta").innerHTML = `
 
     <span>⭐ ${anime.rating}</span>
-
     <span>📅 ${anime.year}</span>
-
     <span>🎬 ${anime.episodes} Episodes</span>
-
-    <span>● ${anime.status}</span>
+    <span>📺 ${anime.status}</span>
 
   `;
 
 
   $("#detailsGenres").innerHTML =
     anime.genres
-      .map(
-        genre =>
-          `<span>${genre}</span>`
+      .map(genre =>
+        `<span>${genre}</span>`
       )
       .join("");
 
@@ -1204,16 +1074,15 @@ function openAnimeDetails(id) {
 
   updateDetailsFavoriteButton();
 
-  renderEpisodes();
+  renderEpisodes(anime);
 
 
-  modal.classList.add("active");
+  modal.classList.add("open");
 
   modal.setAttribute(
     "aria-hidden",
     "false"
   );
-
 
   document.body.classList.add(
     "modal-open"
@@ -1222,10 +1091,6 @@ function openAnimeDetails(id) {
 }
 
 
-/* =========================================
-   CLOSE DETAILS
-========================================= */
-
 function closeAnimeDetails() {
 
   const modal =
@@ -1233,9 +1098,7 @@ function closeAnimeDetails() {
 
   if (!modal) return;
 
-  modal.classList.remove(
-    "active"
-  );
+  modal.classList.remove("open");
 
   modal.setAttribute(
     "aria-hidden",
@@ -1246,25 +1109,23 @@ function closeAnimeDetails() {
     "modal-open"
   );
 
+  state.currentAnime = null;
+
 }
 
-
-/* =========================================
-   DETAILS FAVORITE BUTTON
-========================================= */
 
 function updateDetailsFavoriteButton() {
 
   const button =
     $("#detailsFavoriteButton");
 
-  if (!button || !currentAnime)
+  if (!button || !state.currentAnime) {
     return;
-
+  }
 
   const favorite =
-    favorites.includes(
-      currentAnime.id
+    state.favorites.includes(
+      state.currentAnime.id
     );
 
 
@@ -1276,54 +1137,98 @@ function updateDetailsFavoriteButton() {
 }
 
 
-/* =========================================
+/* =========================================================
    EPISODES
-========================================= */
+========================================================= */
 
-function renderEpisodes() {
+function renderEpisodes(anime) {
 
   const grid =
     $("#detailsEpisodeGrid");
 
-  if (!grid || !currentAnime)
-    return;
+  const select =
+    $("#detailsSeasonSelect");
+
+  if (!grid || !anime) return;
+
+
+  const episodeCount =
+    Math.min(anime.episodes, 24);
+
+
+  if (select) {
+
+    select.innerHTML = "";
+
+    const seasons =
+      anime.episodes > 24
+        ? Math.ceil(anime.episodes / 24)
+        : 1;
+
+    for (
+      let season = 1;
+      season <= seasons;
+      season++
+    ) {
+
+      const option =
+        document.createElement("option");
+
+      option.value = season;
+
+      option.textContent =
+        `Season ${season}`;
+
+      select.appendChild(option);
+
+    }
+
+    select.value =
+      String(state.currentSeason);
+
+  }
 
 
   grid.innerHTML = "";
 
 
-  const total =
+  const startEpisode =
+    (state.currentSeason - 1) * 24 + 1;
+
+  const endEpisode =
     Math.min(
-      currentAnime.episodes,
-      24
+      startEpisode + episodeCount - 1,
+      anime.episodes
     );
 
 
   for (
-    let episode = 1;
-    episode <= total;
+    let episode = startEpisode;
+    episode <= endEpisode;
     episode++
   ) {
 
     const button =
       document.createElement("button");
 
+    button.type = "button";
+
     button.className =
-      "episode-button";
-
-    button.type =
-      "button";
-
+      "episode-card";
 
     button.innerHTML = `
 
-      <span>
-        EP ${episode}
+      <span class="episode-number">
+        ${episode}
       </span>
 
-      <strong>
+      <span class="episode-title">
         Episode ${episode}
-      </strong>
+      </span>
+
+      <span class="episode-play">
+        ▶
+      </span>
 
     `;
 
@@ -1332,8 +1237,9 @@ function renderEpisodes() {
       "click",
       () => {
 
-        showToast(
-          `${currentAnime.title} — Episode ${episode} ▶️`
+        watchAnime(
+          anime.id,
+          episode
         );
 
       }
@@ -1347,11 +1253,134 @@ function renderEpisodes() {
 }
 
 
-/* =========================================
-   GENRES
-========================================= */
+/* =========================================================
+   WATCHING
+========================================================= */
 
-function setupGenreButtons() {
+function watchAnime(animeId, episode) {
+
+  const anime =
+    animeData.find(
+      item => item.id === animeId
+    );
+
+  if (!anime) return;
+
+
+  const existing =
+    state.continueWatching.find(
+      item => item.animeId === animeId
+    );
+
+
+  if (existing) {
+
+    existing.episode =
+      episode;
+
+  } else {
+
+    state.continueWatching.push({
+
+      animeId,
+      episode
+
+    });
+
+  }
+
+
+  saveStorage(
+    "yusufAnimeContinue",
+    state.continueWatching
+  );
+
+
+  if (!state.history.includes(animeId)) {
+
+    state.history.push(animeId);
+
+    saveStorage(
+      "yusufAnimeHistory",
+      state.history
+    );
+
+  }
+
+
+  closeAnimeDetails();
+
+  renderContinueWatching();
+
+  showToast(
+    `▶️ Playing ${anime.title} — Episode ${episode}`
+  );
+
+}
+
+
+function renderContinueWatching() {
+
+  const section =
+    $("#continueWatching");
+
+  const grid =
+    $("#continueWatchingGrid");
+
+  if (!section || !grid) return;
+
+
+  const list =
+    state.continueWatching
+      .map(item => {
+
+        const anime =
+          animeData.find(
+            a => a.id === item.animeId
+          );
+
+        if (!anime) return null;
+
+        return {
+          ...anime,
+          continueEpisode: item.episode
+        };
+
+      })
+      .filter(Boolean);
+
+
+  if (!list.length) {
+
+    hide(section);
+
+    return;
+
+  }
+
+
+  show(section);
+
+  grid.innerHTML = "";
+
+
+  list.forEach(anime => {
+
+    const card =
+      createAnimeCard(anime);
+
+    grid.appendChild(card);
+
+  });
+
+}
+
+
+/* =========================================================
+   GENRES
+========================================================= */
+
+function initializeGenres() {
 
   $$("[data-genre]")
     .forEach(button => {
@@ -1363,54 +1392,7 @@ function setupGenreButtons() {
           const genre =
             button.dataset.genre;
 
-          if (!genre) return;
-
-          openSearch();
-
-          const input =
-            $("#searchInput");
-
-          if (input) {
-
-            input.value = "";
-
-          }
-
-
-          currentSearchFilter =
-            genre.toLowerCase();
-
-
-          $$(".search-filter")
-            .forEach(
-              filter =>
-                filter.classList.remove(
-                  "active"
-                )
-            );
-
-
-          const matchingFilter =
-            document.querySelector(
-              `[data-filter="${genre.toLowerCase()}"]`
-            );
-
-
-          if (matchingFilter) {
-
-            matchingFilter.classList.add(
-              "active"
-            );
-
-          } else {
-
-            currentSearchFilter =
-              "all";
-
-          }
-
-
-          performSearch();
+          openGenreSearch(genre);
 
         }
       );
@@ -1420,35 +1402,59 @@ function setupGenreButtons() {
 }
 
 
-/* =========================================
-   NAVIGATION
-========================================= */
+function openGenreSearch(genre) {
 
-function setupNavigation() {
+  openSearch();
 
-  $$(".nav-link")
-    .forEach(link => {
+  const input =
+    $("#searchInput");
 
-      link.addEventListener(
-        "click",
-        () => {
+  if (input) {
 
-          $$(".nav-link")
-            .forEach(
-              item =>
-                item.classList.remove(
-                  "active"
-                )
-            );
+    input.value = genre;
 
-          link.classList.add(
-            "active"
-          );
+  }
 
-        }
+  state.searchFilter = "all";
+
+  $$(".search-filter")
+    .forEach(button => {
+
+      button.classList.toggle(
+        "active",
+        button.dataset.filter === "all"
       );
 
     });
+
+  performSearch();
+
+}
+
+
+/* =========================================================
+   NAVIGATION
+========================================================= */
+
+function initializeNavigation() {
+
+  $$(".nav-link").forEach(link => {
+
+    link.addEventListener(
+      "click",
+      () => {
+
+        $$(".nav-link")
+          .forEach(item =>
+            item.classList.remove("active")
+          );
+
+        link.classList.add("active");
+
+      }
+    );
+
+  });
 
 
   $$(".section-link-button")
@@ -1461,16 +1467,25 @@ function setupNavigation() {
           const view =
             button.dataset.view;
 
-          if (!view) return;
+          if (
+            view === "trending"
+          ) {
 
-          const section =
-            document.querySelector(
-              `#${view}`
-            );
+            scrollToSection("trending");
 
-          section?.scrollIntoView({
-            behavior: "smooth"
-          });
+          } else if (
+            view === "latest"
+          ) {
+
+            scrollToSection("latest");
+
+          } else if (
+            view === "top-rated"
+          ) {
+
+            scrollToSection("top-rated");
+
+          }
 
         }
       );
@@ -1480,98 +1495,318 @@ function setupNavigation() {
 }
 
 
-/* =========================================
-   BACK TO TOP
-========================================= */
+function scrollToSection(id) {
 
-function setupBackToTop() {
+  const section =
+    document.getElementById(id);
+
+  if (!section) return;
+
+  section.scrollIntoView({
+    behavior: "smooth",
+    block: "start"
+  });
+
+}
+
+
+/* =========================================================
+   MOBILE MENU
+========================================================= */
+
+function initializeMobileMenu() {
+
+  $("#openMobileMenu")
+    ?.addEventListener(
+      "click",
+      openMobileMenu
+    );
+
+
+  $("#closeMobileMenu")
+    ?.addEventListener(
+      "click",
+      closeMobileMenu
+    );
+
+
+  $("#mobileMenuOverlay")
+    ?.addEventListener(
+      "click",
+      closeMobileMenu
+    );
+
+
+  $$(".mobile-navigation a")
+    .forEach(link => {
+
+      link.addEventListener(
+        "click",
+        closeMobileMenu
+      );
+
+    });
+
+}
+
+
+function openMobileMenu() {
+
+  const menu =
+    $("#mobileMenu");
+
+  const overlay =
+    $("#mobileMenuOverlay");
+
+  if (!menu) return;
+
+  menu.classList.add("open");
+
+  overlay?.classList.add("open");
+
+  menu.setAttribute(
+    "aria-hidden",
+    "false"
+  );
+
+  document.body.classList.add(
+    "mobile-menu-open"
+  );
+
+}
+
+
+function closeMobileMenu() {
+
+  const menu =
+    $("#mobileMenu");
+
+  const overlay =
+    $("#mobileMenuOverlay");
+
+  if (!menu) return;
+
+  menu.classList.remove("open");
+
+  overlay?.classList.remove("open");
+
+  menu.setAttribute(
+    "aria-hidden",
+    "true"
+  );
+
+  document.body.classList.remove(
+    "mobile-menu-open"
+  );
+
+}
+
+
+/* =========================================================
+   LANGUAGE
+========================================================= */
+
+function initializeLanguage() {
 
   const button =
-    $("#backToTop");
+    $("#languageButton");
 
-  if (!button) return;
+  const dropdown =
+    $("#languageDropdown");
 
 
-  window.addEventListener(
-    "scroll",
-    () => {
+  button?.addEventListener(
+    "click",
+    event => {
 
-      button.classList.toggle(
-        "active",
-        window.scrollY > 500
+      event.stopPropagation();
+
+      dropdown?.classList.toggle("open");
+
+      const expanded =
+        dropdown?.classList.contains("open");
+
+      button.setAttribute(
+        "aria-expanded",
+        expanded ? "true" : "false"
       );
 
     }
   );
 
 
-  button.addEventListener(
+  $$("[data-language]")
+    .forEach(languageButton => {
+
+      languageButton.addEventListener(
+        "click",
+        () => {
+
+          const language =
+            languageButton.dataset.language;
+
+          changeLanguage(language);
+
+          dropdown?.classList.remove("open");
+
+        }
+      );
+
+    });
+
+
+  document.addEventListener(
     "click",
     () => {
 
-      window.scrollTo({
-        top: 0,
-        behavior: "smooth"
-      });
+      dropdown?.classList.remove("open");
 
     }
+  );
+
+  updateLanguageName();
+
+}
+
+
+function changeLanguage(language) {
+
+  state.language =
+    language;
+
+  localStorage.setItem(
+    "yusufAnimeLanguage",
+    language
+  );
+
+  updateLanguageName();
+
+  showToast(
+    `🌐 Language changed to ${getLanguageName(language)}`
   );
 
 }
 
 
-/* =========================================
-   STATS
-========================================= */
+function updateLanguageName() {
 
-function updateStats() {
+  const element =
+    $("#selectedLanguage");
 
-  const animeCount =
-    $("#heroAnimeCount");
+  if (!element) return;
 
-  const episodeCount =
-    $("#heroEpisodeCount");
-
-  const userCount =
-    $("#heroUserCount");
-
-
-  if (animeCount) {
-
-    animeCount.textContent =
-      animeData.length + "+";
-
-  }
-
-
-  if (episodeCount) {
-
-    const totalEpisodes =
-      animeData.reduce(
-        (total, anime) =>
-          total + anime.episodes,
-        0
-      );
-
-    episodeCount.textContent =
-      totalEpisodes + "+";
-
-  }
-
-
-  if (userCount) {
-
-    userCount.textContent =
-      "1K+";
-
-  }
+  element.textContent =
+    getLanguageName(
+      state.language
+    );
 
 }
 
 
-/* =========================================
+function getLanguageName(language) {
+
+  const languages = {
+
+    en: "English",
+    ku: "کوردی",
+    ar: "العربية",
+    tr: "Türkçe",
+    ja: "日本語",
+    es: "Español",
+    fr: "Français",
+    de: "Deutsch"
+
+  };
+
+  return (
+    languages[language] ||
+    "English"
+  );
+
+}
+
+
+/* =========================================================
+   HERO STATS
+========================================================= */
+
+function updateHeroStats() {
+
+  animateNumber(
+    $("#heroAnimeCount"),
+    animeData.length
+  );
+
+
+  const totalEpisodes =
+    animeData.reduce(
+      (total, anime) =>
+        total + anime.episodes,
+      0
+    );
+
+
+  animateNumber(
+    $("#heroEpisodeCount"),
+    totalEpisodes
+  );
+
+
+  animateNumber(
+    $("#heroUserCount"),
+    1284
+  );
+
+}
+
+
+function animateNumber(element, target) {
+
+  if (!element) return;
+
+  const duration = 900;
+
+  const startTime =
+    performance.now();
+
+
+  function update(currentTime) {
+
+    const progress =
+      Math.min(
+        (currentTime - startTime) /
+        duration,
+        1
+      );
+
+
+    const value =
+      Math.floor(
+        progress * target
+      );
+
+
+    element.textContent =
+      value.toLocaleString();
+
+
+    if (progress < 1) {
+
+      requestAnimationFrame(update);
+
+    }
+
+  }
+
+
+  requestAnimationFrame(update);
+
+}
+
+
+/* =========================================================
    TOAST
-========================================= */
+========================================================= */
 
 function showToast(message) {
 
@@ -1591,21 +1826,22 @@ function showToast(message) {
     message;
 
 
-  container.appendChild(
-    toast
-  );
+  container.appendChild(toast);
+
+
+  requestAnimationFrame(() => {
+
+    toast.classList.add("show");
+
+  });
 
 
   setTimeout(() => {
 
-    toast.classList.add(
-      "hide"
-    );
+    toast.classList.remove("show");
 
     setTimeout(() => {
-
       toast.remove();
-
     }, 300);
 
   }, 2500);
@@ -1613,30 +1849,184 @@ function showToast(message) {
 }
 
 
-/* =========================================
-   ESC KEY
-========================================= */
+/* =========================================================
+   BACK TO TOP
+========================================================= */
+
+function initializeBackToTop() {
+
+  const button =
+    $("#backToTop");
+
+  if (!button) return;
+
+
+  window.addEventListener(
+    "scroll",
+    () => {
+
+      if (window.scrollY > 500) {
+
+        button.classList.add("show");
+
+      } else {
+
+        button.classList.remove("show");
+
+      }
+
+    },
+    {
+      passive: true
+    }
+  );
+
+
+  button.addEventListener(
+    "click",
+    () => {
+
+      window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+      });
+
+    }
+  );
+
+}
+
+
+/* =========================================================
+   KEYBOARD CONTROLS
+========================================================= */
 
 document.addEventListener(
   "keydown",
   event => {
 
-    if (event.key !== "Escape")
-      return;
+    if (event.key === "Escape") {
 
-    closeSearch();
+      closeSearch();
 
-    closeAnimeDetails();
+      closeAnimeDetails();
 
-    $("#mobileMenu")
-      ?.classList.remove(
-        "active"
-      );
+      closeMobileMenu();
 
-    $("#mobileMenuOverlay")
-      ?.classList.remove(
-        "active"
-      );
+    }
+
+
+    if (
+      event.key === "/" &&
+      document.activeElement?.tagName !== "INPUT"
+    ) {
+
+      event.preventDefault();
+
+      openSearch();
+
+    }
 
   }
 );
+
+
+/* =========================================================
+   ACTIVE NAVIGATION ON SCROLL
+========================================================= */
+
+window.addEventListener(
+  "scroll",
+  () => {
+
+    const sections = [
+      "home",
+      "trending",
+      "latest",
+      "top-rated",
+      "genres",
+      "favorites"
+    ];
+
+
+    let current =
+      "home";
+
+
+    sections.forEach(id => {
+
+      const section =
+        document.getElementById(id);
+
+      if (!section) return;
+
+
+      const rect =
+        section.getBoundingClientRect();
+
+
+      if (
+        rect.top <= 150 &&
+        rect.bottom >= 150
+      ) {
+
+        current = id;
+
+      }
+
+    });
+
+
+    $$(".nav-link")
+      .forEach(link => {
+
+        link.classList.toggle(
+          "active",
+          link.dataset.section === current
+        );
+
+      });
+
+  },
+  {
+    passive: true
+  }
+);
+
+
+/* =========================================================
+   ESCAPE HTML
+========================================================= */
+
+function escapeHTML(value) {
+
+  return String(value)
+    .replaceAll("&", "&amp;")
+    .replaceAll("<", "&lt;")
+    .replaceAll(">", "&gt;")
+    .replaceAll('"', "&quot;")
+    .replaceAll("'", "&#039;");
+
+}
+
+
+/* =========================================================
+   GLOBAL ERROR HANDLING
+========================================================= */
+
+window.addEventListener(
+  "error",
+  error => {
+
+    console.error(
+      "YUSUF ANIME Error:",
+      error.message
+    );
+
+  }
+);
+
+
+/* =========================================================
+   END
+========================================================= */
