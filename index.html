@@ -1,7 +1,10 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
-
 <head>
+
+  <!-- =========================
+       BASIC META
+  ========================== -->
 
   <meta charset="UTF-8">
 
@@ -12,36 +15,56 @@
 
   <meta
     name="description"
-    content="YUSUF ANIME - Your personal anime world."
+    content="YUSUF ANIME — Discover, explore and watch your favorite anime."
+  >
+
+  <meta
+    name="keywords"
+    content="anime, anime streaming, anime episodes, manga, YUSUF ANIME"
+  >
+
+  <meta
+    name="author"
+    content="YUSUF ANIME"
   >
 
   <meta
     name="theme-color"
-    content="#0b0b12"
+    content="#08080f"
   >
 
-  <title>YUSUF ANIME</title>
+  <title>YUSUF ANIME — Your Anime World</title>
 
-  <!-- CSS will be added later -->
+
+  <!-- =========================
+       CSS
+  ========================== -->
+
   <link rel="stylesheet" href="css/style.css">
+
   <link rel="stylesheet" href="css/responsive.css">
 
-</head>
 
+</head>
 
 <body>
 
 
-  <!-- =========================
+  <!-- ==================================================
        LOADING SCREEN
-  ========================== -->
+  =================================================== -->
 
-  <div id="appLoader" class="app-loader">
+  <div
+    id="appLoader"
+    class="app-loader"
+    aria-hidden="true"
+  >
 
     <div class="loader-content">
 
       <div class="loader-logo">
-        YUSUF<span>ANIME</span>
+        YUSUF
+        <span>ANIME</span>
       </div>
 
       <div class="loader-spinner"></div>
@@ -56,9 +79,9 @@
 
 
 
-  <!-- =========================
+  <!-- ==================================================
        HEADER
-  ========================== -->
+  =================================================== -->
 
   <header class="site-header">
 
@@ -70,6 +93,7 @@
       <a
         href="#home"
         class="brand"
+        aria-label="YUSUF ANIME Home"
       >
 
         <span class="brand-main">
@@ -84,9 +108,10 @@
 
 
 
-      <!-- NAVIGATION -->
+      <!-- DESKTOP NAVIGATION -->
 
       <nav
+        id="desktopNavigation"
         class="desktop-navigation"
         aria-label="Main navigation"
       >
@@ -94,6 +119,7 @@
         <a
           href="#home"
           class="nav-link active"
+          data-section="home"
         >
           Home
         </a>
@@ -101,6 +127,7 @@
         <a
           href="#trending"
           class="nav-link"
+          data-section="trending"
         >
           Trending
         </a>
@@ -108,6 +135,7 @@
         <a
           href="#latest"
           class="nav-link"
+          data-section="latest"
         >
           Latest
         </a>
@@ -115,6 +143,7 @@
         <a
           href="#top-rated"
           class="nav-link"
+          data-section="top-rated"
         >
           Top Rated
         </a>
@@ -122,6 +151,7 @@
         <a
           href="#genres"
           class="nav-link"
+          data-section="genres"
         >
           Genres
         </a>
@@ -129,6 +159,7 @@
         <a
           href="#favorites"
           class="nav-link"
+          data-section="favorites"
         >
           Favorites
         </a>
@@ -137,35 +168,47 @@
 
 
 
-      <!-- HEADER BUTTONS -->
+      <!-- HEADER ACTIONS -->
 
       <div class="header-actions">
 
+
+        <!-- SEARCH -->
 
         <button
           id="openSearchButton"
           class="icon-button"
           type="button"
           aria-label="Search"
+          title="Search"
         >
           🔍
         </button>
 
+
+
+        <!-- THEME -->
 
         <button
           id="themeToggle"
           class="icon-button"
           type="button"
           aria-label="Toggle theme"
+          title="Theme"
         >
           🌙
         </button>
 
 
+
+        <!-- FAVORITES -->
+
         <a
           href="#favorites"
-          class="icon-button"
           id="headerFavoritesButton"
+          class="icon-button favorites-button"
+          aria-label="Favorites"
+          title="Favorites"
         >
 
           ❤️
@@ -180,32 +223,136 @@
         </a>
 
 
+
+        <!-- LANGUAGE -->
+
+        <div class="language-selector">
+
+          <button
+            id="languageButton"
+            class="language-button"
+            type="button"
+            aria-expanded="false"
+          >
+
+            🌐
+
+            <span id="selectedLanguage">
+              English
+            </span>
+
+            <span>
+              ▾
+            </span>
+
+          </button>
+
+
+          <div
+            id="languageDropdown"
+            class="language-dropdown"
+          >
+
+            <button
+              type="button"
+              data-language="en"
+            >
+              🇬🇧 English
+            </button>
+
+            <button
+              type="button"
+              data-language="ku"
+            >
+              🟡 کوردی
+            </button>
+
+            <button
+              type="button"
+              data-language="ar"
+            >
+              🇸🇦 العربية
+            </button>
+
+            <button
+              type="button"
+              data-language="tr"
+            >
+              🇹🇷 Türkçe
+            </button>
+
+            <button
+              type="button"
+              data-language="ja"
+            >
+              🇯🇵 日本語
+            </button>
+
+            <button
+              type="button"
+              data-language="es"
+            >
+              🇪🇸 Español
+            </button>
+
+            <button
+              type="button"
+              data-language="fr"
+            >
+              🇫🇷 Français
+            </button>
+
+            <button
+              type="button"
+              data-language="de"
+            >
+              🇩🇪 Deutsch
+            </button>
+
+          </div>
+
+        </div>
+
+
+
         <!-- ACCOUNT -->
 
-        <a
-          href="login.html"
-          class="account-button"
-          id="accountButton"
+        <div
+          id="accountArea"
+          class="account-area"
         >
 
-          <span>
-            👤
-          </span>
+          <a
+            href="login.html"
+            id="accountButton"
+            class="account-button"
+          >
 
-          <span id="accountText">
-            Login
-          </span>
+            <span class="account-icon">
+              👤
+            </span>
 
-        </a>
+            <span
+              id="accountText"
+              class="account-text"
+            >
+              Login
+            </span>
+
+          </a>
+
+        </div>
 
 
-        <!-- MOBILE MENU -->
+
+        <!-- MOBILE MENU BUTTON -->
 
         <button
           id="openMobileMenu"
           class="mobile-menu-button"
           type="button"
           aria-label="Open menu"
+          aria-expanded="false"
         >
           ☰
         </button>
@@ -219,9 +366,9 @@
 
 
 
-  <!-- =========================
+  <!-- ==================================================
        MOBILE MENU
-  ========================== -->
+  =================================================== -->
 
   <aside
     id="mobileMenu"
@@ -232,17 +379,22 @@
     <div class="mobile-menu-header">
 
       <div class="mobile-brand">
-        YUSUF<span>ANIME</span>
+
+        YUSUF
+        <span>ANIME</span>
+
       </div>
 
       <button
         id="closeMobileMenu"
         type="button"
+        aria-label="Close menu"
       >
         ✕
       </button>
 
     </div>
+
 
 
     <nav class="mobile-navigation">
@@ -275,9 +427,14 @@
         👤 Login
       </a>
 
+      <a href="register.html">
+        📝 Register
+      </a>
+
     </nav>
 
   </aside>
+
 
 
   <div
@@ -287,9 +444,9 @@
 
 
 
-  <!-- =========================
-       SEARCH
-  ========================== -->
+  <!-- ==================================================
+       SEARCH MODAL
+  =================================================== -->
 
   <div
     id="searchModal"
@@ -300,24 +457,43 @@
     <div class="modal-backdrop"></div>
 
 
-    <div class="search-modal">
+    <div
+      class="search-modal"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="searchModalTitle"
+    >
 
+
+      <!-- SEARCH HEADER -->
 
       <div class="search-modal-header">
 
-        <h2>
-          🔍 Search Anime
-        </h2>
+        <div>
+
+          <span class="modal-label">
+            SEARCH
+          </span>
+
+          <h2 id="searchModalTitle">
+            🔍 Search Anime
+          </h2>
+
+        </div>
 
         <button
           id="closeSearchButton"
           type="button"
+          aria-label="Close search"
         >
           ✕
         </button>
 
       </div>
 
+
+
+      <!-- SEARCH FORM -->
 
       <div class="search-form">
 
@@ -326,10 +502,12 @@
           type="search"
           placeholder="Search anime..."
           autocomplete="off"
+          aria-label="Search anime"
         >
 
         <button
           id="searchSubmit"
+          class="button button-primary"
           type="button"
         >
           Search
@@ -337,6 +515,9 @@
 
       </div>
 
+
+
+      <!-- SEARCH FILTERS -->
 
       <div class="search-filters">
 
@@ -383,6 +564,9 @@
       </div>
 
 
+
+      <!-- SEARCH RESULTS -->
+
       <div
         id="searchResults"
         class="search-results"
@@ -395,16 +579,17 @@
 
 
 
-  <!-- =========================
-       MAIN
-  ========================== -->
+  <!-- ==================================================
+       MAIN CONTENT
+  =================================================== -->
 
   <main id="home">
 
 
-    <!-- =========================
+
+    <!-- ==================================================
          HERO
-    ========================== -->
+    =================================================== -->
 
     <section class="hero-section">
 
@@ -423,6 +608,7 @@
           </span>
 
 
+
           <h1 class="hero-title">
 
             Discover
@@ -434,14 +620,18 @@
           </h1>
 
 
+
           <p class="hero-description">
 
-            Explore thousands of stories,
-            discover new characters,
-            and find your next favorite anime.
+            Explore amazing anime,
+            discover unforgettable characters,
+            and find your next favorite story.
 
           </p>
 
+
+
+          <!-- HERO BUTTONS -->
 
           <div class="hero-actions">
 
@@ -451,7 +641,6 @@
             >
               🔥 Explore Anime
             </a>
-
 
             <button
               id="heroSearchButton"
@@ -464,7 +653,8 @@
           </div>
 
 
-          <!-- STATS -->
+
+          <!-- HERO STATS -->
 
           <div class="hero-stats">
 
@@ -482,6 +672,7 @@
             </div>
 
 
+
             <div class="hero-stat">
 
               <strong id="heroEpisodeCount">
@@ -493,6 +684,7 @@
               </span>
 
             </div>
+
 
 
             <div class="hero-stat">
@@ -519,9 +711,9 @@
 
 
 
-    <!-- =========================
-         GENRE SHORTCUTS
-    ========================== -->
+    <!-- ==================================================
+         QUICK GENRES
+    =================================================== -->
 
     <section class="quick-categories">
 
@@ -602,9 +794,63 @@
 
 
 
-    <!-- =========================
+    <!-- ==================================================
+         CONTINUE WATCHING
+    =================================================== -->
+
+    <section
+      id="continueWatching"
+      class="content-section hidden"
+    >
+
+      <div class="container">
+
+        <div class="section-heading">
+
+
+          <div>
+
+            <span class="section-label">
+              ▶️ CONTINUE
+            </span>
+
+            <h2>
+              Continue Watching
+            </h2>
+
+            <p>
+              Continue where you left off.
+            </p>
+
+          </div>
+
+
+          <button
+            class="section-link-button"
+            data-view="continue"
+            type="button"
+          >
+            View All →
+          </button>
+
+
+        </div>
+
+
+        <div
+          id="continueWatchingGrid"
+          class="anime-grid"
+        ></div>
+
+      </div>
+
+    </section>
+
+
+
+    <!-- ==================================================
          TRENDING
-    ========================== -->
+    =================================================== -->
 
     <section
       id="trending"
@@ -615,6 +861,7 @@
 
 
         <div class="section-heading">
+
 
           <div>
 
@@ -627,7 +874,7 @@
             </h2>
 
             <p>
-              What everyone is watching right now.
+              The anime everyone is watching right now.
             </p>
 
           </div>
@@ -635,19 +882,22 @@
 
           <button
             class="section-link-button"
-            type="button"
             data-view="trending"
+            type="button"
           >
             View All →
           </button>
 
+
         </div>
+
 
 
         <div
           id="trendingGrid"
           class="anime-grid"
         ></div>
+
 
 
         <div
@@ -660,11 +910,11 @@
           </span>
 
           <h3>
-            No trending anime
+            No Trending Anime
           </h3>
 
           <p>
-            There are no anime available right now.
+            There are no trending anime available right now.
           </p>
 
         </div>
@@ -676,9 +926,9 @@
 
 
 
-    <!-- =========================
+    <!-- ==================================================
          LATEST
-    ========================== -->
+    =================================================== -->
 
     <section
       id="latest"
@@ -689,6 +939,7 @@
 
 
         <div class="section-heading">
+
 
           <div>
 
@@ -701,7 +952,7 @@
             </h2>
 
             <p>
-              Discover the newest additions.
+              Discover the newest anime.
             </p>
 
           </div>
@@ -709,13 +960,15 @@
 
           <button
             class="section-link-button"
-            type="button"
             data-view="latest"
+            type="button"
           >
             View All →
           </button>
 
+
         </div>
+
 
 
         <div
@@ -730,9 +983,9 @@
 
 
 
-    <!-- =========================
+    <!-- ==================================================
          TOP RATED
-    ========================== -->
+    =================================================== -->
 
     <section
       id="top-rated"
@@ -743,6 +996,7 @@
 
 
         <div class="section-heading">
+
 
           <div>
 
@@ -763,13 +1017,15 @@
 
           <button
             class="section-link-button"
-            type="button"
             data-view="top-rated"
+            type="button"
           >
             View All →
           </button>
 
+
         </div>
+
 
 
         <div
@@ -784,9 +1040,9 @@
 
 
 
-    <!-- =========================
+    <!-- ==================================================
          GENRES
-    ========================== -->
+    =================================================== -->
 
     <section
       id="genres"
@@ -817,6 +1073,7 @@
         </div>
 
 
+
         <div class="genre-grid">
 
 
@@ -841,6 +1098,7 @@
           </button>
 
 
+
           <button
             class="genre-card"
             type="button"
@@ -860,6 +1118,7 @@
             </small>
 
           </button>
+
 
 
           <button
@@ -883,6 +1142,7 @@
           </button>
 
 
+
           <button
             class="genre-card"
             type="button"
@@ -902,6 +1162,7 @@
             </small>
 
           </button>
+
 
 
           <button
@@ -925,6 +1186,7 @@
           </button>
 
 
+
           <button
             class="genre-card"
             type="button"
@@ -946,6 +1208,7 @@
           </button>
 
 
+
           <button
             class="genre-card"
             type="button"
@@ -965,6 +1228,7 @@
             </small>
 
           </button>
+
 
 
           <button
@@ -996,9 +1260,9 @@
 
 
 
-    <!-- =========================
+    <!-- ==================================================
          FAVORITES
-    ========================== -->
+    =================================================== -->
 
     <section
       id="favorites"
@@ -1009,6 +1273,7 @@
 
 
         <div class="section-heading">
+
 
           <div>
 
@@ -1026,13 +1291,16 @@
 
           </div>
 
+
         </div>
+
 
 
         <div
           id="favoritesGrid"
           class="anime-grid"
         ></div>
+
 
 
         <div
@@ -1052,7 +1320,6 @@
             Add anime to your favorites and they will appear here.
           </p>
 
-
           <a
             href="#trending"
             class="button button-primary"
@@ -1069,9 +1336,9 @@
 
 
 
-    <!-- =========================
-         CTA
-    ========================== -->
+    <!-- ==================================================
+         CALL TO ACTION
+    =================================================== -->
 
     <section class="cta-section">
 
@@ -1122,9 +1389,9 @@
 
 
 
-  <!-- =========================
+  <!-- ==================================================
        ANIME DETAILS MODAL
-  ========================== -->
+  =================================================== -->
 
   <div
     id="animeDetailsModal"
@@ -1136,17 +1403,27 @@
     <div class="details-backdrop"></div>
 
 
-    <div class="details-container">
+    <div
+      class="details-container"
+      role="dialog"
+      aria-modal="true"
+    >
 
+
+      <!-- CLOSE -->
 
       <button
         id="closeAnimeDetails"
         class="details-close"
         type="button"
+        aria-label="Close anime details"
       >
         ✕
       </button>
 
+
+
+      <!-- BANNER -->
 
       <div class="details-hero">
 
@@ -1160,14 +1437,22 @@
       </div>
 
 
+
+      <!-- INFORMATION -->
+
       <div class="details-body">
 
+
+        <!-- POSTER -->
 
         <div
           id="detailsPoster"
           class="details-poster"
         ></div>
 
+
+
+        <!-- CONTENT -->
 
         <div class="details-information">
 
@@ -1205,6 +1490,9 @@
           </p>
 
 
+
+          <!-- ACTIONS -->
+
           <div class="details-actions">
 
 
@@ -1235,20 +1523,33 @@
 
 
 
-      <!-- EPISODES -->
+      <!-- ==================================================
+           EPISODES
+      =================================================== -->
 
       <div class="episodes-section">
 
 
         <div class="episodes-header">
 
-          <h2>
-            Episodes
-          </h2>
+
+          <div>
+
+            <span class="section-label">
+              WATCH
+            </span>
+
+            <h2>
+              Episodes
+            </h2>
+
+          </div>
+
 
 
           <select
             id="detailsSeasonSelect"
+            aria-label="Select season"
           >
 
             <option value="1">
@@ -1259,6 +1560,7 @@
 
 
         </div>
+
 
 
         <div
@@ -1276,36 +1578,40 @@
 
 
 
-  <!-- =========================
-       TOAST
-  ========================== -->
+  <!-- ==================================================
+       TOAST NOTIFICATIONS
+  =================================================== -->
 
   <div
     id="toastContainer"
     class="toast-container"
+    aria-live="polite"
+    aria-atomic="true"
   ></div>
 
 
 
-  <!-- =========================
+  <!-- ==================================================
        BACK TO TOP
-  ========================== -->
+  =================================================== -->
 
   <button
     id="backToTop"
     class="back-to-top"
     type="button"
+    aria-label="Back to top"
   >
     ↑
   </button>
 
 
 
-  <!-- =========================
+  <!-- ==================================================
        FOOTER
-  ========================== -->
+  =================================================== -->
 
   <footer class="site-footer">
+
 
     <div class="container">
 
@@ -1313,10 +1619,17 @@
       <div class="footer-main">
 
 
+        <!-- BRAND -->
+
         <div class="footer-brand">
 
           <div class="footer-logo">
-            YUSUF<span>ANIME</span>
+
+            YUSUF
+            <span>
+              ANIME
+            </span>
+
           </div>
 
           <p>
@@ -1325,6 +1638,9 @@
 
         </div>
 
+
+
+        <!-- EXPLORE -->
 
         <div class="footer-column">
 
@@ -1344,12 +1660,19 @@
             Latest
           </a>
 
+          <a href="#top-rated">
+            Top Rated
+          </a>
+
           <a href="#genres">
             Genres
           </a>
 
         </div>
 
+
+
+        <!-- LIBRARY -->
 
         <div class="footer-column">
 
@@ -1365,12 +1688,15 @@
             Watch History
           </a>
 
-          <a href="#">
+          <a href="#continueWatching">
             Continue Watching
           </a>
 
         </div>
 
+
+
+        <!-- ACCOUNT -->
 
         <div class="footer-column">
 
@@ -1393,11 +1719,38 @@
         </div>
 
 
+
+        <!-- INFORMATION -->
+
+        <div class="footer-column">
+
+          <h3>
+            Information
+          </h3>
+
+          <a href="#">
+            Privacy Policy
+          </a>
+
+          <a href="#">
+            Terms of Service
+          </a>
+
+          <a href="#">
+            Contact
+          </a>
+
+        </div>
+
+
       </div>
 
 
 
+      <!-- FOOTER BOTTOM -->
+
       <div class="footer-bottom">
+
 
         <p>
           © 2026 YUSUF ANIME. All rights reserved.
@@ -1420,6 +1773,7 @@
 
         </div>
 
+
       </div>
 
 
@@ -1429,13 +1783,11 @@
 
 
 
-  <!-- =========================
+  <!-- ==================================================
        JAVASCRIPT
-  ========================== -->
+  =================================================== -->
 
   <script src="js/app.js"></script>
 
-
 </body>
-
 </html>
