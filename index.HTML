@@ -1,0 +1,1177 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <meta
+        name="description"
+        content="YUSUF ANIME - Discover your next favorite anime."
+    >
+
+    <meta
+        name="theme-color"
+        content="#080810"
+    >
+
+    <title>YUSUF ANIME</title>
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/responsive.css">
+</head>
+
+<body>
+
+    <!-- =========================
+         LOADING SCREEN
+    ========================== -->
+
+    <div id="appLoader" class="app-loader">
+        <div class="loader-content">
+
+            <div class="loader-logo">
+                YUSUF<span>ANIME</span>
+            </div>
+
+            <div class="loader-spinner"></div>
+
+            <p>Loading anime world...</p>
+
+        </div>
+    </div>
+
+
+    <!-- =========================
+         HEADER
+    ========================== -->
+
+    <header class="site-header">
+
+        <div class="container header-container">
+
+            <a href="#home" class="brand">
+                <span class="brand-main">YUSUF</span>
+                <span class="brand-accent">ANIME</span>
+            </a>
+
+
+            <!-- Desktop Navigation -->
+
+            <nav class="desktop-navigation" aria-label="Main navigation">
+
+                <a
+                    href="#home"
+                    class="nav-link active"
+                    data-section="home"
+                >
+                    Home
+                </a>
+
+                <a
+                    href="#trending"
+                    class="nav-link"
+                    data-section="trending"
+                >
+                    Trending
+                </a>
+
+                <a
+                    href="#latest"
+                    class="nav-link"
+                    data-section="latest"
+                >
+                    Latest
+                </a>
+
+                <a
+                    href="#top-rated"
+                    class="nav-link"
+                    data-section="top-rated"
+                >
+                    Top Rated
+                </a>
+
+                <a
+                    href="#genres"
+                    class="nav-link"
+                    data-section="genres"
+                >
+                    Genres
+                </a>
+
+                <a
+                    href="#favorites"
+                    class="nav-link"
+                    data-section="favorites"
+                >
+                    Favorites
+                </a>
+
+            </nav>
+
+
+            <!-- Header Actions -->
+
+            <div class="header-actions">
+
+                <button
+                    id="openSearchButton"
+                    class="icon-button"
+                    type="button"
+                    aria-label="Search"
+                >
+                    🔍
+                </button>
+
+
+                <button
+                    id="themeToggle"
+                    class="icon-button"
+                    type="button"
+                    aria-label="Toggle theme"
+                >
+                    🌙
+                </button>
+
+
+                <a
+                    href="#favorites"
+                    class="icon-button favorite-header-button"
+                    aria-label="Favorites"
+                >
+                    ❤️
+
+                    <span
+                        id="headerFavoritesCount"
+                        class="notification-count hidden"
+                    >
+                        0
+                    </span>
+
+                </a>
+
+
+                <!-- Language -->
+
+                <div class="language-selector">
+
+                    <button
+                        id="languageButton"
+                        class="language-button"
+                        type="button"
+                        aria-expanded="false"
+                    >
+                        🌐
+                        <span id="selectedLanguage">English</span>
+                        <span>▾</span>
+                    </button>
+
+
+                    <div
+                        id="languageDropdown"
+                        class="language-dropdown"
+                    >
+
+                        <button
+                            type="button"
+                            data-language="en"
+                        >
+                            🇬🇧 English
+                        </button>
+
+                        <button
+                            type="button"
+                            data-language="ku"
+                        >
+                            🟡 کوردی
+                        </button>
+
+                        <button
+                            type="button"
+                            data-language="ar"
+                        >
+                            🇸🇦 العربية
+                        </button>
+
+                        <button
+                            type="button"
+                            data-language="tr"
+                        >
+                            🇹🇷 Türkçe
+                        </button>
+
+                        <button
+                            type="button"
+                            data-language="ja"
+                        >
+                            🇯🇵 日本語
+                        </button>
+
+                        <button
+                            type="button"
+                            data-language="es"
+                        >
+                            🇪🇸 Español
+                        </button>
+
+                    </div>
+
+                </div>
+
+
+                <!-- Account -->
+
+                <a
+                    href="login.html"
+                    class="account-button"
+                >
+                    <span>👤</span>
+                    <span class="account-text">Login</span>
+                </a>
+
+
+                <!-- Mobile Menu -->
+
+                <button
+                    id="openMobileMenu"
+                    class="mobile-menu-button"
+                    type="button"
+                    aria-label="Open menu"
+                >
+                    ☰
+                </button>
+
+            </div>
+
+        </div>
+
+    </header>
+
+
+    <!-- =========================
+         MOBILE MENU
+    ========================== -->
+
+    <aside
+        id="mobileMenu"
+        class="mobile-menu"
+        aria-hidden="true"
+    >
+
+        <div class="mobile-menu-header">
+
+            <div class="mobile-brand">
+                YUSUF<span>ANIME</span>
+            </div>
+
+            <button
+                id="closeMobileMenu"
+                type="button"
+                aria-label="Close menu"
+            >
+                ✕
+            </button>
+
+        </div>
+
+
+        <nav class="mobile-navigation">
+
+            <a href="#home">🏠 Home</a>
+            <a href="#trending">🔥 Trending</a>
+            <a href="#latest">🆕 Latest</a>
+            <a href="#top-rated">⭐ Top Rated</a>
+            <a href="#genres">🎭 Genres</a>
+            <a href="#favorites">❤️ Favorites</a>
+            <a href="login.html">👤 Login</a>
+
+        </nav>
+
+    </aside>
+
+
+    <div
+        id="mobileMenuOverlay"
+        class="mobile-menu-overlay"
+    ></div>
+
+
+    <!-- =========================
+         SEARCH MODAL
+    ========================== -->
+
+    <div
+        id="searchModal"
+        class="modal"
+        aria-hidden="true"
+    >
+
+        <div class="modal-backdrop"></div>
+
+        <div class="search-modal">
+
+            <div class="search-modal-header">
+
+                <h2>🔍 Search Anime</h2>
+
+                <button
+                    id="closeSearchButton"
+                    type="button"
+                    aria-label="Close search"
+                >
+                    ✕
+                </button>
+
+            </div>
+
+
+            <div class="search-form">
+
+                <input
+                    id="searchInput"
+                    type="search"
+                    placeholder="Search anime..."
+                    autocomplete="off"
+                >
+
+                <button
+                    id="searchSubmit"
+                    type="button"
+                >
+                    Search
+                </button>
+
+            </div>
+
+
+            <div class="search-filters">
+
+                <button
+                    class="search-filter active"
+                    data-filter="all"
+                    type="button"
+                >
+                    All
+                </button>
+
+                <button
+                    class="search-filter"
+                    data-filter="action"
+                    type="button"
+                >
+                    Action
+                </button>
+
+                <button
+                    class="search-filter"
+                    data-filter="romance"
+                    type="button"
+                >
+                    Romance
+                </button>
+
+                <button
+                    class="search-filter"
+                    data-filter="comedy"
+                    type="button"
+                >
+                    Comedy
+                </button>
+
+                <button
+                    class="search-filter"
+                    data-filter="fantasy"
+                    type="button"
+                >
+                    Fantasy
+                </button>
+
+            </div>
+
+
+            <div
+                id="searchResults"
+                class="search-results"
+            ></div>
+
+        </div>
+
+    </div>
+
+
+    <!-- =========================
+         MAIN
+    ========================== -->
+
+    <main id="home">
+
+
+        <!-- HERO -->
+
+        <section class="hero-section">
+
+            <div class="hero-background"></div>
+            <div class="hero-overlay"></div>
+
+            <div class="container hero-container">
+
+                <div class="hero-content">
+
+                    <span class="hero-badge">
+                        ✨ WELCOME TO YUSUF ANIME
+                    </span>
+
+
+                    <h1 class="hero-title">
+                        Discover
+                        <span>Your Anime World.</span>
+                    </h1>
+
+
+                    <p class="hero-description">
+                        Explore amazing stories, discover new
+                        characters, and find your next favorite anime.
+                    </p>
+
+
+                    <div class="hero-actions">
+
+                        <a
+                            href="#trending"
+                            class="button button-primary"
+                        >
+                            🔥 Explore Anime
+                        </a>
+
+                        <button
+                            id="heroSearchButton"
+                            class="button button-secondary"
+                            type="button"
+                        >
+                            🔍 Search Anime
+                        </button>
+
+                    </div>
+
+
+                    <div class="hero-stats">
+
+                        <div class="hero-stat">
+                            <strong id="heroAnimeCount">0</strong>
+                            <span>Anime</span>
+                        </div>
+
+                        <div class="hero-stat">
+                            <strong id="heroEpisodeCount">0</strong>
+                            <span>Episodes</span>
+                        </div>
+
+                        <div class="hero-stat">
+                            <strong id="heroUserCount">0</strong>
+                            <span>Users</span>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- QUICK CATEGORIES -->
+
+        <section class="quick-categories">
+
+            <div class="container">
+
+                <div class="category-scroll">
+
+                    <button type="button" data-genre="Action">
+                        ⚔️ Action
+                    </button>
+
+                    <button type="button" data-genre="Romance">
+                        ❤️ Romance
+                    </button>
+
+                    <button type="button" data-genre="Comedy">
+                        😂 Comedy
+                    </button>
+
+                    <button type="button" data-genre="Fantasy">
+                        🧙 Fantasy
+                    </button>
+
+                    <button type="button" data-genre="Adventure">
+                        🌎 Adventure
+                    </button>
+
+                    <button type="button" data-genre="Drama">
+                        🎭 Drama
+                    </button>
+
+                    <button type="button" data-genre="School">
+                        🎓 School
+                    </button>
+
+                    <button type="button" data-genre="Shonen">
+                        💥 Shonen
+                    </button>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- CONTINUE WATCHING -->
+
+        <section
+            id="continueWatching"
+            class="content-section hidden"
+        >
+
+            <div class="container">
+
+                <div class="section-heading">
+
+                    <div>
+                        <span class="section-label">
+                            ▶️ CONTINUE
+                        </span>
+
+                        <h2>Continue Watching</h2>
+                    </div>
+
+                </div>
+
+                <div
+                    id="continueWatchingGrid"
+                    class="anime-grid"
+                ></div>
+
+            </div>
+
+        </section>
+
+
+        <!-- TRENDING -->
+
+        <section
+            id="trending"
+            class="content-section"
+        >
+
+            <div class="container">
+
+                <div class="section-heading">
+
+                    <div>
+                        <span class="section-label">
+                            🔥 TRENDING NOW
+                        </span>
+
+                        <h2>Popular Anime</h2>
+
+                        <p>
+                            What everyone is watching right now.
+                        </p>
+                    </div>
+
+                    <button
+                        class="section-link-button"
+                        data-view="trending"
+                        type="button"
+                    >
+                        View All →
+                    </button>
+
+                </div>
+
+
+                <div
+                    id="trendingGrid"
+                    class="anime-grid"
+                ></div>
+
+
+                <div
+                    id="trendingEmpty"
+                    class="empty-state hidden"
+                >
+                    <span>🎬</span>
+                    <h3>No anime found</h3>
+                    <p>There are no anime available right now.</p>
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- LATEST -->
+
+        <section
+            id="latest"
+            class="content-section"
+        >
+
+            <div class="container">
+
+                <div class="section-heading">
+
+                    <div>
+                        <span class="section-label">
+                            🆕 NEW RELEASES
+                        </span>
+
+                        <h2>Latest Anime</h2>
+
+                        <p>
+                            Discover the newest additions.
+                        </p>
+                    </div>
+
+                    <button
+                        class="section-link-button"
+                        data-view="latest"
+                        type="button"
+                    >
+                        View All →
+                    </button>
+
+                </div>
+
+
+                <div
+                    id="latestGrid"
+                    class="anime-grid"
+                ></div>
+
+            </div>
+
+        </section>
+
+
+        <!-- TOP RATED -->
+
+        <section
+            id="top-rated"
+            class="content-section"
+        >
+
+            <div class="container">
+
+                <div class="section-heading">
+
+                    <div>
+                        <span class="section-label">
+                            ⭐ TOP RATED
+                        </span>
+
+                        <h2>Best Anime</h2>
+
+                        <p>
+                            Highly rated anime selected for you.
+                        </p>
+                    </div>
+
+                    <button
+                        class="section-link-button"
+                        data-view="top-rated"
+                        type="button"
+                    >
+                        View All →
+                    </button>
+
+                </div>
+
+
+                <div
+                    id="topRatedGrid"
+                    class="anime-grid"
+                ></div>
+
+            </div>
+
+        </section>
+
+
+        <!-- GENRES -->
+
+        <section
+            id="genres"
+            class="content-section"
+        >
+
+            <div class="container">
+
+                <div class="section-heading">
+
+                    <div>
+                        <span class="section-label">
+                            🎭 EXPLORE
+                        </span>
+
+                        <h2>Browse Genres</h2>
+
+                        <p>
+                            Find anime based on what you love.
+                        </p>
+                    </div>
+
+                </div>
+
+
+                <div class="genre-grid">
+
+                    <button
+                        class="genre-card"
+                        type="button"
+                        data-genre="Action"
+                    >
+                        <span class="genre-icon">⚔️</span>
+                        <strong>Action</strong>
+                        <small> Battles & adventure </small>
+                    </button>
+
+
+                    <button
+                        class="genre-card"
+                        type="button"
+                        data-genre="Romance"
+                    >
+                        <span class="genre-icon">❤️</span>
+                        <strong>Romance</strong>
+                        <small>Love stories</small>
+                    </button>
+
+
+                    <button
+                        class="genre-card"
+                        type="button"
+                        data-genre="Comedy"
+                    >
+                        <span class="genre-icon">😂</span>
+                        <strong>Comedy</strong>
+                        <small>Funny stories</small>
+                    </button>
+
+
+                    <button
+                        class="genre-card"
+                        type="button"
+                        data-genre="Fantasy"
+                    >
+                        <span class="genre-icon">🧙</span>
+                        <strong>Fantasy</strong>
+                        <small>Magical worlds</small>
+                    </button>
+
+
+                    <button
+                        class="genre-card"
+                        type="button"
+                        data-genre="Adventure"
+                    >
+                        <span class="genre-icon">🌎</span>
+                        <strong>Adventure</strong>
+                        <small>Epic journeys</small>
+                    </button>
+
+
+                    <button
+                        class="genre-card"
+                        type="button"
+                        data-genre="Drama"
+                    >
+                        <span class="genre-icon">🎭</span>
+                        <strong>Drama</strong>
+                        <small>Emotional stories</small>
+                    </button>
+
+
+                    <button
+                        class="genre-card"
+                        type="button"
+                        data-genre="School"
+                    >
+                        <span class="genre-icon">🎓</span>
+                        <strong>School</strong>
+                        <small>School life</small>
+                    </button>
+
+
+                    <button
+                        class="genre-card"
+                        type="button"
+                        data-genre="Shonen"
+                    >
+                        <span class="genre-icon">💥</span>
+                        <strong>Shonen</strong>
+                        <small>Epic battles</small>
+                    </button>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- FAVORITES -->
+
+        <section
+            id="favorites"
+            class="content-section"
+        >
+
+            <div class="container">
+
+                <div class="section-heading">
+
+                    <div>
+                        <span class="section-label">
+                            ❤️ YOUR COLLECTION
+                        </span>
+
+                        <h2>My Favorites</h2>
+
+                        <p>
+                            Your favorite anime in one place.
+                        </p>
+                    </div>
+
+                </div>
+
+
+                <div
+                    id="favoritesGrid"
+                    class="anime-grid"
+                ></div>
+
+
+                <div
+                    id="emptyFavorites"
+                    class="empty-state"
+                >
+
+                    <span>❤️</span>
+
+                    <h3>No Favorites Yet</h3>
+
+                    <p>
+                        Add anime to your favorites and they
+                        will appear here.
+                    </p>
+
+                    <a
+                        href="#trending"
+                        class="button button-primary"
+                    >
+                        Explore Anime
+                    </a>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- CTA -->
+
+        <section class="cta-section">
+
+            <div class="container">
+
+                <div class="cta-content">
+
+                    <span class="cta-brand">
+                        YUSUF ANIME
+                    </span>
+
+                    <h2>
+                        Your Anime.
+                        <span>Your World.</span>
+                    </h2>
+
+                    <p>
+                        Discover something you love and start
+                        your next anime journey.
+                    </p>
+
+                    <button
+                        id="ctaSearchButton"
+                        class="button button-primary"
+                        type="button"
+                    >
+                        🔍 Find Anime
+                    </button>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- =========================
+         ANIME DETAILS MODAL
+    ========================== -->
+
+    <div
+        id="animeDetailsModal"
+        class="details-modal"
+        aria-hidden="true"
+    >
+
+        <div class="details-backdrop"></div>
+
+        <div class="details-container">
+
+            <button
+                id="closeAnimeDetails"
+                class="details-close"
+                type="button"
+                aria-label="Close"
+            >
+                ✕
+            </button>
+
+
+            <div class="details-hero">
+
+                <div
+                    id="detailsBanner"
+                    class="details-banner"
+                ></div>
+
+                <div class="details-banner-overlay"></div>
+
+            </div>
+
+
+            <div class="details-body">
+
+                <div
+                    id="detailsPoster"
+                    class="details-poster"
+                ></div>
+
+
+                <div class="details-information">
+
+                    <span
+                        id="detailsType"
+                        class="details-type"
+                    >
+                        TV
+                    </span>
+
+                    <h1 id="detailsTitle">
+                        Anime Title
+                    </h1>
+
+                    <div
+                        id="detailsMeta"
+                        class="details-meta"
+                    ></div>
+
+                    <div
+                        id="detailsGenres"
+                        class="details-genres"
+                    ></div>
+
+                    <p
+                        id="detailsDescription"
+                        class="details-description"
+                    >
+                        Anime description.
+                    </p>
+
+
+                    <div class="details-actions">
+
+                        <button
+                            id="detailsWatchButton"
+                            class="button button-primary"
+                            type="button"
+                        >
+                            ▶️ Watch Now
+                        </button>
+
+                        <button
+                            id="detailsFavoriteButton"
+                            class="button button-secondary"
+                            type="button"
+                        >
+                            ♡ Add to Favorites
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- Episodes -->
+
+            <div class="episodes-section">
+
+                <div class="episodes-header">
+
+                    <h2>Episodes</h2>
+
+                    <select
+                        id="detailsSeasonSelect"
+                        aria-label="Select season"
+                    >
+                        <option value="1">
+                            Season 1
+                        </option>
+                    </select>
+
+                </div>
+
+
+                <div
+                    id="detailsEpisodeGrid"
+                    class="episode-grid"
+                ></div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- =========================
+         TOAST
+    ========================== -->
+
+    <div
+        id="toastContainer"
+        class="toast-container"
+        aria-live="polite"
+    ></div>
+
+
+    <!-- =========================
+         BACK TO TOP
+    ========================== -->
+
+    <button
+        id="backToTop"
+        class="back-to-top"
+        type="button"
+        aria-label="Back to top"
+    >
+        ↑
+    </button>
+
+
+    <!-- =========================
+         FOOTER
+    ========================== -->
+
+    <footer class="site-footer">
+
+        <div class="container">
+
+            <div class="footer-main">
+
+                <div class="footer-brand">
+
+                    <div class="footer-logo">
+                        YUSUF<span>ANIME</span>
+                    </div>
+
+                    <p>
+                        Your personal anime world.
+                    </p>
+
+                </div>
+
+
+                <div class="footer-column">
+
+                    <h3>Explore</h3>
+
+                    <a href="#home">Home</a>
+                    <a href="#trending">Trending</a>
+                    <a href="#latest">Latest</a>
+                    <a href="#genres">Genres</a>
+
+                </div>
+
+
+                <div class="footer-column">
+
+                    <h3>Library</h3>
+
+                    <a href="#favorites">Favorites</a>
+                    <a href="#continueWatching">
+                        Watch History
+                    </a>
+                    <a href="#continueWatching">
+                        Continue Watching
+                    </a>
+
+                </div>
+
+
+                <div class="footer-column">
+
+                    <h3>Account</h3>
+
+                    <a href="login.html">Login</a>
+                    <a href="register.html">Register</a>
+                    <a href="#">Profile</a>
+
+                </div>
+
+            </div>
+
+
+            <div class="footer-bottom">
+
+                <p>
+                    © 2026 YUSUF ANIME. All rights reserved.
+                </p>
+
+                <div class="footer-bottom-links">
+
+                    <a href="#">Privacy</a>
+                    <a href="#">Terms</a>
+                    <a href="#">Contact</a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </footer>
+
+
+    <!-- =========================
+         JAVASCRIPT
+    ========================== -->
+
+    <script src="js/app.js"></script>
+
+</body>
+</html>
