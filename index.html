@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
+
 <head>
+
   <meta charset="UTF-8">
 
   <meta
@@ -10,7 +12,7 @@
 
   <meta
     name="description"
-    content="YUSUF ANIME — Discover, explore and watch your favorite anime."
+    content="YUSUF ANIME - Your personal anime world."
   >
 
   <meta
@@ -20,11 +22,15 @@
 
   <title>YUSUF ANIME</title>
 
+  <!-- CSS will be added later -->
   <link rel="stylesheet" href="css/style.css">
   <link rel="stylesheet" href="css/responsive.css">
+
 </head>
 
+
 <body>
+
 
   <!-- =========================
        LOADING SCREEN
@@ -40,11 +46,14 @@
 
       <div class="loader-spinner"></div>
 
-      <p>Loading anime world...</p>
+      <p>
+        Loading anime world...
+      </p>
 
     </div>
 
   </div>
+
 
 
   <!-- =========================
@@ -55,20 +64,29 @@
 
     <div class="header-container">
 
+
+      <!-- LOGO -->
+
       <a
         href="#home"
         class="brand"
-        aria-label="YUSUF ANIME Home"
       >
-        <span class="brand-main">YUSUF</span>
-        <span class="brand-accent">ANIME</span>
+
+        <span class="brand-main">
+          YUSUF
+        </span>
+
+        <span class="brand-accent">
+          ANIME
+        </span>
+
       </a>
 
 
-      <!-- Desktop Navigation -->
+
+      <!-- NAVIGATION -->
 
       <nav
-        id="desktopNavigation"
         class="desktop-navigation"
         aria-label="Main navigation"
       >
@@ -76,7 +94,6 @@
         <a
           href="#home"
           class="nav-link active"
-          data-section="home"
         >
           Home
         </a>
@@ -84,7 +101,6 @@
         <a
           href="#trending"
           class="nav-link"
-          data-section="trending"
         >
           Trending
         </a>
@@ -92,15 +108,20 @@
         <a
           href="#latest"
           class="nav-link"
-          data-section="latest"
         >
           Latest
         </a>
 
         <a
+          href="#top-rated"
+          class="nav-link"
+        >
+          Top Rated
+        </a>
+
+        <a
           href="#genres"
           class="nav-link"
-          data-section="genres"
         >
           Genres
         </a>
@@ -108,7 +129,6 @@
         <a
           href="#favorites"
           class="nav-link"
-          data-section="favorites"
         >
           Favorites
         </a>
@@ -116,16 +136,17 @@
       </nav>
 
 
-      <!-- Header Actions -->
+
+      <!-- HEADER BUTTONS -->
 
       <div class="header-actions">
+
 
         <button
           id="openSearchButton"
           class="icon-button"
           type="button"
           aria-label="Search"
-          title="Search"
         >
           🔍
         </button>
@@ -136,7 +157,6 @@
           class="icon-button"
           type="button"
           aria-label="Toggle theme"
-          title="Theme"
         >
           🌙
         </button>
@@ -144,11 +164,10 @@
 
         <a
           href="#favorites"
-          id="headerFavoritesButton"
           class="icon-button"
-          aria-label="Favorites"
-          title="Favorites"
+          id="headerFavoritesButton"
         >
+
           ❤️
 
           <span
@@ -161,124 +180,26 @@
         </a>
 
 
-        <!-- Language -->
+        <!-- ACCOUNT -->
 
-        <div class="language-selector">
-
-          <button
-            id="languageButton"
-            class="language-button"
-            type="button"
-            aria-expanded="false"
-          >
-            🌐
-
-            <span id="selectedLanguage">
-              English
-            </span>
-
-            <span>
-              ▾
-            </span>
-          </button>
-
-
-          <div
-            id="languageDropdown"
-            class="language-dropdown"
-          >
-
-            <button
-              type="button"
-              data-language="en"
-            >
-              🇬🇧 English
-            </button>
-
-            <button
-              type="button"
-              data-language="ku"
-            >
-              🟡 کوردی
-            </button>
-
-            <button
-              type="button"
-              data-language="ar"
-            >
-              🇸🇦 العربية
-            </button>
-
-            <button
-              type="button"
-              data-language="tr"
-            >
-              🇹🇷 Türkçe
-            </button>
-
-            <button
-              type="button"
-              data-language="ja"
-            >
-              🇯🇵 日本語
-            </button>
-
-            <button
-              type="button"
-              data-language="es"
-            >
-              🇪🇸 Español
-            </button>
-
-            <button
-              type="button"
-              data-language="fr"
-            >
-              🇫🇷 Français
-            </button>
-
-            <button
-              type="button"
-              data-language="de"
-            >
-              🇩🇪 Deutsch
-            </button>
-
-          </div>
-
-        </div>
-
-
-        <!-- Account -->
-
-        <div
-          id="accountArea"
-          class="account-area"
+        <a
+          href="login.html"
+          class="account-button"
+          id="accountButton"
         >
 
-          <a
-            href="login.html"
-            id="accountButton"
-            class="account-button"
-          >
+          <span>
+            👤
+          </span>
 
-            <span class="account-icon">
-              👤
-            </span>
+          <span id="accountText">
+            Login
+          </span>
 
-            <span
-              id="accountText"
-              class="account-text"
-            >
-              Login
-            </span>
-
-          </a>
-
-        </div>
+        </a>
 
 
-        <!-- Mobile Menu -->
+        <!-- MOBILE MENU -->
 
         <button
           id="openMobileMenu"
@@ -289,11 +210,13 @@
           ☰
         </button>
 
+
       </div>
 
     </div>
 
   </header>
+
 
 
   <!-- =========================
@@ -315,7 +238,6 @@
       <button
         id="closeMobileMenu"
         type="button"
-        aria-label="Close menu"
       >
         ✕
       </button>
@@ -364,8 +286,9 @@
   ></div>
 
 
+
   <!-- =========================
-       SEARCH MODAL
+       SEARCH
   ========================== -->
 
   <div
@@ -376,7 +299,9 @@
 
     <div class="modal-backdrop"></div>
 
+
     <div class="search-modal">
+
 
       <div class="search-modal-header">
 
@@ -387,7 +312,6 @@
         <button
           id="closeSearchButton"
           type="button"
-          aria-label="Close search"
         >
           ✕
         </button>
@@ -464,9 +388,11 @@
         class="search-results"
       ></div>
 
+
     </div>
 
   </div>
+
 
 
   <!-- =========================
@@ -490,6 +416,7 @@
       <div class="hero-container">
 
         <div class="hero-content">
+
 
           <span class="hero-badge">
             ✨ WELCOME TO YUSUF ANIME
@@ -525,6 +452,7 @@
               🔥 Explore Anime
             </a>
 
+
             <button
               id="heroSearchButton"
               class="button button-secondary"
@@ -536,7 +464,10 @@
           </div>
 
 
+          <!-- STATS -->
+
           <div class="hero-stats">
+
 
             <div class="hero-stat">
 
@@ -576,7 +507,9 @@
 
             </div>
 
+
           </div>
+
 
         </div>
 
@@ -585,8 +518,9 @@
     </section>
 
 
+
     <!-- =========================
-         QUICK CATEGORIES
+         GENRE SHORTCUTS
     ========================== -->
 
     <section class="quick-categories">
@@ -595,12 +529,14 @@
 
         <div class="category-scroll">
 
+
           <button
             type="button"
             data-genre="Action"
           >
             ⚔️ Action
           </button>
+
 
           <button
             type="button"
@@ -609,12 +545,14 @@
             ❤️ Romance
           </button>
 
+
           <button
             type="button"
             data-genre="Comedy"
           >
             😂 Comedy
           </button>
+
 
           <button
             type="button"
@@ -623,12 +561,14 @@
             🧙 Fantasy
           </button>
 
+
           <button
             type="button"
             data-genre="Adventure"
           >
             🌎 Adventure
           </button>
+
 
           <button
             type="button"
@@ -637,12 +577,14 @@
             🎭 Drama
           </button>
 
+
           <button
             type="button"
             data-genre="School"
           >
             🎓 School
           </button>
+
 
           <button
             type="button"
@@ -651,56 +593,13 @@
             💥 Shonen
           </button>
 
+
         </div>
 
       </div>
 
     </section>
 
-
-    <!-- =========================
-         CONTINUE WATCHING
-    ========================== -->
-
-    <section
-      id="continueWatching"
-      class="content-section hidden"
-    >
-
-      <div class="container">
-
-        <div class="section-heading">
-
-          <div>
-
-            <span class="section-label">
-              ▶️ CONTINUE
-            </span>
-
-            <h2>
-              Continue Watching
-            </h2>
-
-          </div>
-
-          <a
-            href="#"
-            class="section-link"
-          >
-            View All →
-          </a>
-
-        </div>
-
-
-        <div
-          id="continueWatchingGrid"
-          class="anime-grid"
-        ></div>
-
-      </div>
-
-    </section>
 
 
     <!-- =========================
@@ -713,6 +612,7 @@
     >
 
       <div class="container">
+
 
         <div class="section-heading">
 
@@ -732,10 +632,11 @@
 
           </div>
 
+
           <button
             class="section-link-button"
-            data-view="trending"
             type="button"
+            data-view="trending"
           >
             View All →
           </button>
@@ -768,9 +669,11 @@
 
         </div>
 
+
       </div>
 
     </section>
+
 
 
     <!-- =========================
@@ -783,6 +686,7 @@
     >
 
       <div class="container">
+
 
         <div class="section-heading">
 
@@ -802,10 +706,11 @@
 
           </div>
 
+
           <button
             class="section-link-button"
-            data-view="latest"
             type="button"
+            data-view="latest"
           >
             View All →
           </button>
@@ -818,9 +723,11 @@
           class="anime-grid"
         ></div>
 
+
       </div>
 
     </section>
+
 
 
     <!-- =========================
@@ -833,6 +740,7 @@
     >
 
       <div class="container">
+
 
         <div class="section-heading">
 
@@ -852,10 +760,11 @@
 
           </div>
 
+
           <button
             class="section-link-button"
-            data-view="top-rated"
             type="button"
+            data-view="top-rated"
           >
             View All →
           </button>
@@ -868,9 +777,11 @@
           class="anime-grid"
         ></div>
 
+
       </div>
 
     </section>
+
 
 
     <!-- =========================
@@ -883,6 +794,7 @@
     >
 
       <div class="container">
+
 
         <div class="section-heading">
 
@@ -1083,6 +995,7 @@
     </section>
 
 
+
     <!-- =========================
          FAVORITES
     ========================== -->
@@ -1093,6 +1006,7 @@
     >
 
       <div class="container">
+
 
         <div class="section-heading">
 
@@ -1138,6 +1052,7 @@
             Add anime to your favorites and they will appear here.
           </p>
 
+
           <a
             href="#trending"
             class="button button-primary"
@@ -1147,9 +1062,11 @@
 
         </div>
 
+
       </div>
 
     </section>
+
 
 
     <!-- =========================
@@ -1162,19 +1079,28 @@
 
         <div class="cta-content">
 
+
           <span class="cta-brand">
             YUSUF ANIME
           </span>
 
+
           <h2>
+
             Your Anime.
-            <span>Your World.</span>
+
+            <span>
+              Your World.
+            </span>
+
           </h2>
+
 
           <p>
             Discover something you love
             and start your next anime journey.
           </p>
+
 
           <button
             id="ctaSearchButton"
@@ -1184,13 +1110,16 @@
             🔍 Find Anime
           </button>
 
+
         </div>
 
       </div>
 
     </section>
 
+
   </main>
+
 
 
   <!-- =========================
@@ -1203,15 +1132,17 @@
     aria-hidden="true"
   >
 
+
     <div class="details-backdrop"></div>
 
+
     <div class="details-container">
+
 
       <button
         id="closeAnimeDetails"
         class="details-close"
         type="button"
-        aria-label="Close"
       >
         ✕
       </button>
@@ -1231,6 +1162,7 @@
 
       <div class="details-body">
 
+
         <div
           id="detailsPoster"
           class="details-poster"
@@ -1238,6 +1170,7 @@
 
 
         <div class="details-information">
+
 
           <span
             id="detailsType"
@@ -1274,6 +1207,7 @@
 
           <div class="details-actions">
 
+
             <button
               id="detailsWatchButton"
               class="button button-primary"
@@ -1291,16 +1225,20 @@
               ♡ Add to Favorites
             </button>
 
+
           </div>
+
 
         </div>
 
       </div>
 
 
-      <!-- Episodes -->
+
+      <!-- EPISODES -->
 
       <div class="episodes-section">
+
 
         <div class="episodes-header">
 
@@ -1311,7 +1249,6 @@
 
           <select
             id="detailsSeasonSelect"
-            aria-label="Select season"
           >
 
             <option value="1">
@@ -1319,6 +1256,7 @@
             </option>
 
           </select>
+
 
         </div>
 
@@ -1328,11 +1266,14 @@
           class="episode-grid"
         ></div>
 
+
       </div>
+
 
     </div>
 
   </div>
+
 
 
   <!-- =========================
@@ -1342,8 +1283,8 @@
   <div
     id="toastContainer"
     class="toast-container"
-    aria-live="polite"
   ></div>
+
 
 
   <!-- =========================
@@ -1354,10 +1295,10 @@
     id="backToTop"
     class="back-to-top"
     type="button"
-    aria-label="Back to top"
   >
     ↑
   </button>
+
 
 
   <!-- =========================
@@ -1367,6 +1308,7 @@
   <footer class="site-footer">
 
     <div class="container">
+
 
       <div class="footer-main">
 
@@ -1450,7 +1392,9 @@
 
         </div>
 
+
       </div>
+
 
 
       <div class="footer-bottom">
@@ -1458,6 +1402,7 @@
         <p>
           © 2026 YUSUF ANIME. All rights reserved.
         </p>
+
 
         <div class="footer-bottom-links">
 
@@ -1477,9 +1422,11 @@
 
       </div>
 
+
     </div>
 
   </footer>
+
 
 
   <!-- =========================
@@ -1488,5 +1435,7 @@
 
   <script src="js/app.js"></script>
 
+
 </body>
+
 </html>
